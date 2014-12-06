@@ -1,51 +1,31 @@
 <?php
+use yii\helpers\Html;
+use yii\authclient\widgets\AuthChoice;
+
 /* @var $this yii\web\View */
-$this->title = 'My Yii Application';
+$this->title = 'Social Warming - Create mass awareness for social causes on the day of the event';
 ?>
-<div class="site-index">
-
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
-
-    <div class="body-content">
-
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
+<div class="wrap featured" style="background-image: url('/img/human-rights-day_mini.jpg')">
+    <div class="container">
+        <header>
+            <h1><span>Next event</span> Human rights day</h1><br>
+            <h2>#HumanRightsDay</h2>
+            <h3>Ignite the social fire on <span>10<sup>th</sup> December</span></h3>
+            <?php if (Yii::$app->user->isGuest) : ?>
+            <div class="social-wrap c">
+                <button data-social-login data-social-name="facebook" class="facebook">Join with Facebook</button>
+                <button data-social-login data-social-name="twitter" class="twitter">Join with Twitter</button>
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
+            <div style="display: none">
+            <?= AuthChoice::widget(['baseAuthUrl' => ['site/auth']]); ?>
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
-
+            <?php endif; ?>
+        </header>
     </div>
 </div>
+
+<div class="container">
+    aaa
+</div>
+
+<?php $this->registerJsFile('/js/social-login.js', ['depends' => ['yii\web\JqueryAsset']]);

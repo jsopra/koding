@@ -36,7 +36,7 @@ AppAsset::register($this);
                 ],
             ]);
             $menuItems = [
-                ['label' => 'Home', 'url' => ['/site/index']],
+                ['label' => 'Home', 'url' => ['/']],
                 ['label' => 'About', 'url' => ['/site/about']],
                 ['label' => 'Contact', 'url' => ['/site/contact']],
             ];
@@ -56,7 +56,7 @@ AppAsset::register($this);
             NavBar::end();
         ?>
 
-        <?php if (Yii::$app->request->url == '/site/homepage') : ?>
+        <?php if (Yii::$app->homeUrl == Yii::$app->request->url) : ?>
             <?= $content ?>
         <?php else : ?>
             <div class="container">

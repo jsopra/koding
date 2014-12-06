@@ -12,6 +12,7 @@ use app\models\ResetPasswordForm;
 use app\models\SignupForm;
 use app\models\ContactForm;
 use yii\authclient\ClientInterface;
+use yii\authclient\Collection;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
@@ -94,7 +95,7 @@ class SiteController extends Controller
         if (!\Yii::$app->user->isGuest) {
             return $this->goHome();
         }
-
+        
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
@@ -149,16 +150,6 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
-    }
-
-    /**
-     * Homepage temporary static page
-     *
-     * @return string
-     */
-    public function actionHomepage()
-    {
-        return $this->render('homepage');
     }
 
     /**
