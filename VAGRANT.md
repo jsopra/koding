@@ -1,10 +1,13 @@
 ## Run local commands after initial setup
+
+## APPLICATION_ENV
 ````
 su
-sudo echo 'APPLICATION_ENV=development' >> /etc/environment
+echo 'APPLICATION_ENV=development' >> /etc/environment
 ````
+Restart vagrant (vagrant halt / up)
 
-
+## composer and migrate
 ````
 cd /home/koding/data/www/monitorbacklinks.koding.io
 composer install
