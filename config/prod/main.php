@@ -12,7 +12,7 @@ return [
             'class' => 'yii\db\Connection',
             'dsn' => 'mysql:host=localhost;dbname=koding',
             'username' => 'koding',
-            'password' => '???',
+            'password' => 'dj2swzJGCnNrZJxb',
             'charset' => 'utf8',
             'enableSchemaCache' => true,
         ],
