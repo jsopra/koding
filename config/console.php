@@ -4,6 +4,7 @@
  */
 
 return [
+    'id' => 'hackathon-' . YII_ENV . '-console',
     'controllerNamespace' => 'app\console',
     /**
      * APPLICATION COMPONENTS

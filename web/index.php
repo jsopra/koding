@@ -6,7 +6,7 @@
 /**
  * Detect Development or Production server
  */
-if (getenv('APPLICATION_ENV') == 'development') {
+if (getenv('SW_ENVIRONMENT') == 'development') {
     defined('YII_ENV') or define('YII_ENV', 'dev');
     defined('YII_DEBUG') or define('YII_DEBUG', true);
 }
@@ -21,9 +21,7 @@ require(__DIR__ . '/../config/bootstrap.php');
  */
 $config = yii\helpers\ArrayHelper::merge(
     require(__DIR__ . '/../config/main.php'),
-    require(__DIR__ . '/../config/web-main.php'),
-    require(__DIR__ . '/../config/' . YII_ENV . '/main.php'),
-    require(__DIR__ . '/../config/' . YII_ENV . '/web.php')
+    require(__DIR__ . '/../config/web.php')
 );
 /**
  * Initialize application

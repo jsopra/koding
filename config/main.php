@@ -16,22 +16,15 @@ $config = [
      */
     'components' => [
         /**
-         * AuthClient
+         * Database connection
          */
-        'authClientCollection' => [
-            'class' => 'yii\authclient\Collection',
-            'clients' => [
-                'twitter' => [
-                    'class' => 'yii\authclient\clients\Twitter',
-                    'consumerKey' => 't0UjqPCMoDyTqbK6WXx66Sp1V',
-                    'consumerSecret' => 'UVKjb7Ka52Ov4d7Mard3onUejwOropCxQdSXiK3rnsAeABjleW',
-                ],
-                'facebook' => [
-                    'class' => 'yii\authclient\clients\Facebook',
-                    'clientId' => '1521379368146035',
-                    'clientSecret' => 'e1c49791d72e58763fcdec651f226594',
-                ],
-            ],
+        'db' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => getenv('SW_DB_DSN'),
+            'username' => getenv('SW_DB_USERNAME'),
+            'password' => getenv('SW_DB_PASSWORD'),
+            'charset' => 'utf8',
+            'enableSchemaCache' => false, // development
         ],
         /**
          * UrlManager
@@ -86,5 +79,10 @@ $config = [
         ],
     ],
 ];
+
+if (YII_ENV_DEV || YII_ENV_TEST) {
+    unset($config['components']['mailer']['transport']);
+    $config['components']['mailer']['useFileTransport'] = true;
+}
 
 return $config;
