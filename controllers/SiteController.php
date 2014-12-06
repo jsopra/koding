@@ -117,6 +117,10 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
+    public function actionHomepage() {
+        return $this->render('homepage');
+    }
+
     public function actionSignup()
     {
         $model = new SignupForm();

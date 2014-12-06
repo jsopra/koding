@@ -1,0 +1,741 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/site.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+@import url(http://fonts.googleapis.com/css?family=Merriweather+Sans);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
+/* line 9, ../../sass/components/_reset.scss */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/**
+ * Remove default margin.
+ */
+/* line 19, ../../sass/components/_reset.scss */
+body {
+  margin: 0;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+/* line 33, ../../sass/components/_reset.scss */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+/* line 54, ../../sass/components/_reset.scss */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+/* line 67, ../../sass/components/_reset.scss */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+ */
+/* line 77, ../../sass/components/_reset.scss */
+[hidden],
+template {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+/* line 89, ../../sass/components/_reset.scss */
+a {
+  background-color: transparent;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+/* line 97, ../../sass/components/_reset.scss */
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+/* line 109, ../../sass/components/_reset.scss */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+/* line 117, ../../sass/components/_reset.scss */
+b,
+strong {
+  font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+/* line 126, ../../sass/components/_reset.scss */
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+/* line 135, ../../sass/components/_reset.scss */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+/* line 144, ../../sass/components/_reset.scss */
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+/* line 153, ../../sass/components/_reset.scss */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+/* line 161, ../../sass/components/_reset.scss */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+/* line 169, ../../sass/components/_reset.scss */
+sup {
+  top: -0.5em;
+}
+
+/* line 173, ../../sass/components/_reset.scss */
+sub {
+  bottom: -0.25em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+/* line 184, ../../sass/components/_reset.scss */
+img {
+  border: 0;
+}
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+/* line 192, ../../sass/components/_reset.scss */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+/* line 203, ../../sass/components/_reset.scss */
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+/* line 211, ../../sass/components/_reset.scss */
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+/**
+ * Contain overflow in all browsers.
+ */
+/* line 221, ../../sass/components/_reset.scss */
+pre {
+  overflow: auto;
+}
+
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+/* line 229, ../../sass/components/_reset.scss */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+/* line 252, ../../sass/components/_reset.scss */
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+}
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+/* line 266, ../../sass/components/_reset.scss */
+button {
+  overflow: visible;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+/* line 277, ../../sass/components/_reset.scss */
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+/* line 290, ../../sass/components/_reset.scss */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+/* line 302, ../../sass/components/_reset.scss */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+/* line 311, ../../sass/components/_reset.scss */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+/* line 322, ../../sass/components/_reset.scss */
+input {
+  line-height: normal;
+}
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+/* line 334, ../../sass/components/_reset.scss */
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+/* line 346, ../../sass/components/_reset.scss */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
+ *    (include `-moz` to future-proof).
+ */
+/* line 357, ../../sass/components/_reset.scss */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  /* 2 */
+  box-sizing: content-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+/* line 370, ../../sass/components/_reset.scss */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+/* line 379, ../../sass/components/_reset.scss */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+/* line 390, ../../sass/components/_reset.scss */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+/* line 399, ../../sass/components/_reset.scss */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+/* line 408, ../../sass/components/_reset.scss */
+optgroup {
+  font-weight: bold;
+}
+
+/* Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+/* line 419, ../../sass/components/_reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 424, ../../sass/components/_reset.scss */
+td,
+th {
+  padding: 0;
+}
+
+/* line 2, ../../sass/components/_social.scss */
+div.social-wrap button {
+  padding-right: 45px;
+  height: 35px;
+  background: none;
+  border: none;
+  display: block;
+  background-size: 35px 35px;
+  background-position: right center;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+  color: white;
+  font-family: "Merriweather Sans", sans-serif;
+  font-size: 14px;
+  margin-bottom: 15px;
+  width: 205px;
+  border-bottom: 2px solid transparent;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  box-shadow: 0 4px 2px -2px gray;
+  text-shadow: rgba(0, 0, 0, 0.5) -1px -1px 0;
+}
+
+/* line 23, ../../sass/components/_social.scss */
+button#facebook {
+  border-color: #2d5073;
+  background-color: #3b5998;
+  background-image: url(http://icons.iconarchive.com/icons/danleech/simple/512/facebook-icon.png);
+}
+
+/* line 28, ../../sass/components/_social.scss */
+button#twitter {
+  border-color: #007aa6;
+  background-color: #008cbf;
+  background-image: url(https://twitter.com/images/resources/twitter-bird-white-on-blue.png);
+}
+
+/* line 33, ../../sass/components/_social.scss */
+button#googleplus {
+  border-color: #111;
+  background-color: #222;
+  text-shadow: #333 -1px -1px 0;
+  background-image: url(http://i.tinyuploads.com/KBZc6n.png);
+}
+
+/* line 39, ../../sass/components/_social.scss */
+div.social-wrap button:active {
+  background-color: #222;
+}
+
+/* line 42, ../../sass/components/_social.scss */
+div.social-wrap.b button {
+  padding-right: 45px;
+  height: 35px;
+  background: none;
+  border: none;
+  display: block;
+  background-size: 25px 25px, cover;
+  background-position: 170px center, center center;
+  background-repeat: no-repeat, repeat;
+  border-radius: 4px;
+  color: white;
+  font-family: "Merriweather Sans", sans-serif;
+  font-size: 14px;
+  margin-bottom: 15px;
+  width: 205px;
+  border-bottom: 2px solid transparent;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  box-shadow: 0 4px 2px -2px gray;
+  text-shadow: rgba(0, 0, 0, 0.4) -1px -1px 0;
+}
+
+/* line 65, ../../sass/components/_social.scss */
+div.social-wrap.b > .googleplus {
+  background-size: 30px 30px, cover;
+  background-image: url(http://dl.dropbox.com/u/109135764/gplus.png), -webkit-gradient(linear, left top, left bottom, color-stop(1%, #353233), color-stop(100%, #1d1b1c));
+}
+
+/* line 70, ../../sass/components/_social.scss */
+div.social-wrap.b > .facebook {
+  background: url(/img/facebookf.png), -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4c74c4), color-stop(100%, #3b5998));
+  background-size: 25px 25px, cover;
+  background-position: 170px center, center center;
+  background-repeat: no-repeat, repeat;
+}
+
+/* line 76, ../../sass/components/_social.scss */
+div.social-wrap.b > .twitter {
+  background-image: url(/img/twitterbird.png), -webkit-gradient(linear, left top, left bottom, color-stop(1%, #00aced), color-stop(99%, #00a9ff));
+}
+
+/* line 80, ../../sass/components/_social.scss */
+div.social-wrap.b button em {
+  font-size: 18px;
+  letter-spacing: 1px;
+  font-family: "Times New Roman";
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
+/* line 87, ../../sass/components/_social.scss */
+div.social-wrap.c button {
+  padding-left: 35px;
+  padding-right: 0px;
+  height: 35px;
+  background: none;
+  border: none;
+  display: block;
+  background-size: 25px 25px, cover;
+  background-position: 10px center, center center;
+  background-repeat: no-repeat, repeat;
+  border-radius: 4px;
+  color: white;
+  font-family: "Merriweather Sans", sans-serif;
+  font-size: 14px;
+  margin-bottom: 15px;
+  width: 205px;
+  border-bottom: 2px solid transparent;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  box-shadow: 0 4px 2px -2px gray;
+  text-shadow: rgba(0, 0, 0, 0.4) -1px -1px 0;
+}
+
+/* line 111, ../../sass/components/_social.scss */
+div.social-wrap.c > .googleplus {
+  background-size: 30px 30px, cover;
+  background-image: url(/img/gplus.png), -webkit-gradient(linear, left top, left bottom, color-stop(1%, #353233), color-stop(100%, #1d1b1c));
+}
+
+/* line 116, ../../sass/components/_social.scss */
+div.social-wrap.c > .facebook {
+  background: url(/img/facebookf.png), -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4c74c4), color-stop(100%, #3b5998));
+  background-size: 25px 25px, cover;
+  background-position: 10px center, center center;
+  background-repeat: no-repeat, repeat;
+}
+
+/* line 122, ../../sass/components/_social.scss */
+div.social-wrap.c > .twitter {
+  background-image: url(/img/twitterbird.png), -webkit-gradient(linear, left top, left bottom, color-stop(1%, #00aced), color-stop(99%, #00a9ff));
+}
+
+/* line 126, ../../sass/components/_social.scss */
+div.social-wrap.c button em {
+  font-size: 18px;
+  letter-spacing: 1px;
+  font-family: "Times New Roman";
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
+/* line 133, ../../sass/components/_social.scss */
+ul.sm-wrap {
+  list-style-type: none;
+  padding: 0px;
+}
+
+/* line 137, ../../sass/components/_social.scss */
+ul.sm-wrap li {
+  font-family: "Helvetica", sans-serif;
+  font-size: 11px;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  background-size: 15px 15px;
+  background-repeat: no-repeat;
+}
+
+/* line 145, ../../sass/components/_social.scss */
+ul.sm-wrap li#facebook-sm {
+  background-image: url(http://icons.iconarchive.com/icons/danleech/simple/512/facebook-icon.png);
+}
+
+/* line 148, ../../sass/components/_social.scss */
+ul.sm-wrap li#twitter-sm {
+  background-image: url(https://twitter.com/images/resources/twitter-bird-white-on-blue.png);
+}
+
+/* line 151, ../../sass/components/_social.scss */
+ul.sm-wrap li#gplus-sm {
+  background-image: url(http://i.tinyuploads.com/KBZc6n.png);
+}
+
+/* line 155, ../../sass/components/_social.scss */
+ul.sm-wrap a {
+  text-decoration: none;
+}
+
+/* line 17, ../../sass/site.scss */
+.navbar .logo-label {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.3em;
+  color: #eee;
+  padding-left: 0.5em;
+}
+
+/* line 25, ../../sass/site.scss */
+.featured {
+  background-size: 100%;
+  background-position: bottom;
+  background-repeat: none;
+  height: 700px;
+  margin-top: -20px;
+  padding-top: 20px;
+  color: #fff;
+}
+/* line 34, ../../sass/site.scss */
+.featured header {
+  margin: 7% 3% 2% 3%;
+  text-align: left;
+}
+/* line 38, ../../sass/site.scss */
+.featured header h1 {
+  font-size: 2em;
+  margin-bottom: 0.2em;
+  display: inline-block;
+  text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.6);
+}
+/* line 44, ../../sass/site.scss */
+.featured header h1 span {
+  background-color: rgba(255, 20, 147, 0.7);
+  display: inline-block;
+  color: #fff;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  padding: 2px 5px;
+  margin: 2px 0;
+  font-size: 0.7em;
+  text-shadow: none;
+  -moz-box-shadow: 1px 1px 1px 0 #333333;
+  -webkit-box-shadow: 1px 1px 1px 0 #333333;
+  box-shadow: 1px 1px 1px 0 #333333;
+}
+/* line 57, ../../sass/site.scss */
+.featured header h2 {
+  font-size: 5em;
+  margin-top: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 0.2em;
+  padding-bottom: 0.2em;
+  display: inline-block;
+  text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.6);
+}
+/* line 67, ../../sass/site.scss */
+.featured header h3 {
+  font-size: 3em;
+  margin: 0 0 2em 0;
+  text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.6);
+}
+/* line 72, ../../sass/site.scss */
+.featured header h3 span {
+  background-color: rgba(65, 105, 225, 0.7);
+  text-shadow: none;
+  font-size: 0.8em;
+  padding: 0.2em 0.4em;
+  -moz-border-radius: 0.2em;
+  -webkit-border-radius: 0.2em;
+  border-radius: 0.2em;
+}
+
+/* line 84, ../../sass/site.scss */
+div.social-wrap.c button {
+  display: inline-block;
+  font-size: 1.5em;
+  height: 3em;
+  width: 12em;
+}
+
+@media screen and (max-width: 1400px) {
+  /* line 93, ../../sass/site.scss */
+  .featured {
+    font-size: 0.8em;
+    height: 550px;
+  }
+}
+@media screen and (max-width: 1100px) {
+  /* line 99, ../../sass/site.scss */
+  .featured {
+    font-size: 0.7em;
+    height: 400px;
+  }
+}
+@media screen and (max-width: 750px) {
+  /* line 105, ../../sass/site.scss */
+  .featured {
+    font-size: 0.5em;
+    height: 300px;
+  }
+}
+@media screen and (max-width: 500px) {
+  /* line 111, ../../sass/site.scss */
+  .featured {
+    height: 200px;
+  }
+}
