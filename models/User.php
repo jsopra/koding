@@ -80,7 +80,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * Finds user by username
      *
-     * @param string $username
+     * @param string $username Input username
      * @return static|null
      */
     public static function findByUsername($username)
@@ -161,7 +161,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * Generates password hash from password and sets it to the model
      *
-     * @param string $password
+     * @param string $password Plain password
      */
     public function setPassword($password)
     {
