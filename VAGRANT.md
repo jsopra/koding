@@ -2,8 +2,7 @@
 
 ## APPLICATION_ENV
 ````
-su
-echo 'APPLICATION_ENV=development' >> /etc/environment
+sudo echo 'APPLICATION_ENV=development' >> /etc/environment
 ````
 Restart vagrant (vagrant halt / up)
 
