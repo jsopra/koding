@@ -1,0 +1,114 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/site.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "components/reset";
+@import "compass/css3";
+@import "components/social";
+@import "components/footer";
+@import "components/header";
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
+
+
+
+.navbar {
+  .logo-label {
+    font-family: $opensans;
+    font-size: 1.3em;
+    color: #eee;
+    padding-left: 0.5em;
+  }
+}
+
+.featured {
+  background-size: 100%;
+  background-position: bottom;
+  background-repeat: none;
+  height: 700px;
+  margin-top: -20px;
+  padding-top: 20px;
+  color: #fff;
+
+  header {
+    margin: 7% 3% 2% 3%;
+    text-align: left;
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 0.2em;
+      display: inline-block;
+      @include single-text-shadow;
+
+      span {
+        background-color: rgba($primary-color, 0.7);
+        display: inline-block;
+        color: #fff;
+        @include border-radius(2px);
+        padding: 2px 5px;
+        margin: 2px 0;
+        font-size: 0.7em;
+        text-shadow: none;
+        @include single-box-shadow(1px, 1px, 1px, 0);
+      }
+    }
+
+    h2 {
+      font-size: 5em;
+      margin-top: 0;
+      border-bottom: 1px solid rgba(#fff, 0.2);
+      margin-bottom: 0.2em;
+      padding-bottom: 0.2em;
+      display: inline-block;
+      @include single-text-shadow;
+    }
+
+    h3 {
+      font-size: 3em;
+      margin: 0 0 2em 0;
+      @include single-text-shadow;
+
+      span {
+        background-color: rgba($secondary-color, 0.7);
+        text-shadow: none;
+        font-size: 0.8em;
+        padding: 0.2em 0.4em;
+        @include border-radius(0.2em)
+      }
+    }
+  }
+}
+
+div.social-wrap.c {
+  button {
+    display: inline-block;
+    font-size: 1.5em;
+    height: 3em;
+    width: 12em;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .featured {
+    font-size:0.8em;
+    height: 550px;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .featured {
+    font-size:0.7em;
+    height: 400px;
+  }
+}
+@media screen and (max-width: 750px) {
+  .featured {
+    font-size:0.5em;
+    height: 300px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .featured {
+    height: 200px;
+  }
+}

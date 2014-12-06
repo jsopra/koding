@@ -144,6 +144,16 @@ class SiteController extends Controller
     }
 
     /**
+     * Homepage temporary static page
+     *
+     * @return string
+     */
+    public function actionHomepage()
+    {
+        return $this->render('homepage');
+    }
+
+    /**
      * Register account
      *
      * @return string|\yii\web\Response
