@@ -24,16 +24,6 @@ trait UserRelationTrait
     }
 
     /**
-     * Get User's region
-     *
-     * @return \yii\db\ActiveQuery Region
-     */
-    public function getRegion()
-    {
-        return $this->hasOne(Region::className(), ['id' => 'region_id']);
-    }
-
-    /**
      * Get User's City
      *
      * @return \yii\db\ActiveQuery City
@@ -46,11 +36,11 @@ trait UserRelationTrait
     /**
      * Get User's location in simple readable form
      *
-     * @return string Representation of `$country, $region, $city`
+     * @return string Representation of `$country, $city`
      */
     public function getLocation()
     {
-        $fields = ['country', 'region', 'city'];
+        $fields = ['city', 'country'];
         $location = [];
 
         foreach ($fields as $field) {
