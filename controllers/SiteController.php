@@ -5,7 +5,8 @@ namespace app\controllers;
 use app\models\social\FacebookProfile;
 use app\models\social\TwitterProfile;
 use Yii;
-use app\models\social\LoginForm;
+use app\models\LoginForm;
+use app\models\social\LoginForm as SocialLoginForm;
 use app\models\PasswordResetRequestForm;
 use app\models\ResetPasswordForm;
 use app\models\SignupForm;
@@ -249,7 +250,7 @@ class SiteController extends Controller
             throw new BadRequestHttpException();
         }
 
-        $login = new LoginForm(compact('profile'));
+        $login = new SocialLoginForm(compact('profile'));
         if ($login->authenticate()) {
             return;
         }
