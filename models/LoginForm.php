@@ -10,10 +10,21 @@ use yii\base\Model;
  */
 class LoginForm extends Model
 {
+    /**
+     * @var string Input Username
+     */
     public $username;
+    /**
+     * @var string Input Password
+     */
     public $password;
+    /**
+     * @var bool "Remember password" checkbox
+     */
     public $rememberMe = true;
-
+    /**
+     * @var bool|User User Identity or false if not found
+     */
     private $_user = false;
 
 

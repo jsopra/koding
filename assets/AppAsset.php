@@ -15,13 +15,28 @@ use yii\web\AssetBundle;
  */
 class AppAsset extends AssetBundle
 {
+    /**
+     * @var string the Web-accessible directory that contains the asset files in this bundle.
+     */
     public $basePath = '@webroot';
+    /**
+     * @var string the base URL that will be prefixed to the asset files for them to be accessed via Web server.
+     */
     public $baseUrl = '@web';
+    /**
+     * @var array list of CSS files that this bundle contains.
+     */
     public $css = [
         'css/site.css',
     ];
+    /**
+     * @var array list of JavaScript files that this bundle contains.
+     */
     public $js = [
     ];
+    /**
+     * @var array list of bundle class names that this bundle depends on.
+     */
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',

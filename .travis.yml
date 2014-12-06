@@ -1,0 +1,17 @@
+language: php
+
+php:
+    - 5.5
+
+# faster builds on new travis setup not using sudo
+sudo: false
+
+before_script:
+  - pear install PHP_CodeSniffer-2.0.0RC2
+  - phpenv rehash
+  - travis_retry composer self-update
+  - travis_retry composer global require "fxp/composer-asset-plugin:1.0.0-beta4" --no-interaction
+  - travis_retry composer install --prefer-source --no-interaction --dev
+
+script:
+  - ./phpcs.sh

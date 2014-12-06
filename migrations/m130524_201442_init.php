@@ -3,8 +3,15 @@
 use yii\db\Schema;
 use yii\db\Migration;
 
+/**
+ * Class m130524_201442_init
+ */
 class m130524_201442_init extends Migration
 {
+    /**
+     * Creates user table
+     * @inheritdoc
+     */
     public function up()
     {
         $tableOptions = null;
@@ -28,6 +35,9 @@ class m130524_201442_init extends Migration
         ], $tableOptions);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function down()
     {
         $this->dropTable('{{%user}}');
