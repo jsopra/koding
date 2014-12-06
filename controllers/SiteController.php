@@ -19,6 +19,7 @@ use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\helpers\Url;
 
 /**
  * Site controller
@@ -254,7 +255,12 @@ class SiteController extends Controller
         }
 
         $login = new SocialLoginForm(compact('profile'));
+
         if ($login->authenticate()) {
+            if (!empty($_GET['event_id'])) {
+                $joinEventUrl = Url::to(['event/join', 'id' => $_GET['event_id']]);
+                Yii::$app->user->setReturnUrl($joinEventUrl);
+            }
             return;
         }
         throw new BadRequestHttpException();

@@ -1,5 +1,6 @@
 <?php
 
+use yii\authclient\widgets\AuthChoice;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -32,6 +33,18 @@ $this->params['breadcrumbs'][] = $this->title;
             Awareness created
         </p>
     </footer>
+
+    <div>
+    <?php if (Yii::$app->user->isGuest) : ?>
+        <?= AuthChoice::widget([
+            'baseAuthUrl' => ['site/auth', 'event_id' => $model->id]
+        ]) ?>
+    <?php elseif (Yii::$app->user->identity->hasJoinedEvent($model)) : ?>
+        <?= Html::a('Joined', ['event/unjoin', 'id' => $model->id], ['class' => 'btn btn-default']) ?>
+    <?php else : ?>
+        <?= Html::a('Join', ['event/join', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+    <?php endif; ?>
+    </div>
 
     <?php if ($recentJoinings) : ?>
     <section>

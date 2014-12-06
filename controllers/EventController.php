@@ -15,6 +15,26 @@ use yii\filters\VerbFilter;
 class EventController extends Controller
 {
     /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => '\yii\filters\AccessControl',
+                'only' => ['join', 'unjoin'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['join', 'unjoin'],
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
+    
+    /**
      * Lists all Event models.
      * @return mixed
      */
@@ -43,6 +63,34 @@ class EventController extends Controller
             'model' => $model,
             'recentJoinings' => $joinings->with('user')->orderBy('id DESC')->limit(5)->all(),
         ]);
+    }
+
+    /**
+     * Joins current user to the event
+     * @param integer $id event ID
+     * @return mixed
+     */
+    public function actionJoin($id)
+    {
+        $this->findModel($id)->join(Yii::$app->user->identity);
+
+        Yii::$app->session->setFlash('success', 'Thank you for joining this event!');
+
+        return $this->redirect(['view', 'id' => $id]);
+    }
+
+    /**
+     * Unjoins current user from the event
+     * @param integer $id event ID
+     * @return mixed
+     */
+    public function actionUnjoin($id)
+    {
+        $this->findModel($id)->unjoin(Yii::$app->user->identity);
+
+        Yii::$app->session->setFlash('success', 'You have successfully unjoined this event.');
+
+        return $this->redirect(['view', 'id' => $id]);
     }
 
     /**

@@ -90,4 +90,41 @@ class Event extends \yii\db\ActiveRecord
     {
         return $this->hasMany(EventUser::className(), ['event_id' => 'id']);
     }
+
+    /**
+     * Joins user to the event
+     * @param User $user user which will join
+     * @returns boolean either if the user joined or not
+     */
+    public function join(User $user)
+    {
+        $eventUser = new EventUser;
+        $eventUser->event_id = $this->id;
+        $eventUser->user_id = $user->id;
+
+        if ($eventUser->save()) {
+            $this->updateCounters(['joined_users_counter' => 1]);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Unjoins user from the event
+     * @param User $user user which will unjoin
+     * @returns boolean either if the user unjoined or not
+     */
+    public function unjoin(User $user)
+    {
+        $eventUser = EventUser::find()->where([
+            'event_id' => $this->id,
+            'user_id' => $user->id,
+        ])->one();
+
+        if ($eventUser && $eventUser->delete() > 0) {
+            $this->updateCounters(['joined_users_counter' => -1]);
+            return true;
+        }
+        return false;
+    }
 }

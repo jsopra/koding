@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "event_user".
@@ -29,11 +30,25 @@ class EventUser extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'joined_at',
+                'updatedAtAttribute' => false,
+            ]
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [
-            [['user_id', 'event_id', 'joined_at'], 'required'],
-            [['user_id', 'event_id', 'joined_at'], 'integer'],
+            [['user_id', 'event_id'], 'required'],
+            [['user_id', 'event_id'], 'integer'],
             [
                 ['user_id', 'event_id'],
                 'unique',
