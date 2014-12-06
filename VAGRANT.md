@@ -4,7 +4,10 @@ su
 sudo echo 'APPLICATION_ENV=development' >> /etc/environment
 ````
 
+
 ````
+cd /home/koding/data/www/monitorbacklinks.koding.io
+composer install
 ./yii migrate/up
 ````
 
