@@ -16,6 +16,17 @@ $config = [
      */
     'components' => [
         /**
+         * Database connection
+         */
+        'db' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => getenv('SW_DB_DSN'),
+            'username' => getenv('SW_DB_USERNAME'),
+            'password' => getenv('SW_DB_PASSWORD'),
+            'charset' => 'utf8',
+            'enableSchemaCache' => false, // development
+        ],
+        /**
          * UrlManager
          */
         'urlManager' => [
@@ -68,5 +79,10 @@ $config = [
         ],
     ],
 ];
+
+if (YII_ENV_DEV || YII_ENV_TEST) {
+    unset($config['components']['mailer']['transport']);
+    $config['components']['mailer']['useFileTransport'] = true;
+}
 
 return $config;

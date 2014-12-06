@@ -19,6 +19,7 @@ use yii\web\IdentityInterface;
  * @property string $auth_key
  * @property integer $role
  * @property integer $status
+ * @property integer $via
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $password write-only password
