@@ -3,14 +3,13 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/site.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
-@import "components/reset";
-@import "compass/css3";
-@import "components/social";
-@import "components/footer";
-@import "components/header";
-
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
 
+@import "components/reset";
+@import "compass/css3";
+@import "components/footer";
+@import "components/header";
+@import "components/social";
 
 
 .navbar {
@@ -23,6 +22,7 @@
 }
 
 .featured {
+  position: relative;
   background-size: 100%;
   background-position: bottom;
   background-repeat: none;
@@ -77,18 +77,58 @@
         @include border-radius(0.2em)
       }
     }
+
+    .under-header {
+      font-size: 1.3em;
+      @include single-text-shadow;
+
+      .social-wrap {
+        margin-top: 1em;
+      }
+    }
+  }
+
+  .bar {
+    width: 100%;
+    background-color: rgba(#000, 0.7);
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    color: #fff;
+    font-size: 1.8em;
+    padding: 0.5em;
+
+    a {
+      color: $primary-color;
+      text-decoration: underline;
+      @include single-text-shadow;
+    }
+    a:hover {
+      color: $primary-color-hover
+    }
   }
 }
 
-div.social-wrap.c {
-  button {
+.btn-danger {
+  background-color: $primary-color;
+}
+
+div.social-wrap {
+  .button {
     display: inline-block;
     font-size: 1.5em;
-    height: 3em;
-    width: 12em;
+  }
+
+  .button.small {
+    font-size: 1em;
+  }
+
+  .button.primary-color {
+    @include background(linear-gradient(to bottom, $primary-color, $primary-color-hover));
   }
 }
 
+/*** Responsive settings ***/
 @media screen and (max-width: 1400px) {
   .featured {
     font-size:0.8em;

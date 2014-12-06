@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
@@ -20,6 +21,12 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <link rel="shortcut icon" href="/favicon.ico" />
+
+    <!-- Facebook Meta -->
+    <meta property="og:image" content="<?= Url::base(true) ?>/img/emblem.png"/>
+    <meta property="og:title" content="<?= Html::encode($this->title) ?>"/>
+
+
     <?php $this->head() ?>
 </head>
 <body>
