@@ -2,12 +2,15 @@
 
 namespace app\controllers;
 
+use app\models\social\FacebookProfile;
+use app\models\social\TwitterProfile;
 use Yii;
-use app\models\LoginForm;
+use app\models\social\LoginForm;
 use app\models\PasswordResetRequestForm;
 use app\models\ResetPasswordForm;
 use app\models\SignupForm;
 use app\models\ContactForm;
+use yii\authclient\ClientInterface;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
@@ -62,6 +65,10 @@ class SiteController extends Controller
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+            ],
+            'auth' => [
+                'class' => 'yii\authclient\AuthAction',
+                'successCallback' => [$this, 'successCallback'],
             ],
         ];
     }
@@ -213,5 +220,39 @@ class SiteController extends Controller
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
+    }
+
+    /**
+     * Social login testing purposes.
+     *
+     * @return string
+     */
+    public function actionSocialLogin()
+    {
+        return $this->render('social-login');
+    }
+
+    /**
+     * Social Login callback handler.
+     *
+     * @param ClientInterface $client Social login client
+     * @throws BadRequestHttpException For invalid callback
+     */
+    public function successCallback($client)
+    {
+        $attributes = $client->getUserAttributes();
+        if ($client->getId() == 'facebook') {
+            $profile = new FacebookProfile($attributes);
+        } elseif ($client->getId() == 'twitter') {
+            $profile = new TwitterProfile($attributes);
+        } else {
+            throw new BadRequestHttpException();
+        }
+
+        $login = new LoginForm(compact('profile'));
+        if ($login->authenticate()) {
+            return;
+        }
+        throw new BadRequestHttpException();
     }
 }

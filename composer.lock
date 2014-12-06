@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "13631e668abbdc26faabd880f1a687e1",
+    "hash": "a05188fb37c8aad2692c293ffa2ed588",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -451,6 +451,54 @@
             "homepage": "http://www.yiiframework.com/",
             "keywords": [
                 "framework",
+                "yii2"
+            ],
+            "time": "2014-10-12 17:09:06"
+        },
+        {
+            "name": "yiisoft/yii2-authclient",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/yii2-authclient.git",
+                "reference": "38d1bd9431fc3f778d869b0836ffa4c6d66d2382"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-authclient/zipball/38d1bd9431fc3f778d869b0836ffa4c6d66d2382",
+                "reference": "38d1bd9431fc3f778d869b0836ffa4c6d66d2382",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "yii\\authclient\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Paul Klimov",
+                    "email": "klimov.paul@gmail.com"
+                }
+            ],
+            "description": "External authentication via OAuth and OpenID for the Yii framework",
+            "keywords": [
+                "OpenId",
+                "auth",
+                "oauth",
                 "yii2"
             ],
             "time": "2014-10-12 17:09:06"

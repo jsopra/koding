@@ -16,6 +16,24 @@ $config = [
      */
     'components' => [
         /**
+         * AuthClient
+         */
+        'authClientCollection' => [
+            'class' => 'yii\authclient\Collection',
+            'clients' => [
+                'twitter' => [
+                    'class' => 'yii\authclient\clients\Twitter',
+                    'consumerKey' => 't0UjqPCMoDyTqbK6WXx66Sp1V',
+                    'consumerSecret' => 'UVKjb7Ka52Ov4d7Mard3onUejwOropCxQdSXiK3rnsAeABjleW',
+                ],
+                'facebook' => [
+                    'class' => 'yii\authclient\clients\Facebook',
+                    'clientId' => '1521379368146035',
+                    'clientSecret' => 'e1c49791d72e58763fcdec651f226594',
+                ],
+            ],
+        ],
+        /**
          * UrlManager
          */
         'urlManager' => [
