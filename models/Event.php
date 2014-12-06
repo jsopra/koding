@@ -15,6 +15,12 @@ use yii\behaviors\TimestampBehavior;
  * @property string $occurred_on
  * @property integer $created_at
  * @property integer $updated_at
+ * @property integer $awareness_created_counter
+ * @property integer $joined_users_counter
+ *
+ * Relations:
+ * @property User[] $users
+ * @property EventUser[] $eventUsers
  */
 class Event extends \yii\db\ActiveRecord
 {
@@ -45,7 +51,7 @@ class Event extends \yii\db\ActiveRecord
             [['name', 'hashtag', 'description', 'occurred_on', 'created_at', 'updated_at'], 'required'],
             [['description'], 'string'],
             [['occurred_on'], 'safe'],
-            [['created_at', 'updated_at'], 'integer'],
+            [['joined_users_counter', 'awareness_created_counter'], 'integer'],
             [['name', 'hashtag'], 'string', 'max' => 255]
         ];
     }
@@ -63,6 +69,25 @@ class Event extends \yii\db\ActiveRecord
             'occurred_on' => 'Occurred On',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+            'awareness_created_counter' => 'Awareness Created Counter',
+            'joined_users_counter' => 'Joined Users Counter',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUsers()
+    {
+        return $this->hasMany(User::className(), ['id' => 'user_id'])
+            ->viaTable('event_user', ['event_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getEventUsers()
+    {
+        return $this->hasMany(EventUser::className(), ['event_id' => 'id']);
     }
 }

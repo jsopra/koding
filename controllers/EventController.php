@@ -36,8 +36,12 @@ class EventController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        $joinings = $model->getEventUsers();
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'recentJoinings' => $joinings->with('user')->orderBy('id DESC')->limit(5)->all(),
         ]);
     }
 

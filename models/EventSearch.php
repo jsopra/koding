@@ -18,7 +18,13 @@ class EventSearch extends Event
     public function rules()
     {
         return [
-            [['id', 'created_at', 'updated_at'], 'integer'],
+            [
+                [
+                    'id', 'created_at', 'updated_at', 'joined_users_counter',
+                    'awareness_created_counter'
+                ],
+                'integer'
+            ],
             [['name', 'hashtag', 'description', 'occurred_on'], 'safe'],
         ];
     }
@@ -56,6 +62,8 @@ class EventSearch extends Event
             'occurred_on' => $this->occurred_on,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'joined_users_counter' => $this->joined_users_counter,
+            'awareness_created_counter' => $this->awareness_created_counter,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
