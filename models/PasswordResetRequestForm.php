@@ -9,6 +9,9 @@ use yii\base\Model;
  */
 class PasswordResetRequestForm extends Model
 {
+    /**
+     * @var string Input Email
+     */
     public $email;
 
     /**

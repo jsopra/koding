@@ -66,11 +66,21 @@ class SiteController extends Controller
         ];
     }
 
+    /**
+     * Default Index
+     *
+     * @return string
+     */
     public function actionIndex()
     {
         return $this->render('index');
     }
 
+    /**
+     * Login
+     *
+     * @return string|\yii\web\Response
+     */
     public function actionLogin()
     {
         if (!\Yii::$app->user->isGuest) {
@@ -87,6 +97,11 @@ class SiteController extends Controller
         }
     }
 
+    /**
+     * Logout functionality
+     *
+     * @return \yii\web\Response
+     */
     public function actionLogout()
     {
         Yii::$app->user->logout();
@@ -94,6 +109,12 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
+    /**
+     * Contact Us page
+     * Sends Email
+     *
+     * @return string|\yii\web\Response
+     */
     public function actionContact()
     {
         $model = new ContactForm();
@@ -112,15 +133,30 @@ class SiteController extends Controller
         }
     }
 
+    /**
+     * About static page
+     *
+     * @return string
+     */
     public function actionAbout()
     {
         return $this->render('about');
     }
 
+    /**
+     * Homepage temporary static page
+     *
+     * @return string
+     */
     public function actionHomepage() {
         return $this->render('homepage');
     }
 
+    /**
+     * Register account
+     *
+     * @return string|\yii\web\Response
+     */
     public function actionSignup()
     {
         $model = new SignupForm();
@@ -137,6 +173,12 @@ class SiteController extends Controller
         ]);
     }
 
+    /**
+     * Initiate Password Reset Request
+     * Sends to registered Email reset-password link
+     *
+     * @return string|\yii\web\Response
+     */
     public function actionRequestPasswordReset()
     {
         $model = new PasswordResetRequestForm();
@@ -155,6 +197,14 @@ class SiteController extends Controller
         ]);
     }
 
+    /**
+     * Access password-reset link received into Email
+     * and set new password
+     *
+     * @param string $token Password reset token
+     * @return string|\yii\web\Response
+     * @throws BadRequestHttpException If input token is invalid
+     */
     public function actionResetPassword($token)
     {
         try {
