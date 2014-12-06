@@ -53,9 +53,9 @@ $config = [
 ];
 
 /**
- * If environment is development or test, add debug and gii modules
+ * If environment is development, add debug and gii modules
  */
-if (!YII_ENV_PROD) {
+if (YII_ENV_DEV) {
     $config = yii\helpers\ArrayHelper::merge(
         $config,
         [
