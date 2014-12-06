@@ -11,6 +11,7 @@ use yii\web\IdentityInterface;
 /**
  * User model
  *
+ * DB Fields:
  * @property integer $id
  * @property string $username
  * @property string $password_hash
@@ -20,12 +21,25 @@ use yii\web\IdentityInterface;
  * @property integer $role
  * @property integer $status
  * @property integer $via
+ * @property integer $country_id Relation with `country`
+ * @property integer $region_id Relation with `region`
+ * @property integer $city_id Relation with `city`
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $password write-only password
+ *
+ * Relations:
+ * @property Country|null $country User's country
+ * @property Region|null $region User's region
+ * @property City|null $city User's city
+ *
+ * Magic Properties:
+ * @property $location User's location, representation of $country, $region, $city
  */
 class User extends ActiveRecord implements IdentityInterface
 {
+    use UserRelationTrait;
+
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
     const ROLE_USER = 10;
@@ -59,6 +73,15 @@ class User extends ActiveRecord implements IdentityInterface
 
             ['role', 'default', 'value' => self::ROLE_USER],
             ['role', 'in', 'range' => [self::ROLE_USER]],
+
+            [['role', 'status', 'registered_via', 'country_id', 'region_id', 'city_id', 'created_at', 'updated_at'], 'integer'],
+
+            // FK check: 'country_id' must exist in 'country.id'
+            ['country_id', 'exist', 'targetClass' => Country::className(), 'targetAttribute' => 'id'],
+            // FK check: 'region_id' must exist in 'region.id'
+            ['region_id', 'exist', 'targetClass' => Region::className(), 'targetAttribute' => 'id'],
+            // FK check: 'city_id' must exist in 'city.id'
+            ['city_id', 'exist', 'targetClass' => City::className(), 'targetAttribute' => 'id'],
         ];
     }
 
@@ -191,5 +214,45 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    /**
+     * Add Country & bind country_id to User
+     * TODO: Finish
+     *
+     * @param string $name Country Name
+     * @return self
+     */
+    public function setCountry($name)
+    {
+        return $this;
+    }
+
+    /**
+     * Add Region & bind region_id to User
+     *
+     * @param string $name Region Name
+     * @return self
+     */
+    public function setRegion($name)
+    {
+        if ($region = Region::findOrCreate($name)) {
+            $this->region_id = $region->primaryKey;
+        }
+        return $this;
+    }
+
+    /**
+     * Add City & bind city_id to User
+     *
+     * @param string $name City Name
+     * @return self
+     */
+    public function setCity($name)
+    {
+        if ($city = City::findOrCreate($name)) {
+            $this->city_id = $city->primaryKey;
+        }
+        return $this;
     }
 }
