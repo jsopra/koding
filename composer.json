@@ -1,0 +1,65 @@
+{
+    "name": "monitorbacklinks/hackathon-2014",
+    "description": "Social Warming Hackathon 2014 Project",
+    "keywords": ["social warming", "yii2", "hackathon", "koding"],
+    "homepage": "http://monitorbacklinks.koding.io/",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Razvan Girmacea",
+            "email": "razvan@monitorbacklinks.com",
+            "homepage": "http://razvangirmacea.com/",
+            "role": "Project lead"
+        },
+        {
+            "name": "Eugen C.",
+            "email": "php@arma.biz",
+            "homepage": "http://arma.biz/",
+            "role": "Lead developer"
+        },
+        {
+            "name": "Darwin Medillo",
+            "email": "darwin.medillo@gmail.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Alan Willms",
+            "email": "dyulax@gmail.com",
+            "homepage": "http://alanwillms.com/",
+            "role": "Developmer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/monitorbacklinks/koding/issues",
+        "wiki": "https://github.com/monitorbacklinks/koding/wiki",
+        "source": "https://github.com/monitorbacklinks/koding"
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.5.0",
+        "ext-curl": "*",
+        "ext-gd": "*",
+        "ext-intl": "*",
+        "ext-mbstring": "*",
+        "ext-mcrypt": "*",
+        "ext-sockets": "*",
+        "yiisoft/yii2": "~2.0.0",
+        "yiisoft/yii2-bootstrap": "*",
+        "yiisoft/yii2-swiftmailer": "*"
+    },
+    "require-dev": {
+        "yiisoft/yii2-debug": "*",
+        "yiisoft/yii2-gii": "*",
+        "yiisoft/yii2-coding-standards": "dev-master"
+    },
+    "config": {
+        "process-timeout": 1800,
+        "optimize-autoloader": true
+    },
+    "extra": {
+        "asset-installer-paths": {
+            "npm-asset-library": "vendor/npm",
+            "bower-asset-library": "vendor/bower"
+        }
+    }
+}
