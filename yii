@@ -1,0 +1,38 @@
+#!/usr/bin/env php
+<?php
+/**
+ * Yii console bootstrap file.
+ */
+
+/**
+ * Detect Development or Production server
+ */
+if (getenv('APPLICATION_ENV') == 'development') {
+    defined('YII_ENV') or define('YII_ENV', 'dev');
+    defined('YII_DEBUG') or define('YII_DEBUG', true);
+}
+
+// fcgi doesn't have STDIN and STDOUT defined by default
+defined('STDIN') or define('STDIN', fopen('php://stdin', 'r'));
+defined('STDOUT') or define('STDOUT', fopen('php://stdout', 'w'));
+/**
+ * Include Core files
+ */
+require(__DIR__ . '/vendor/autoload.php');
+require(__DIR__ . '/vendor/yiisoft/yii2/Yii.php');
+require(__DIR__ . '/config/bootstrap.php');
+/**
+ * Merge configs
+ */
+$config = yii\helpers\ArrayHelper::merge(
+    require(__DIR__ . '/config/main.php'),
+    require(__DIR__ . '/config/console-main.php'),
+    require(__DIR__ . '/config/' . YII_ENV . '/main.php'),
+    require(__DIR__ . '/config/' . YII_ENV . '/console.php')
+);
+/**
+ * Initialize application
+ */
+$application = new yii\console\Application($config);
+$exitCode = $application->run();
+exit($exitCode);
