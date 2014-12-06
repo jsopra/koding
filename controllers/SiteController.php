@@ -134,6 +134,16 @@ class SiteController extends Controller
     }
 
     /**
+     * Homepage static page
+     *
+     * @return string
+     */
+    public function actionHomepage()
+    {
+        return $this->render('homepage');
+    }
+
+    /**
      * About static page
      *
      * @return string
