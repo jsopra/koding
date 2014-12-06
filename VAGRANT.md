@@ -1,3 +1,5 @@
+Vagrant file is available at https://gist.github.com/armab/91b177917b4c7669305a
+
 ## Run local commands after initial setup
 ````
 su
