@@ -11,4 +11,9 @@ composer install
 ./yii migrate/up
 ````
 
-(soon): compass/sass install & watch yii css folder
+## Compass installation and run/watch
+
+    sudo apt-get install ruby-dev
+    sudo gem install compass
+    cd {app_folder}
+    compass watch --poll -c config.rb
