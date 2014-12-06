@@ -24,6 +24,12 @@ $config = [
             'loginUrl' => ['login'],
             'enableAutoLogin' => true,
         ],
+        /**
+         * Handle errors with specific Action
+         */
+        'errorHandler' => [
+            'errorAction' => 'site/error',
+        ],
     ],
 ];
 

@@ -11,8 +11,10 @@ return [
     'components' => [
         /**
          * User
+         * TODO: Extend component to ConsoleUser
          */
         'user' => [
+            'class' => 'yii\web\User',
             'identityClass' => 'app\models\User',
             'enableSession' => false,
         ],

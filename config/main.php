@@ -30,7 +30,6 @@ $config = [
          * @link http://swiftmailer.org/docs/messages.html
          */
         'mailer' => [
-            'class' => 'app\components\core\Mailer',
             'messageConfig' => [
                 'charset' => 'utf-8',
                 'from' => [$params['supportEmail'] => $params['supportName']],
