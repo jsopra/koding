@@ -148,7 +148,8 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionHomepage() {
+    public function actionHomepage()
+    {
         return $this->render('homepage');
     }
 
