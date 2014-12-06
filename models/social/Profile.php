@@ -17,6 +17,8 @@ abstract class Profile extends Model
 {
 
     /**
+     * Raw attributes got from authentication.
+     *
      * @var array
      */
     protected $rawAttributes;
@@ -41,7 +43,7 @@ abstract class Profile extends Model
     }
 
     /**
-     * @param string $attribute
+     * @param string $attribute Attribute name
      * @return null|string
      */
     protected function getRawAttribute($attribute)
