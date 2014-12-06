@@ -12,6 +12,15 @@
     composer install
     ./yii migrate/up
 
+## Update nginx (Add sendfile off;)
+
+    vi /etc/nginx/sites-enabled/monitorbacklinks.koding.io
+    
+    Add:
+    sendfile off;
+    
+    nginx reload
+
 
 ## Compass installation and run/watch
 
