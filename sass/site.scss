@@ -184,6 +184,15 @@ h1 { font-size: 3em; }
     a:hover { color: $secondary-color; }
 
   }
+
+  footer {
+    .icon-shared {
+      color: firebrick;
+    }
+    .icon-awareness {
+      color: dodgerblue;
+    }
+  }
 }
 
 .events-list {
