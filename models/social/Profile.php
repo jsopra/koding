@@ -11,6 +11,8 @@ use yii\base\Model;
  * @property int $id
  * @property int $email
  * @property string $meta
+ * @property string $token
+ * @property int $tokenExpiration
  * @package app\models\social
  */
 abstract class Profile extends Model
@@ -24,10 +26,17 @@ abstract class Profile extends Model
     protected $rawAttributes;
 
     /**
-     * @param array $rawAttributes Social attributes
+     * @var mixed
      */
-    public function __construct($rawAttributes)
+    protected $accessToken;
+    
+    /**
+     * @param array $rawAttributes Social attributes
+     * @param mixed $accessToken Retrieved access token
+     */
+    public function __construct($rawAttributes, $accessToken)
     {
+        $this->accessToken = $accessToken;
         $this->rawAttributes = $rawAttributes;
     }
     
@@ -73,6 +82,11 @@ abstract class Profile extends Model
      */
     abstract public function getMeta();
 
+    /**
+     * @return mixed
+     */
+    abstract public function getToken();
+    
     /**
      * Let social profile handle creating the user.
      *

@@ -3,9 +3,12 @@
 namespace app\controllers;
 
 use app\components\Controller;
+use app\components\SocialLoginHandler;
 use app\models\forms\ProfileForm;
 use Yii;
+use yii\authclient\AuthAction;
 use yii\filters\AccessControl;
+use yii\helpers\Url;
 
 /**
  * Class ProfileController
@@ -14,6 +17,20 @@ use yii\filters\AccessControl;
 class ProfileController extends Controller
 {
 
+    /**
+     * @inheritdoc
+     */
+    public function actions()
+    {
+        return [
+            'connect' => [
+                'class' => AuthAction::className(),
+                'successUrl' => Url::to(['/profile/sample-connect']),
+                'successCallback' => [new SocialLoginHandler(), 'connectHandler'],
+            ]
+        ];
+    }
+    
     /**
      * @inheritdoc
      */
@@ -49,5 +66,13 @@ class ProfileController extends Controller
         }
         
         return $this->render('index', compact('user'));
+    }
+
+    /**
+     * Sample connect page
+     */
+    public function actionSampleConnect()
+    {
+        return $this->render('sample-connect');
     }
 }

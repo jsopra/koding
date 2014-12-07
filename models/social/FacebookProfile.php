@@ -46,6 +46,22 @@ class FacebookProfile extends Profile
     }
 
     /**
+     * @return mixed|string
+     */
+    public function getToken()
+    {
+        return $this->accessToken;
+    }
+
+    /**
+     * @return int|mixed
+     */
+    public function getTokenExpiration()
+    {
+        return time() + $this->accessToken['expires'];
+    }
+    
+    /**
      * @inheritdoc
      */
     public static function createUser(Profile $profile)

@@ -50,20 +50,17 @@ class ConnectForm extends Model
             return false;
         }
         $social = Social::findByProfile($this->profile);
-        if ($social) {
-            $social->user_id = $this->user->id;
-            if (!$social->save()) {
-                $this->addError('profile', Yii::t('app', 'Something went wrong while creating social profile.'));
-                return false;
-            }
-            return true;
+        
+        if (!$social) {
+            $social = new Social();
         }
-        $social = new Social([
-            'user_id' => $this->user->id,
-            'social' => $this->profile->social,
-            'social_id' => $this->profile->id,
-            'meta' => $this->profile->meta,
-        ]);
+
+        $social->user_id = $this->user->id;
+        $social->meta = $this->profile->meta;
+        $social->social = $this->profile->social;
+        $social->social_id = $this->profile->id;
+        $social->token = $this->profile->token;
+        
         if (!$social->save()) {
             $this->addError('profile', Yii::t('app', 'Something went wrong while creating social profile.'));
             return false;

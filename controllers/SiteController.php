@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\components\Controller;
+use app\components\SocialLoginHandler;
 use app\models\social\FacebookProfile;
 use app\models\social\TwitterProfile;
 use app\models\User;
@@ -13,9 +14,13 @@ use app\models\PasswordResetRequestForm;
 use app\models\ResetPasswordForm;
 use app\models\SignupForm;
 use app\models\ContactForm;
+use yii\authclient\AuthAction;
 use yii\authclient\ClientInterface;
+use yii\authclient\clients\Facebook;
+use yii\authclient\clients\Twitter;
 use yii\authclient\Collection;
 use yii\base\InvalidParamException;
+use yii\helpers\Url;
 use yii\web\BadRequestHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -72,7 +77,8 @@ class SiteController extends Controller
             ],
             'auth' => [
                 'class' => 'yii\authclient\AuthAction',
-                'successCallback' => [$this, 'successCallback'],
+                'successUrl' => Url::to(['/profile']),
+                'successCallback' => [new SocialLoginHandler(), 'loginHandler'],
             ],
         ];
     }
@@ -234,36 +240,6 @@ class SiteController extends Controller
     public function actionSocialLogin()
     {
         return $this->render('social-login');
-    }
-
-    /**
-     * Social Login callback handler.
-     *
-     * @param ClientInterface $client Social login client
-     * @throws BadRequestHttpException For invalid callback
-     */
-    public function successCallback($client)
-    {
-        $attributes = $client->getUserAttributes();
-        if ($client->getId() == 'facebook') {
-            $attributes['picture'] = $client->api('me/picture?redirect=0&height=200&type=normal&width=200', 'GET');
-            $profile = new FacebookProfile($attributes);
-        } elseif ($client->getId() == 'twitter') {
-            $profile = new TwitterProfile($attributes);
-        } else {
-            throw new BadRequestHttpException();
-        }
-
-        $login = new SocialLoginForm(compact('profile'));
-
-        if ($login->authenticate()) {
-            if (!empty($_GET['event_id'])) {
-                $joinEventUrl = Url::to(['event/join', 'id' => $_GET['event_id']]);
-                Yii::$app->user->setReturnUrl($joinEventUrl);
-            }
-            return;
-        }
-        throw new BadRequestHttpException();
     }
 
     /**

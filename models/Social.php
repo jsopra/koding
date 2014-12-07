@@ -13,6 +13,7 @@ use yii\db\ActiveRecord;
  * @property string $social_id
  * @property string $meta
  * @property User $user
+ * @property string $token
  * @package app\models
  */
 class Social extends ActiveRecord

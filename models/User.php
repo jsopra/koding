@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\authclient\clients\Twitter;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
@@ -35,6 +36,8 @@ use yii\web\IdentityInterface;
  * Relations:
  * @property Country|null $country User's country
  * @property City|null $city User's city
+ * @property Social $twitter
+ * @property Social $facebook
  *
  * Magic Properties:
  */
@@ -119,6 +122,22 @@ class User extends ActiveRecord implements IdentityInterface
         }
 
         return false;
+    }
+
+    /**
+     * @return static
+     */
+    public function getTwitter()
+    {
+        return $this->hasOne(Social::className(), ['user_id' => 'id'])->where(['social' => Social::TWITTER]);
+    }
+
+    /**
+     * @return static
+     */
+    public function getFacebook()
+    {
+        return $this->hasOne(Social::className(), ['user_id' => 'id'])->where(['social' => Social::FACEBOOK]);
     }
 
     /**

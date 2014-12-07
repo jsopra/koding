@@ -58,6 +58,24 @@ class TwitterProfile extends Profile
     }
 
     /**
+     * @return mixed|void
+     */
+    public function getToken()
+    {
+        return Json::encode($this->accessToken);
+    }
+
+    /**
+     * No Expiration
+     *
+     * @return mixed|null
+     */
+    public function getTokenExpiration()
+    {
+        return null;
+    }
+    
+    /**
      * @param Profile $profile Social profile
      * @return User
      */
