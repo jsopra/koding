@@ -10,6 +10,7 @@ $config = [
     'params' => $params,
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'name' => 'Social Warming',
     'extensions' => require(__DIR__ . '/../vendor/yiisoft/extensions.php'),
     /**
      * APPLICATION COMPONENTS
