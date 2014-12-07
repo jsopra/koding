@@ -52,6 +52,8 @@ class EventSearch extends Event
             'query' => $query,
         ]);
 
+        $query->orderBy('occurred_on DESC');
+
         if (!($this->load($params) && $this->validate())) {
             return $dataProvider;
         }

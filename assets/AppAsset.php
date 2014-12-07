@@ -32,9 +32,7 @@ class AppAsset extends AssetBundle
     /**
      * @var array list of JavaScript files that this bundle contains.
      */
-    public $js = [
-        'js/highcharts-mapdata-custom-world.js',
-    ];
+    public $js = [];
     /**
      * @var array list of bundle class names that this bundle depends on.
      */

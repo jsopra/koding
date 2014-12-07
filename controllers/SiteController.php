@@ -8,6 +8,7 @@ use app\models\social\FacebookProfile;
 use app\models\social\TwitterProfile;
 use app\models\User;
 use Yii;
+use app\models\Event;
 use app\models\LoginForm;
 use app\models\social\LoginForm as SocialLoginForm;
 use app\models\PasswordResetRequestForm;
@@ -89,7 +90,16 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $featuredEvent = Event::find()->future()->orderBy('occurred_on ASC')->one();
+        $pastEvents = Event::find()->past()->orderBy('occurred_on DESC')->limit(3)->all();
+
+        return $this->render(
+            'index',
+            [
+                'featuredEvent' => $featuredEvent,
+                'pastEvents' => $pastEvents,
+            ]
+        );
     }
 
     /**

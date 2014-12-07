@@ -135,6 +135,7 @@ h1 { font-size: 3em; }
   }
 }
 
+.events-list,
 .next-events {
   h2 {
     font-size: 1em;
@@ -168,6 +169,10 @@ h1 { font-size: 3em; }
     a:hover { color: $secondary-color; }
 
   }
+}
+
+.events-list {
+  margin-bottom: 2em;
 }
 
 .previews {

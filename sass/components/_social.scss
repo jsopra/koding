@@ -19,6 +19,13 @@
 }
 
 .social-wrap {
+
+  .join {
+    position: relative;
+    @include background(linear-gradient(to bottom, #d32c85, #ff1493));
+    padding: 0.8em 1.5em;
+  }
+
   .facebook {
     position: relative;
     @include background(linear-gradient(to bottom, #4c74c4, #3b5998));
