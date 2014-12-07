@@ -24,7 +24,6 @@ use yii\helpers\Url;
 use yii\web\BadRequestHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use yii\helpers\Url;
 
 /**
  * Site controller
