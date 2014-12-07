@@ -198,9 +198,11 @@ class EventController extends Controller
     public function actionJoin($id)
     {
         $model = $this->findModel($id);
-        $model->join(Yii::$app->user->identity);
 
-        Yii::$app->session->setFlash('success', 'Thank you for joining this event!');
+        if (!$model->isPast()) {
+            $model->join(Yii::$app->user->identity);
+            Yii::$app->session->setFlash('success', 'Thank you for joining this event!');
+        }
 
         return $this->redirectToView($model);
     }
@@ -213,9 +215,11 @@ class EventController extends Controller
     public function actionUnjoin($id)
     {
         $model = $this->findModel($id);
-        $model->unjoin(Yii::$app->user->identity);
 
-        Yii::$app->session->setFlash('success', 'You have successfully unjoined this event.');
+        if (!$model->isPast()) {
+            $model->unjoin(Yii::$app->user->identity);
+            Yii::$app->session->setFlash('success', 'You have successfully unjoined this event.');
+        }
 
         return $this->redirectToView($model);
     }

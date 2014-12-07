@@ -147,6 +147,17 @@ class Event extends ActiveRecord
     }
 
     /**
+     * @return 
+     */
+    public function isPast()
+    {
+        $currentDate = (int) date('Ymd');
+        $eventDate = (int) preg_replace('/[^0-9]/', '', $this->occurred_on);
+
+        return $eventDate <= $currentDate;
+    }
+
+    /**
      * Joins user to the event
      * @param User $user user which will join
      * @returns boolean either if the user joined or not

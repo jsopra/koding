@@ -35,6 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </p>
     </footer>
 
+    <?php if (false == $model->isPast()) : ?>
     <div>
     <?php if (Yii::$app->user->isGuest) : ?>
         <?= AuthChoice::widget([
@@ -54,6 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ) ?>
     <?php endif; ?>
     </div>
+    <?php endif; ?>
 
     <?php if ($recentJoinings) : ?>
     <section>
