@@ -22,7 +22,7 @@
 * nginx + PHP-FPM
 * PHP 5.5
 * MySQL 5.5
-* Compass & Sass for CSS
+* [Compass CSS Framework](http://compass-style.org) & [Sass](http://sass-lang.com/) for CSS
 * [Yii2](http://www.yiiframework.com/) - One of the best PHP Frameworks
 * [Yii2 advanced app](https://github.com/yiisoft/yii2/tree/master/apps/advanced) - As initial application template
 * [Composer](https://getcomposer.org/) - Dependency Manager for PHP
