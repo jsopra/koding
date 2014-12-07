@@ -38,6 +38,28 @@ $this->title = 'Social Warming - Create mass awareness for social causes on the 
 </div>
 
 <div class="container">
+    <div class="bs-callout bs-callout-primary">
+        <h4>What happens if you join?</h4>
+        <p>On the day of the event we will update your Twitter or Facebook status to raise awareness about the current event.</p>
+
+        <hr>
+
+        <div class="row previews">
+            <div class="col-md-6">
+                <h5>Twitter status preview</h5>
+                <div class="thumbnail">
+                    <img src="/img/preview-twitter.png" alt="Preview Twitter event sharing">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h5>Facebook status preview</h5>
+                <div class="thumbnail">
+                    <img src="/img/preview-facebook.png" alt="Preview Twitter event sharing">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- 3 events -->
     <h1>Past events</h1>
     <div class="row next-events">

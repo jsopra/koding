@@ -10,6 +10,7 @@
 @import "components/footer";
 @import "components/header";
 @import "components/social";
+@import "components/callouts";
 
 
 .navbar {
@@ -144,6 +145,14 @@ h1 { font-size: 3em; }
     }
     a:hover { color: $secondary-color; }
 
+  }
+}
+
+.previews {
+  text-align: center;
+
+  h5 {
+    color: gray;
   }
 }
 

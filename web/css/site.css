@@ -504,7 +504,97 @@ th {
   left: 0.5em;
 }
 
-/* line 16, ../../sass/site.scss */
+/* line 1, ../../sass/components/_callouts.scss */
+.bs-callout {
+  padding: 20px;
+  margin: 20px 0;
+  border: 1px solid #eee;
+  border-left-width: 5px;
+  border-radius: 3px;
+}
+
+/* line 8, ../../sass/components/_callouts.scss */
+.bs-callout h4 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+/* line 12, ../../sass/components/_callouts.scss */
+.bs-callout p:last-child {
+  margin-bottom: 0;
+}
+
+/* line 15, ../../sass/components/_callouts.scss */
+.bs-callout code {
+  border-radius: 3px;
+}
+
+/* line 18, ../../sass/components/_callouts.scss */
+.bs-callout + .bs-callout {
+  margin-top: -5px;
+}
+
+/* line 21, ../../sass/components/_callouts.scss */
+.bs-callout-default {
+  border-left-color: #777;
+}
+
+/* line 24, ../../sass/components/_callouts.scss */
+.bs-callout-default h4 {
+  color: #777;
+}
+
+/* line 27, ../../sass/components/_callouts.scss */
+.bs-callout-primary {
+  border-left-color: #428bca;
+}
+
+/* line 30, ../../sass/components/_callouts.scss */
+.bs-callout-primary h4 {
+  color: #428bca;
+}
+
+/* line 33, ../../sass/components/_callouts.scss */
+.bs-callout-success {
+  border-left-color: #5cb85c;
+}
+
+/* line 36, ../../sass/components/_callouts.scss */
+.bs-callout-success h4 {
+  color: #5cb85c;
+}
+
+/* line 39, ../../sass/components/_callouts.scss */
+.bs-callout-danger {
+  border-left-color: #d9534f;
+}
+
+/* line 42, ../../sass/components/_callouts.scss */
+.bs-callout-danger h4 {
+  color: #d9534f;
+}
+
+/* line 45, ../../sass/components/_callouts.scss */
+.bs-callout-warning {
+  border-left-color: #f0ad4e;
+}
+
+/* line 48, ../../sass/components/_callouts.scss */
+.bs-callout-warning h4 {
+  color: #f0ad4e;
+}
+
+/* line 51, ../../sass/components/_callouts.scss */
+.bs-callout-info {
+  border-left-color: #5bc0de;
+}
+
+/* line 54, ../../sass/components/_callouts.scss */
+.bs-callout-info h4 {
+  color: #5bc0de;
+}
+
+/* line 17, ../../sass/site.scss */
 .navbar .logo-label {
   font-family: "Open Sans", sans-serif;
   font-size: 1.3em;
@@ -512,12 +602,12 @@ th {
   padding-left: 0.5em;
 }
 
-/* line 24, ../../sass/site.scss */
+/* line 25, ../../sass/site.scss */
 h1 {
   font-size: 3em;
 }
 
-/* line 26, ../../sass/site.scss */
+/* line 27, ../../sass/site.scss */
 .featured {
   position: relative;
   background-size: 100%;
@@ -529,19 +619,19 @@ h1 {
   padding-top: 20px;
   color: #fff;
 }
-/* line 37, ../../sass/site.scss */
+/* line 38, ../../sass/site.scss */
 .featured header {
   margin: 7% 3% 2% 3%;
   text-align: left;
 }
-/* line 41, ../../sass/site.scss */
+/* line 42, ../../sass/site.scss */
 .featured header h1 {
   font-size: 2em;
   margin-bottom: 0.2em;
   display: inline-block;
   text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.6);
 }
-/* line 47, ../../sass/site.scss */
+/* line 48, ../../sass/site.scss */
 .featured header h1 span {
   background-color: rgba(211, 44, 133, 0.7);
   display: inline-block;
@@ -557,7 +647,7 @@ h1 {
   -webkit-box-shadow: 1px 1px 1px 0 #333333;
   box-shadow: 1px 1px 1px 0 #333333;
 }
-/* line 60, ../../sass/site.scss */
+/* line 61, ../../sass/site.scss */
 .featured header h2 {
   font-size: 5em;
   margin-top: 0;
@@ -567,13 +657,13 @@ h1 {
   display: inline-block;
   text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.6);
 }
-/* line 70, ../../sass/site.scss */
+/* line 71, ../../sass/site.scss */
 .featured header h3 {
   font-size: 3em;
   margin: 0 0 2em 0;
   text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.6);
 }
-/* line 75, ../../sass/site.scss */
+/* line 76, ../../sass/site.scss */
 .featured header h3 span {
   background-color: rgba(65, 105, 225, 0.7);
   text-shadow: none;
@@ -583,16 +673,16 @@ h1 {
   -webkit-border-radius: 0.2em;
   border-radius: 0.2em;
 }
-/* line 84, ../../sass/site.scss */
+/* line 85, ../../sass/site.scss */
 .featured header .under-header {
   font-size: 1.3em;
   text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.6);
 }
-/* line 88, ../../sass/site.scss */
+/* line 89, ../../sass/site.scss */
 .featured header .under-header .social-wrap {
   margin-top: 1em;
 }
-/* line 94, ../../sass/site.scss */
+/* line 95, ../../sass/site.scss */
 .featured .bar {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.7);
@@ -603,23 +693,23 @@ h1 {
   font-size: 1.8em;
   padding: 0.5em;
 }
-/* line 104, ../../sass/site.scss */
+/* line 105, ../../sass/site.scss */
 .featured .bar a {
   color: #d32c85;
   text-decoration: underline;
   text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.6);
 }
-/* line 109, ../../sass/site.scss */
+/* line 110, ../../sass/site.scss */
 .featured .bar a:hover {
   color: deeppink;
 }
 
-/* line 116, ../../sass/site.scss */
+/* line 117, ../../sass/site.scss */
 .next-events h2 {
   font-size: 1em;
   margin: 0;
 }
-/* line 120, ../../sass/site.scss */
+/* line 121, ../../sass/site.scss */
 .next-events h2 .tag {
   display: inline-block;
   background: #d32c85;
@@ -630,44 +720,53 @@ h1 {
   -webkit-border-radius: 2px;
   border-radius: 2px;
 }
-/* line 128, ../../sass/site.scss */
+/* line 129, ../../sass/site.scss */
 .next-events h2 .tag a {
   color: #fff;
 }
-/* line 132, ../../sass/site.scss */
+/* line 133, ../../sass/site.scss */
 .next-events h2 .date {
   color: gray;
   float: right;
   padding: 0.5em 0;
 }
-/* line 139, ../../sass/site.scss */
+/* line 140, ../../sass/site.scss */
 .next-events h3 {
   margin-top: 0.5em;
 }
-/* line 142, ../../sass/site.scss */
+/* line 143, ../../sass/site.scss */
 .next-events h3 a {
   color: #444;
 }
-/* line 145, ../../sass/site.scss */
+/* line 146, ../../sass/site.scss */
 .next-events h3 a:hover {
   color: royalblue;
 }
 
-/* line 150, ../../sass/site.scss */
+/* line 151, ../../sass/site.scss */
+.previews {
+  text-align: center;
+}
+/* line 154, ../../sass/site.scss */
+.previews h5 {
+  color: gray;
+}
+
+/* line 159, ../../sass/site.scss */
 .btn-danger {
   background-color: #d32c85;
 }
 
-/* line 155, ../../sass/site.scss */
+/* line 164, ../../sass/site.scss */
 .social-wrap .button {
   display: inline-block;
   font-size: 1.5em;
 }
-/* line 160, ../../sass/site.scss */
+/* line 169, ../../sass/site.scss */
 .social-wrap .button.small {
   font-size: 1em;
 }
-/* line 164, ../../sass/site.scss */
+/* line 173, ../../sass/site.scss */
 .social-wrap .button.primary-color {
   background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2QzMmM4NSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmMTQ5MyIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #d32c85), color-stop(100%, #ff1493));
@@ -676,7 +775,7 @@ h1 {
   background: linear-gradient(to bottom, #d32c85, #ff1493);
 }
 
-/* line 170, ../../sass/site.scss */
+/* line 179, ../../sass/site.scss */
 .navbar .social-wrap .button {
   font-size: 1em;
   color: #fff;
@@ -687,7 +786,7 @@ h1 {
   -webkit-border-radius: 2px;
   border-radius: 2px;
 }
-/* line 178, ../../sass/site.scss */
+/* line 187, ../../sass/site.scss */
 .navbar .social-wrap .button:after {
   width: 16px;
   height: 16px;
@@ -696,28 +795,28 @@ h1 {
 
 /*** Responsive settings ***/
 @media screen and (max-width: 1400px) {
-  /* line 187, ../../sass/site.scss */
+  /* line 196, ../../sass/site.scss */
   .featured {
     font-size: 0.8em;
     height: 550px;
   }
 }
 @media screen and (max-width: 1100px) {
-  /* line 193, ../../sass/site.scss */
+  /* line 202, ../../sass/site.scss */
   .featured {
     font-size: 0.7em;
     height: 400px;
   }
 }
 @media screen and (max-width: 750px) {
-  /* line 199, ../../sass/site.scss */
+  /* line 208, ../../sass/site.scss */
   .featured {
     font-size: 0.5em;
     height: 300px;
   }
 }
 @media screen and (max-width: 500px) {
-  /* line 205, ../../sass/site.scss */
+  /* line 214, ../../sass/site.scss */
   .featured {
     height: 200px;
   }
