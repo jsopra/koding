@@ -633,7 +633,7 @@ h1 {
 }
 /* line 48, ../../sass/site.scss */
 .featured header h1 span {
-  background-color: rgba(211, 44, 133, 0.7);
+  background-color: #d32c85;
   display: inline-block;
   color: #fff;
   -moz-border-radius: 2px;
@@ -706,8 +706,8 @@ h1 {
 
 /* line 117, ../../sass/site.scss */
 .homepage .navbar {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
-  opacity: 0.3;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5;
 }
 /* line 120, ../../sass/site.scss */
 .homepage .navbar:hover {

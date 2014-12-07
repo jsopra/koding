@@ -44,7 +44,6 @@ AppAsset::register($this);
                 ],
             ]);
             $menuItems = [
-                ['label' => 'Home', 'url' => ['/']],
                 ['label' => 'About', 'url' => ['/site/about']],
                 ['label' => 'Contact', 'url' => ['/site/contact']],
             ];
@@ -81,6 +80,10 @@ AppAsset::register($this);
                     'url' => 'http://www.twitter.com/share?url=' . Url::base(true) . '&text=' . urlencode('Help raise awareness on social events and causes. Join #socialwarming') . '&',
                     'options' => ['class' => 'social-wrap c'],
                     'linkOptions' => ['class' => 'button twitter small primary-color', 'target' => '_blank'],
+                ];
+                $menuItems[] = [
+                    'label' => 'Account',
+                    'url' => ['/profile']
                 ];
                 $menuItems[] = [
                     'label' => 'Logout',
@@ -121,7 +124,10 @@ AppAsset::register($this);
     </div>
 
 
-    <?php $this->registerJsFile('/js/holder.js', ['depends' => ['yii\web\JqueryAsset']]); ?>
+    <?php
+        $this->registerJsFile('/js/holder.js', ['depends' => ['yii\web\JqueryAsset']]);
+        $this->registerJsFile('/js/social-login.js', ['depends' => ['yii\web\JqueryAsset']]);
+    ?>
     <?php $this->endBody() ?>
 </body>
 </html>

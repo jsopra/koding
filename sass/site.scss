@@ -46,7 +46,7 @@ h1 { font-size: 3em; }
       @include single-text-shadow;
 
       span {
-        background-color: rgba($primary-color, 0.7);
+        background-color: $primary-color;
         display: inline-block;
         color: #fff;
         @include border-radius(2px);
@@ -115,7 +115,7 @@ h1 { font-size: 3em; }
 
 .homepage {
   .navbar {
-    @include opacity(0.3);
+    @include opacity(0.5);
   }
   .navbar:hover {
     @include opacity(0.8);

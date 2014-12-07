@@ -10,5 +10,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>This is the About page. You may modify the following file to customize its content:</p>
 
-    <code><?= __FILE__ ?></code>
+    <h2>Technologies and Code Quality</h2>
+    <div class="well well-sm">
+        <a href="https://github.com/monitorbacklinks/koding/blob/master/README.md" target="_blank">
+            https://github.com/monitorbacklinks/koding/blob/master/README.md
+        </a>
+    </div>
 </div>

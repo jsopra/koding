@@ -119,5 +119,3 @@ $this->title = 'Social Warming - Create mass awareness for social causes on the 
 
     <br><br><br>
 </div>
-
-<?php $this->registerJsFile('/js/social-login.js', ['depends' => ['yii\web\JqueryAsset']]);
