@@ -1,7 +1,6 @@
 <?php
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\authclient\widgets\AuthChoice;
 
 /* @var $this yii\web\View */
 $this->title = 'Social Warming - Create mass awareness for social causes on the day of the event';
@@ -16,9 +15,6 @@ $this->title = 'Social Warming - Create mass awareness for social causes on the 
             <div class="social-wrap">
                 <button data-social-login data-social-name="facebook" class="button facebook">Join with Facebook</button>
                 <button data-social-login data-social-name="twitter" class="button twitter">Join with Twitter</button>
-            </div>
-            <div style="display: none">
-                <?= AuthChoice::widget(['baseAuthUrl' => ['site/auth']]); ?>
             </div>
             <?php else: ?>
                 <div class="under-header">
@@ -42,7 +38,65 @@ $this->title = 'Social Warming - Create mass awareness for social causes on the 
 </div>
 
 <div class="container">
-    aaa
+    <!-- 3 events -->
+    <h1>Past events</h1>
+    <div class="row next-events">
+        <div class="col-md-4">
+            <header>
+                <h2>
+                    <span class="tag">#EventHashTag</span>
+                    <span class="date"><i class="glyphicon glyphicon-calendar"></i> December 21, 2014</span>
+                </h2>
+                <h3><a href="#">Event name</a></h3>
+
+                <a href="#" class="thumbnail">
+                    <img data-src src="holder.js/100%x100" alt="{Event name}">
+                </a>
+            </header>
+            <p>
+                Lorem ipsum dolor sit amet, vocent convenire id cum, pro id eros tempor. Esse nonumes pri te, cum ubique gubergren ut
+                <strong>#EventHashTag</strong>
+            </p>
+        </div>
+        <div class="col-md-4">
+            <header>
+                <h2>
+                    <span class="tag">#EventHashTag</span>
+                    <span class="date"><i class="glyphicon glyphicon-calendar"></i> December 21, 2014</span>
+                </h2>
+                <h3><a href="#">Event name</a></h3>
+
+                <a href="#" class="thumbnail">
+                    <img data-src src="holder.js/100%x100" alt="{Event name}">
+                </a>
+            </header>
+            <p>
+                Lorem ipsum dolor sit amet, vocent convenire id cum, pro id eros tempor. Esse nonumes pri te, cum ubique gubergren ut
+                <strong>#EventHashTag</strong>
+            </p>
+        </div>
+        <div class="col-md-4">
+            <header>
+                <h2>
+                    <span class="tag">#EventHashTag</span>
+                    <span class="date"><i class="glyphicon glyphicon-calendar"></i> December 21, 2014</span>
+                </h2>
+                <h3><a href="#">Event name</a></h3>
+
+                <a href="#" class="thumbnail">
+                    <img data-src src="holder.js/100%x100" alt="{Event name}">
+                </a>
+            </header>
+            <p>
+                Lorem ipsum dolor sit amet, vocent convenire id cum, pro id eros tempor. Esse nonumes pri te, cum ubique gubergren ut
+                <strong>#EventHashTag</strong>
+            </p>
+        </div>
+    </div>
+
+    <hr>
+
+    <br><br><br>
 </div>
 
 <?php $this->registerJsFile('/js/social-login.js', ['depends' => ['yii\web\JqueryAsset']]);

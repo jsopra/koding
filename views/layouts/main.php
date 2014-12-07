@@ -6,6 +6,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use app\widgets\Alert;
+use yii\authclient\widgets\AuthChoice;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -47,11 +48,42 @@ AppAsset::register($this);
                 ['label' => 'About', 'url' => ['/site/about']],
                 ['label' => 'Contact', 'url' => ['/site/contact']],
             ];
-            if (Yii::$app->user->isGuest) {
-                $menuItems[] = ['label' => 'Join', 'url' => ['#']];
+            if (Yii::$app->user->isGuest && 0) {
+                $menuItems[] = [
+                    'label' => 'Join with Facebook',
+                    'url' => '#',
+                    'options' => ['class' => 'social-wrap'],
+                    'linkOptions' => [
+                        'class' => 'button facebook',
+                        'data-social-login' => '',
+                        'data-social-name' => 'facebook',
+                    ],
+                ];
+                $menuItems[] = [
+                    'label' => 'Join with Twitter',
+                    'url' => '#',
+                    'options' => ['class' => 'social-wrap'],
+                    'linkOptions' => [
+                        'class' => 'button twitter',
+                        'data-social-login' => '',
+                        'data-social-name' => 'twitter',
+                    ],
+                ];
             } else {
                 $menuItems[] = [
-                    'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                    'label' => 'Invite your friends',
+                    'url' => 'https://www.facebook.com/dialog/feed?link=' . Url::base(true) . '&app_id=1521379368146035&display=popup&caption=' . urlencode('Help raise awareness on social events and causes. Join #socialwarming') . '&redirect_uri=' . Url::base(true),
+                    'options' => ['class' => 'social-wrap'],
+                    'linkOptions' => ['class' => 'button facebook small primary-color', 'target' => '_blank'],
+                ];
+                $menuItems[] = [
+                    'label' => 'Invite your friends',
+                    'url' => 'http://www.twitter.com/share?url=' . Url::base(true) . '&text=' . urlencode('Help raise awareness on social events and causes. Join #socialwarming') . '&',
+                    'options' => ['class' => 'social-wrap c'],
+                    'linkOptions' => ['class' => 'button twitter small primary-color', 'target' => '_blank'],
+                ];
+                $menuItems[] = [
+                    'label' => 'Logout',
                     'url' => ['/site/logout'],
                     'linkOptions' => ['data-method' => 'post']
                 ];
@@ -60,6 +92,7 @@ AppAsset::register($this);
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'items' => $menuItems,
             ]);
+
             NavBar::end();
         ?>
 
@@ -83,6 +116,12 @@ AppAsset::register($this);
         </div>
     </footer>
 
+    <div style="display: none">
+        <?= AuthChoice::widget(['baseAuthUrl' => ['site/auth']]); ?>
+    </div>
+
+
+    <?php $this->registerJsFile('/js/holder.js', ['depends' => ['yii\web\JqueryAsset']]); ?>
     <?php $this->endBody() ?>
 </body>
 </html>

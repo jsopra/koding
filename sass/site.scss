@@ -21,6 +21,8 @@
   }
 }
 
+h1 { font-size: 3em; }
+
 .featured {
   position: relative;
   background-size: 100%;
@@ -28,6 +30,7 @@
   background-repeat: none;
   height: 700px;
   margin-top: -20px;
+  margin-bottom: 2em;
   padding-top: 20px;
   color: #fff;
 
@@ -109,11 +112,46 @@
   }
 }
 
+.next-events {
+  h2 {
+    font-size: 1em;
+    margin: 0;
+
+    .tag{
+      display: inline-block;
+      background: $primary-color;
+      color: #fff;
+      padding: 0.5em 0.3em;
+      @include single-text-shadow;
+      @include border-radius(2px);
+
+      a { color: #fff }
+      a:hover {}
+    }
+
+    .date {
+      color: gray;
+      float: right;
+      padding: 0.5em 0;
+    }
+  }
+
+  h3 {
+    margin-top: 0.5em;
+
+    a {
+      color: #444;
+    }
+    a:hover { color: $secondary-color; }
+
+  }
+}
+
 .btn-danger {
   background-color: $primary-color;
 }
 
-div.social-wrap {
+.social-wrap {
   .button {
     display: inline-block;
     font-size: 1.5em;
@@ -125,6 +163,22 @@ div.social-wrap {
 
   .button.primary-color {
     @include background(linear-gradient(to bottom, $primary-color, $primary-color-hover));
+  }
+}
+
+.navbar .social-wrap {
+  .button {
+    font-size: 1em;
+    color: #fff;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    margin-top: 0.7em;
+    @include border-radius(2px);
+  }
+  .button:after {
+    width: 16px;
+    height: 16px;
+    top: 0.5em;
   }
 }
 

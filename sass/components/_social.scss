@@ -1,4 +1,4 @@
-div.social-wrap .button {
+.social-wrap .button {
   background: none;
   border: none;
   display: block;
@@ -18,7 +18,7 @@ div.social-wrap .button {
   padding: 0.8em 1em 0.8em 2.2em;
 }
 
-div.social-wrap {
+.social-wrap {
   .facebook {
     position: relative;
     @include background(linear-gradient(to bottom, #4c74c4, #3b5998));
