@@ -22,7 +22,6 @@ use yii\web\IdentityInterface;
  * @property integer $status
  * @property integer $via
  * @property integer $country_id Relation with `country`
- * @property integer $region_id Relation with `region`
  * @property integer $city_id Relation with `city`
  * @property integer $created_at
  * @property integer $updated_at
@@ -30,11 +29,10 @@ use yii\web\IdentityInterface;
  *
  * Relations:
  * @property Country|null $country User's country
- * @property Region|null $region User's region
  * @property City|null $city User's city
  *
  * Magic Properties:
- * @property $location User's location, representation of $country, $region, $city
+ * @property $location User's location, representation of $city, $country
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -74,15 +72,32 @@ class User extends ActiveRecord implements IdentityInterface
             ['role', 'default', 'value' => self::ROLE_USER],
             ['role', 'in', 'range' => [self::ROLE_USER]],
 
-            [['role', 'status', 'registered_via', 'country_id', 'region_id', 'city_id', 'created_at', 'updated_at'], 'integer'],
+            [['role', 'status', 'registered_via', 'country_id', 'city_id', 'created_at', 'updated_at'], 'integer'],
 
             // FK check: 'country_id' must exist in 'country.id'
             ['country_id', 'exist', 'targetClass' => Country::className(), 'targetAttribute' => 'id'],
-            // FK check: 'region_id' must exist in 'region.id'
-            ['region_id', 'exist', 'targetClass' => Region::className(), 'targetAttribute' => 'id'],
             // FK check: 'city_id' must exist in 'city.id'
             ['city_id', 'exist', 'targetClass' => City::className(), 'targetAttribute' => 'id'],
         ];
+    }
+
+    /**
+     * @inheritdoc
+     *
+     * 1. On user signup guess Country and City by IP @TODO: Refactor with behaviours and `EVENT_BEFORE_SIGNUP`
+     */
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            if (!Yii::$app->request->isConsoleRequest && Yii::$app->request->userIP) {
+                $location = @geoip_record_by_name(Yii::$app->request->userIP);
+                $this->setCountry($location['country_code']);
+                $this->setCity($location['city']);
+            }
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -218,26 +233,14 @@ class User extends ActiveRecord implements IdentityInterface
 
     /**
      * Add Country & bind country_id to User
-     * TODO: Finish
      *
-     * @param string $name Country Name
+     * @param string $nameOrCode Country Name of 2-letter ISO Country Code
      * @return self
      */
-    public function setCountry($name)
+    public function setCountry($nameOrCode)
     {
-        return $this;
-    }
-
-    /**
-     * Add Region & bind region_id to User
-     *
-     * @param string $name Region Name
-     * @return self
-     */
-    public function setRegion($name)
-    {
-        if ($region = Region::findOrCreate($name)) {
-            $this->region_id = $region->primaryKey;
+        if ($country = Country::findBy($nameOrCode)) {
+            $this->country_id = $country->primaryKey;
         }
         return $this;
     }

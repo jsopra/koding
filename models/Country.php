@@ -62,4 +62,17 @@ class Country extends ActiveRecord
     {
         return $this->hasMany(User::className(), ['country_id' => 'id']);
     }
+
+    /**
+     * Find Country by Name or 2 letter ISO Code
+     *
+     * @param string $nameOrCode Country name or Code
+     * @return self|null
+     */
+    public static function findBy($nameOrCode)
+    {
+        $nameOrCode = trim($nameOrCode);
+        $field = (strlen($nameOrCode) == 2) ? 'code' : 'name';
+        return static::findOne([$field => $nameOrCode]);
+    }
 }

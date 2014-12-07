@@ -38,6 +38,7 @@
     "require": {
         "php": ">=5.5.0",
         "ext-curl": "*",
+        "ext-geoip" : "*",
         "ext-gd": "*",
         "ext-intl": "*",
         "ext-mbstring": "*",
