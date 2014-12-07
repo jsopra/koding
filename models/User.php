@@ -83,6 +83,25 @@ class User extends ActiveRecord implements IdentityInterface
 
     /**
      * @inheritdoc
+     *
+     * 1. On user signup guess Country and City by IP @TODO: Refactor with behaviours and `EVENT_BEFORE_SIGNUP`
+     */
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            if (!Yii::$app->request->isConsoleRequest && Yii::$app->request->userIP) {
+                $location = @geoip_record_by_name(Yii::$app->request->userIP);
+                $this->setCountry($location['country_code']);
+                $this->setCity($location['city']);
+            }
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * @inheritdoc
      */
     public static function findIdentity($id)
     {
@@ -214,13 +233,15 @@ class User extends ActiveRecord implements IdentityInterface
 
     /**
      * Add Country & bind country_id to User
-     * TODO: Finish
      *
-     * @param string $name Country Name
+     * @param string $nameOrCode Country Name of 2-letter ISO Country Code
      * @return self
      */
-    public function setCountry($name)
+    public function setCountry($nameOrCode)
     {
+        if ($country = Country::findBy($nameOrCode)) {
+            $this->country_id = $country->primaryKey;
+        }
         return $this;
     }
 
