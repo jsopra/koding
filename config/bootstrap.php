@@ -14,3 +14,4 @@ Yii::setAlias('web', '/');
 Yii::setAlias('webroot', dirname(__DIR__));
 Yii::setAlias('console', dirname(__DIR__) . '/console');
 Yii::setAlias('runtime', dirname(__DIR__) . '/runtime');
+\Facebook\FacebookSession::setDefaultApplication(getenv('SW_FACEBOOK_CLIENT_ID'), getenv('SW_FACEBOOK_CLIENT_SECRET'));

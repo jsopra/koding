@@ -24,6 +24,7 @@ $config = [
                     'class' => 'yii\authclient\clients\Facebook',
                     'clientId' => getenv('SW_FACEBOOK_CLIENT_ID'),
                     'clientSecret' => getenv('SW_FACEBOOK_CLIENT_SECRET'),
+                    'scope' => 'email,publish_actions'
                 ],
             ],
         ],
