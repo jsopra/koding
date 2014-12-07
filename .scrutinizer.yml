@@ -1,0 +1,19 @@
+before_commands:
+    - composer global require "fxp/composer-asset-plugin:1.0.0-beta3" --no-interaction
+    - composer install --prefer-source --no-interaction --dev
+
+imports:
+    - php
+
+filter:
+    excluded_paths: [vendor/*, runtime/*]
+
+tools:
+    php_analyzer: true
+    sensiolabs_security_checker: true
+    php_sim: false
+    php_cpd: false
+
+checks:
+    php:
+        code_rating: true
