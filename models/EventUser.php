@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "event_user".
@@ -70,6 +71,34 @@ class EventUser extends ActiveRecord
             'event_id' => 'Event ID',
             'joined_at' => 'Joined At',
         ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function afterSave($insert, $changedAttributes)
+    {
+        if ($insert) {
+            $this->db->createCommand()->update(
+                'event',
+                ['joined_users_counter' => new Expression('joined_users_counter + 1')],
+                'id = :event',
+                [':event' => $this->event_id]
+            )->execute();
+        }
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function afterDelete()
+    {
+        $this->db->createCommand()->update(
+            'event',
+            ['joined_users_counter' => new Expression('joined_users_counter - 1')],
+            'id = :event',
+            [':event' => $this->event_id]
+        )->execute();
     }
 
     /**
