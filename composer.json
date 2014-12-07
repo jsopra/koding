@@ -51,7 +51,8 @@
         "2amigos/yii2-resource-manager-component": "*",
         "miloschuman/yii2-highcharts-widget": "dev-master",
         "kertz/twitteroauth": "dev-master",
-        "facebook/php-sdk-v4": "4.0.12"
+        "facebook/php-sdk-v4": "4.0.12",
+        "fzaninotto/faker": "1.5.*@dev"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "*",
