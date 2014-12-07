@@ -3,7 +3,7 @@
 namespace app\models\social;
 
 use app\models\Social;
-use yii\base\Object;
+use app\models\User;
 use yii\helpers\Json;
 
 /**
@@ -43,5 +43,23 @@ class FacebookProfile extends Profile
     public function getMeta()
     {
         return Json::encode($this->rawAttributes);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public static function createUser(Profile $profile)
+    {
+        $user = new User([
+            'username' => $profile->email,
+            'email' => $profile->email,
+            'registered_via' => $profile->social,
+            'first_name' => $profile->getRawAttribute('first_name'),
+            'last_name' => $profile->getRawAttribute('last_name'),
+        ]);
+        if (!$user->save(false)) {
+            return null;
+        }
+        return $user;
     }
 }

@@ -6,6 +6,7 @@ use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
 
 /**
@@ -21,6 +22,9 @@ use yii\web\IdentityInterface;
  * @property integer $role
  * @property integer $status
  * @property integer $via
+ * @property string $first_name
+ * @property string $last_name
+ * @property string $photo
  * @property integer $country_id Relation with `country`
  * @property integer $city_id Relation with `city`
  * @property integer $created_at
@@ -41,7 +45,9 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
     const ROLE_USER = 10;
-
+    
+    const SCENARIO_SIGNUP_COMPLETION = 'signup_completion';
+    
     /**
      * @inheritdoc
      */
@@ -78,7 +84,18 @@ class User extends ActiveRecord implements IdentityInterface
             ['country_id', 'exist', 'targetClass' => Country::className(), 'targetAttribute' => 'id'],
             // FK check: 'city_id' must exist in 'city.id'
             ['city_id', 'exist', 'targetClass' => City::className(), 'targetAttribute' => 'id'],
+            ['email', 'unique'],
         ];
+    }
+
+    /**
+     * @return array
+     */
+    public function scenarios()
+    {
+        return ArrayHelper::merge(parent::scenarios(), [
+            static::SCENARIO_SIGNUP_COMPLETION => ['email', 'first_name', 'last_name']
+        ]);
     }
 
     /**
@@ -88,9 +105,8 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function beforeSave($insert)
     {
-        $isNewRecord = $this->isNewRecord;
         if (parent::beforeSave($insert)) {
-            if ($isNewRecord && !Yii::$app->request->isConsoleRequest && Yii::$app->request->userIP && ($location = @geoip_record_by_name(Yii::$app->request->userIP))) {
+            if ($insert && !Yii::$app->request->isConsoleRequest && Yii::$app->request->userIP && ($location = @geoip_record_by_name(Yii::$app->request->userIP))) {
                 $this->setCountry($location['country_code']);
                 $this->setCity($location['city']);
             }

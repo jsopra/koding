@@ -65,6 +65,7 @@ class TwitterProfile extends Profile
     {
         $user = new User([
             'registered_via' => $profile->social,
+            'photo' => str_replace('_normal', '', $profile->getRawAttribute('profile_image_url')),
         ]);
         if (!$user->save(false)) {
             return null;

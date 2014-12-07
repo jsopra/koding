@@ -2,8 +2,10 @@
 
 namespace app\controllers;
 
+use app\components\Controller;
 use app\models\social\FacebookProfile;
 use app\models\social\TwitterProfile;
+use app\models\User;
 use Yii;
 use app\models\LoginForm;
 use app\models\social\LoginForm as SocialLoginForm;
@@ -15,7 +17,6 @@ use yii\authclient\ClientInterface;
 use yii\authclient\Collection;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
-use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
@@ -256,5 +257,30 @@ class SiteController extends Controller
             return;
         }
         throw new BadRequestHttpException();
+    }
+
+    /**
+     * This will be the page where user need to set email when signed up thru twitter.
+     */
+    public function actionSignupCompletion()
+    {
+        /** @var User $user */
+        $user = Yii::$app->user->identity;
+        $user->scenario = User::SCENARIO_SIGNUP_COMPLETION;
+
+        if ($user->email) {
+            return $this->redirect(['/profile']);
+        }
+        
+        if (Yii::$app->request->isPost) {
+            $user->load(Yii::$app->request->post());
+            $user->username = $user->email;
+            if ($user->save()) {
+                Yii::$app->session->setFlash('success', Yii::t('app', 'Profile updated'));
+                $this->redirect(['/profile']);
+            }
+        }
+
+        return $this->render('signup-completion', compact('user'));
     }
 }
