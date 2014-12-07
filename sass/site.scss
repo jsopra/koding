@@ -22,6 +22,12 @@
   }
 }
 
+.navbar-brand > img { display: inline-block; }
+.nav > li > a {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
 h1 { font-size: 3em; }
 
 .featured {
