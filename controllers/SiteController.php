@@ -170,6 +170,16 @@ class SiteController extends Controller
     }
 
     /**
+     * Privacy Policy
+     *
+     * @return string
+     */
+    public function actionPrivacyPolicy()
+    {
+        return $this->render('privacy-policy');
+    }
+
+    /**
      * Register account
      *
      * @return string|\yii\web\Response
