@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "event_user".
@@ -17,7 +18,7 @@ use yii\behaviors\TimestampBehavior;
  * @property User $user
  * @property Event $event
  */
-class EventUser extends \yii\db\ActiveRecord
+class EventUser extends ActiveRecord
 {
     /**
      * @inheritdoc

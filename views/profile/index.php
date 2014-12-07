@@ -4,8 +4,13 @@ use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use \yii\web\View;
 
-/** @var View $this */
+/**
+ * @var View $this
+ * @var \app\models\forms\ProfileForm $user
+ */
+
 $this->title = 'Profile';
+
 
 $picture = $user->photo ?: Yii::$app->request->baseUrl . '/img/anonymous-user.png';
 

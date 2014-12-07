@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use app\validators\HashtagValidator;
 use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "event".
@@ -25,17 +26,17 @@ use yii\behaviors\TimestampBehavior;
  * @property User[] $users
  * @property EventUser[] $eventUsers
  */
-class Event extends \yii\db\ActiveRecord
+class Event extends ActiveRecord
 {
     /**
      * Temporary store for uploaded image file
-     * @var yii\web\UploadedFile
+     * @var \yii\web\UploadedFile
      */
     public $image_file;
 
     /**
      * Temporary store for uploaded thumbnail file
-     * @var yii\web\UploadedFile
+     * @var \yii\web\UploadedFile
      */
     public $thumbnail_file;
 

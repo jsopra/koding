@@ -37,7 +37,6 @@ use yii\web\IdentityInterface;
  * @property City|null $city User's city
  *
  * Magic Properties:
- * @property $location User's location, representation of $city, $country
  */
 class User extends ActiveRecord implements IdentityInterface
 {

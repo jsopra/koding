@@ -32,23 +32,4 @@ trait UserRelationTrait
     {
         return $this->hasOne(City::className(), ['id' => 'city_id']);
     }
-
-    /**
-     * Get User's location in simple readable form
-     *
-     * @return string Representation of `$country, $city`
-     */
-    public function getLocation()
-    {
-        $fields = ['city', 'country'];
-        $location = [];
-
-        foreach ($fields as $field) {
-            if (!empty($this->$field) && !empty($this->$field->name)) {
-                $location[] = ucfirst($this->$field->name);
-            }
-        }
-
-        return implode(', ', $location);
-    }
 }
