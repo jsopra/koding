@@ -2,6 +2,7 @@
 
 use yii\authclient\widgets\AuthChoice;
 use yii\helpers\Html;
+use yii\helpers\Inflector;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
@@ -15,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <header>
         <h1><?= Html::encode($this->title) ?></h1>
-        <h2>#<?= Html::encode($model->hashtag) ?></h2>
+        <h2><?= Html::encode($model->hashtag) ?></h2>
         <p>
             <time datetime="<?= $model->occurred_on ?>">
                 <?= Yii::$app->formatter->asDate($model->occurred_on) ?>
@@ -40,9 +41,17 @@ $this->params['breadcrumbs'][] = $this->title;
             'baseAuthUrl' => ['site/auth', 'event_id' => $model->id]
         ]) ?>
     <?php elseif (Yii::$app->user->identity->hasJoinedEvent($model)) : ?>
-        <?= Html::a('Joined', ['event/unjoin', 'id' => $model->id], ['class' => 'btn btn-default']) ?>
+        <?= Html::a(
+            'Joined',
+            ['event/unjoin', 'id' => $model->id, 'url' => Inflector::slug($model->name)],
+            ['class' => 'btn btn-default']
+        ) ?>
     <?php else : ?>
-        <?= Html::a('Join', ['event/join', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(
+            'Join',
+            ['event/join', 'id' => $model->id, 'url' => Inflector::slug($model->name)],
+            ['class' => 'btn btn-primary']
+        ) ?>
     <?php endif; ?>
     </div>
 

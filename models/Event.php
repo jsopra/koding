@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use app\validators\HashtagValidator;
 use yii\behaviors\TimestampBehavior;
 
 /**
@@ -17,6 +18,8 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $updated_at
  * @property integer $awareness_created_counter
  * @property integer $joined_users_counter
+ * @property string $image_name
+ * @property string $thumbnail_name
  *
  * Relations:
  * @property User[] $users
@@ -24,6 +27,18 @@ use yii\behaviors\TimestampBehavior;
  */
 class Event extends \yii\db\ActiveRecord
 {
+    /**
+     * Temporary store for uploaded image file
+     * @var yii\web\UploadedFile
+     */
+    public $image_file;
+
+    /**
+     * Temporary store for uploaded thumbnail file
+     * @var yii\web\UploadedFile
+     */
+    public $thumbnail_file;
+
     /**
      * @inheritdoc
      */
@@ -48,9 +63,12 @@ class Event extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'hashtag', 'description', 'occurred_on', 'created_at', 'updated_at'], 'required'],
+            [['name', 'hashtag', 'description', 'occurred_on'], 'required'],
             [['description'], 'string'],
             [['occurred_on'], 'safe'],
+            ['hashtag', HashtagValidator::className()],
+            ['image_file', 'image', /*'maxWidth' => 630, 'minWidth' => 630, 'maxHeight' => 354, 'minHeight' => 354,*/ 'skipOnEmpty' => true],
+            ['thumbnail_file', 'image', /*'maxWidth' => 630, 'minWidth' => 630, 'maxHeight' => 354, 'minHeight' => 354,*/ 'skipOnEmpty' => true],
             [['joined_users_counter', 'awareness_created_counter'], 'integer'],
             [['name', 'hashtag'], 'string', 'max' => 255]
         ];
@@ -71,6 +89,8 @@ class Event extends \yii\db\ActiveRecord
             'updated_at' => 'Updated At',
             'awareness_created_counter' => 'Awareness Created Counter',
             'joined_users_counter' => 'Joined Users Counter',
+            'image_name' => 'Image',
+            'thumbnail_name' => 'Thumbnail',
         ];
     }
 

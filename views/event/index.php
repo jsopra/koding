@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Inflector;
 use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
@@ -18,7 +19,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'itemOptions' => ['class' => 'item'],
         'itemView' => function ($model, $key, $index, $widget) {
-            return Html::a(Html::encode($model->name), ['view', 'id' => $model->id]);
+            return Html::a(
+                Html::encode($model->name),
+                ['view', 'id' => $model->id, 'url' => Inflector::slug($model->name)]
+            );
         },
     ]) ?>
 

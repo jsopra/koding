@@ -26,7 +26,7 @@
             "name": "Alan Willms",
             "email": "dyulax@gmail.com",
             "homepage": "http://alanwillms.com/",
-            "role": "Developmer"
+            "role": "Developer"
         }
     ],
     "support": {
@@ -47,7 +47,8 @@
         "yiisoft/yii2": "~2.0.0",
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
-        "yiisoft/yii2-authclient": "*"
+        "yiisoft/yii2-authclient": "*",
+        "2amigos/yii2-resource-manager-component": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "*",

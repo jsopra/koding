@@ -15,6 +15,8 @@ fastcgi_param SW_FACEBOOK_CLIENT_ID "123456789";
 fastcgi_param SW_FACEBOOK_CLIENT_SECRET "abcdefghijkl";
 fastcgi_param SW_TWITTER_CONSUMER_KEY "abcdefghijkl";
 fastcgi_param SW_TWITTER_CONSUMER_SECRET "abcdefghijkl";
+fastcgi_param SW_ADMIN_HTTP_USERNAME "koding";
+fastcgi_param SW_ADMIN_HTTP_PASSWORD "";
 ```
 
 Finally, restart the server: `sudo service nginx restart`.

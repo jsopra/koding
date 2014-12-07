@@ -36,6 +36,13 @@ $config = [
             'cookieValidationKey' => getenv('SW_COOKIE_VALIDATION_KEY'),
         ],
         /**
+         * Resources manager
+         */
+        'resourceManager' => [
+            'class' => 'dosamigos\resourcemanager\FileSystemResourceManager',
+            'basePath' => Yii::getAlias('@webroot/web/uploads'),
+        ],
+        /**
          * User
          */
         'user' => [
