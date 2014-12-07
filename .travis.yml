@@ -3,10 +3,8 @@ language: php
 php:
     - 5.5
 
-# faster builds on new travis setup not using sudo
-sudo: false
-
 before_script:
+  - sudo apt-get install -y php5-geoip
   - pear install PHP_CodeSniffer-2.0.0RC2
   - phpenv rehash
   - travis_retry composer self-update
