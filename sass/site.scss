@@ -126,6 +126,8 @@ h1 { font-size: 3em; }
 .homepage {
   .navbar {
     @include opacity(0.5);
+    @include transition-property(opacity);
+    @include transition-duration(0.5s);
   }
   .navbar:hover {
     @include opacity(0.8);
