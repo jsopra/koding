@@ -8,7 +8,7 @@ use yii\helpers\Url;
 $this->title = 'Social Warming - Create mass awareness for social causes on the day of the event';
 ?>
 <?php if ($featuredEvent) : ?>
-<div class="wrap featured" style="background-image: url('/img/human-rights-day_mini.jpg')">
+<div class="wrap featured" style="background-image: url('<?= Yii::$app->resourceManager->getUrl($featuredEvent->image_name) ?>')">
     <div class="container">
         <header>
             <h1><span>Next event</span> <?= Html::encode($featuredEvent->name) ?></h1><br>
@@ -81,33 +81,7 @@ $this->title = 'Social Warming - Create mass awareness for social causes on the 
     <h1>Past events</h1>
     <div class="row next-events">
         <?php foreach ($pastEvents as $event) : ?>
-        <div class="col-sm-4">
-            <header>
-                <h2>
-                    <span class="tag"><?= $event->hashtag ?></span>
-                    <span class="date">
-                        <i class="glyphicon glyphicon-calendar"></i>
-                        <?= Yii::$app->formatter->asDate($event->occurred_on) ?>
-                    </span>
-                </h2>
-                <h3>
-                    <?= Html::a(
-                        Html::encode($event->name),
-                        ['event/view', 'id' => $event->id, 'url' => Inflector::slug($event->name)]
-                    ) ?>
-                </h3>
-
-                <?= Html::a(
-                    Html::img(
-                        Yii::$app->resourceManager->getUrl($event->thumbnail_name),
-                        ['alt' => $event->name]
-                    ),
-                    ['event/view', 'id' => $event->id, 'url' => Inflector::slug($event->name)],
-                    ['class' => 'thumbnail']
-                ) ?>
-            </header>
-            <p><?= nl2br(StringHelper::truncateWords(Html::encode($event->description), 54)) ?></p>
-        </div>
+            <?= $this->render('/event/_view', ['model' => $event]) ?>
         <?php endforeach; ?>
     </div>
     <?php endif; ?>
