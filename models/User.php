@@ -280,4 +280,20 @@ class User extends ActiveRecord implements IdentityInterface
         }
         return $this;
     }
+
+    /**
+     * Check if this user joined the given event
+     * @param Event $event event to check against
+     * @returns boolean if the user joined or not
+     */
+    public function hasJoinedEvent(Event $event)
+    {
+        return EventUser::find()
+            ->where([
+                'user_id' => $this->id,
+                'event_id' => $event->id,
+            ])
+            ->count()
+        > 0;
+    }
 }

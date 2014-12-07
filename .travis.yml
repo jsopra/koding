@@ -3,9 +3,6 @@ language: php
 php:
     - 5.5
 
-# faster builds on new travis setup not using sudo
-sudo: false
-
 before_script:
   - pear install PHP_CodeSniffer-2.0.0RC2
   - phpenv rehash

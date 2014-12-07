@@ -34,6 +34,12 @@ $config = [
             'class' => 'yii\web\UrlManager',
             'showScriptName' => false,
             'enablePrettyUrl' => true,
+            'rules' => [
+                'event/<id:\d+>-<url>/<action:update|delete|join|unjoin>' => 'event/<action>',
+                'event/<id:\d+>/<action:update|delete|join|unjoin>' => 'event/<action>',
+                'event/<id:\d+>-<url>' => 'event/view',
+                'event/<id:\d+>' => 'event/view',
+            ],
         ],
         /**
          * Mailer
