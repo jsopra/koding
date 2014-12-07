@@ -3,7 +3,10 @@
 use yii\authclient\widgets\AuthChoice;
 use yii\helpers\Html;
 use yii\helpers\Inflector;
+use yii\helpers\Json;
+use yii\web\View;
 use yii\widgets\DetailView;
+use miloschuman\highcharts\HighchartsAsset;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Event */
@@ -11,6 +14,16 @@ use yii\widgets\DetailView;
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Events', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
+HighchartsAsset::register($this)->withScripts([
+    'highcharts',
+    'highcharts-more',
+    'modules/map',
+    'modules/data',
+    'modules/exporting',
+]);
+
+$this->registerJs("renderMap();", View::POS_READY);
 ?>
 <div class="event-view">
 
@@ -69,6 +82,63 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php endforeach; ?>
         </ul>
     </section>
-    <?php endif; ?>
 
+    <section>
+        <div id="map-container">Loading map...</div>
+        <script>
+        function renderMap()
+        {
+            var mapData = Highcharts.geojson(Highcharts.maps["custom/world"]);
+            var chartData = <?= Json::encode($eventMap->getJoinedUsersByCountry()) ?>;
+
+            // Correct UK to GB in data
+            $.each(chartData, function () {
+                if (this.country === 'UK') {
+                    this.country = 'GB';
+                }
+            });
+
+            $('#map-container').highcharts('Map', {
+                chart : {
+                    borderWidth : 1
+                },
+
+                title: {
+                    text: 'People who joined this event'
+                },
+
+                legend: {
+                    enabled: false
+                },
+
+                mapNavigation: {
+                    enabled: true,
+                    buttonOptions: {
+                        verticalAlign: 'bottom'
+                    }
+                },
+
+                series : [{
+                    name: 'Countries',
+                    mapData: mapData,
+                    color: '#FF0000',
+                    enableMouseTracking: false
+                }, {
+                    type: 'mapbubble',
+                    mapData: mapData,
+                    name: 'People',
+                    joinBy: ['iso-a2', 'country'],
+                    data: chartData,
+                    minSize: 4,
+                    maxSize: '12%',
+                    pointArrayMap: ['value'],
+                    tooltip: {
+                        pointFormat: '{point.country}: {point.value} people'
+                    }
+                }]
+            });
+        }
+        </script>
+    </section>
+    <?php endif; ?>
 </div>

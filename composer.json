@@ -48,7 +48,8 @@
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
         "yiisoft/yii2-authclient": "*",
-        "2amigos/yii2-resource-manager-component": "*"
+        "2amigos/yii2-resource-manager-component": "*",
+        "miloschuman/yii2-highcharts-widget": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "*",
