@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/monitorbacklinks/koding.svg?branch=master)](https://travis-ci.org/monitorbacklinks/koding)
+[![Deployment status from dploy.io](https://mbk.dploy.io/badge/66802253898048/15454.png)](http://dploy.io)
+
 
 ## Collaboration & Services
 
@@ -7,6 +9,7 @@
 * [Vagrant](https://www.vagrantup.com/) - For development environment
 * [Vagrant Cloud](https://vagrantcloud.com/) - For Vagrant versioning and auto-updating (keeping the same VM state for entire team)
 * [Travis CI](https://travis-ci.org/) - For running PHP Code Sniffer Tests (keeping the same coding standard for entire team)
+* [dploy.io](http://dploy.io/) - For code Autodeployment to Koding VM
 
 ## APIs Used
 
