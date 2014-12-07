@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\jui\DatePicker;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -18,7 +19,16 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'occurred_on')->input('date') ?>
+    <div class="form-group field-event-occurred_on required">
+        <?= Html::activeLabel($model, 'occurred_on') ?>
+        <?= DatePicker::widget([
+            'model' => $model,
+            'attribute' => 'occurred_on',
+            'dateFormat' => 'yyyy-MM-dd',
+            'options' => ['class' => 'form-control'],
+        ]) ?>
+        <?= Html::error($model, 'occurred_on') ?>
+    </div>
 
     <?php if ($model->image_name) : ?>
     <div><?= Html::img(Yii::$app->resourceManager->getUrl($model->image_name), ['alt' => 'Event image']) ?></div>
