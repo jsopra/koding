@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/monitorbacklinks/koding.svg?branch=master)](https://travis-ci.org/monitorbacklinks/koding)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/monitorbacklinks/koding/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/monitorbacklinks/koding/?branch=master)
 [![Deployment status from dploy.io](https://mbk.dploy.io/badge/66802253898048/15454.png)](http://dploy.io)
 
 
