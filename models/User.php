@@ -3,7 +3,6 @@
 namespace app\models;
 
 use Yii;
-use yii\authclient\clients\Twitter;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
@@ -36,8 +35,9 @@ use yii\web\IdentityInterface;
  * Relations:
  * @property Country|null $country User's country
  * @property City|null $city User's city
- * @property Social $twitter Twitter Profile
- * @property Social $facebook Facebook Profile
+ * @property Social $twitter
+ * @property Social $facebook
+ * @property SharedEvent[] $sharedEvents Events Shared by this user
  *
  * Magic Properties:
  */
@@ -105,7 +105,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @inheritdoc
      *
-     * 1. On user signup guess Country and City by IP @TODO: Refactor with behaviours and `EVENT_BEFORE_SIGNUP`
+     * 1. On user signup guess Country and City by IP
      */
     public function beforeSave($insert)
     {
@@ -122,22 +122,6 @@ class User extends ActiveRecord implements IdentityInterface
         }
 
         return false;
-    }
-
-    /**
-     * @return static
-     */
-    public function getTwitter()
-    {
-        return $this->hasOne(Social::className(), ['user_id' => 'id'])->where(['social' => Social::TWITTER]);
-    }
-
-    /**
-     * @return static
-     */
-    public function getFacebook()
-    {
-        return $this->hasOne(Social::className(), ['user_id' => 'id'])->where(['social' => Social::FACEBOOK]);
     }
 
     /**

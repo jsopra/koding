@@ -23,8 +23,10 @@ use yii\db\ActiveRecord;
  * @property string $thumbnail_name
  *
  * Relations:
- * @property User[] $users
+ * @property User[] $users Users following this event
  * @property EventUser[] $eventUsers
+ * @property SharedEvent[] $shared User shares for this event
+ *
  */
 class Event extends ActiveRecord
 {
@@ -119,6 +121,16 @@ class Event extends ActiveRecord
     public function getEventUsers()
     {
         return $this->hasMany(EventUser::className(), ['event_id' => 'id']);
+    }
+
+    /**
+     * User shares for this event
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getShared()
+    {
+        return $this->hasMany(SharedEvent::className(), ['event_id' => 'id']);
     }
 
     /**
