@@ -88,9 +88,9 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function beforeSave($insert)
     {
+        $isNewRecord = $this->isNewRecord;
         if (parent::beforeSave($insert)) {
-            if (!Yii::$app->request->isConsoleRequest && Yii::$app->request->userIP) {
-                $location = @geoip_record_by_name(Yii::$app->request->userIP);
+            if ($isNewRecord && !Yii::$app->request->isConsoleRequest && Yii::$app->request->userIP && ($location = @geoip_record_by_name(Yii::$app->request->userIP))) {
                 $this->setCountry($location['country_code']);
                 $this->setCity($location['city']);
             }
