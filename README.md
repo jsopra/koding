@@ -7,10 +7,11 @@
 
 * [Trello](https://trello.com/) - Organizing Tasks, Collaboration
 * [HipChat](http://hipchat.com/) - For group Chats and recent notifications from GitHub
-* [Vagrant](https://www.vagrantup.com/) - For development environment
+* [Vagrant](https://www.vagrantup.com/) - For development environment. Local `dev` virtual machine
 * [Vagrant Cloud](https://vagrantcloud.com/) - For Vagrant versioning and auto-updating (keeping the same VM state for entire team)
-* [Travis CI](https://travis-ci.org/) - For running PHP Code Sniffer Tests (keeping the same coding standard for entire team)
-* [dploy.io](http://dploy.io/) - For code Autodeployment to Koding VM
+* [Travis CI](https://travis-ci.org/monitorbacklinks/koding) - For running PHP Code Sniffer Tests (keeping the same coding standard for entire team)
+* [Scrutinizer CI](https://scrutinizer-ci.com/g/monitorbacklinks/koding/?branch=master) - For some static code analysis and overall code quality score
+* [dploy.io](http://dploy.io/) - For code Autodeployment to Koding VM from GitHub. Make life easier not to do SSH login, files upload to production server every time on code change
 
 ## APIs Used
 
@@ -23,15 +24,21 @@
 * nginx + PHP-FPM
 * PHP 5.5
 * MySQL 5.5
-* [Compass CSS Framework](http://compass-style.org) & [Sass](http://sass-lang.com/) for CSS
 * [Yii2](http://www.yiiframework.com/) - One of the best PHP Frameworks
 * [Yii2 advanced app](https://github.com/yiisoft/yii2/tree/master/apps/advanced) - As initial application template
 * [Composer](https://getcomposer.org/) - Dependency Manager for PHP
 * [PHP Code Sniffer](https://github.com/squizlabs/PHP_CodeSniffer) - for keeping the same coding standards [PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)
+* [Compass CSS Framework](http://compass-style.org) & [Sass](http://sass-lang.com/) for CSS
+* [Twitter Bootstrap](http://getbootstrap.com/) - OpenSource HTML5 & CSS framework for main frontend development
 
 ## Conventions
 
+Things that make our work Faster and code well organized, Cleaner, Secure and Maintainable
+
 * [GitHub workflow](https://guides.github.com/introduction/flow/index.html) - Following simple Opensource-related branch-based workflow
+* [Database Migrations](https://github.com/yiisoft/yii2/blob/master/docs/guide/db-migrations.md) - all changes in DB structure are applied via migrations
 * [PSR-2 + Yii2 code style](https://github.com/yiisoft/yii2/blob/master/docs/internals/core-code-style.md)
 * [Yii2 view coding style](https://github.com/yiisoft/yii2/blob/master/docs/internals/view-code-style.md)
 * [PHPDoc](http://www.phpdoc.org/) - writing full Documentation for Classes, Methods, Properties, type hinting for better IDE support & autocompletion
+* Not storing passwords in Git - application gets credentials from server Environment variables. See [CONFIGURING.md](https://github.com/monitorbacklinks/koding/blob/master/CONFIGURING.md)
+ 
