@@ -48,7 +48,7 @@ AppAsset::register($this);
                 ['label' => 'About', 'url' => ['/site/about']],
                 ['label' => 'Contact', 'url' => ['/site/contact']],
             ];
-            if (Yii::$app->user->isGuest && 0) {
+            if (Yii::$app->user->isGuest) {
                 $menuItems[] = [
                     'label' => 'Join with Facebook',
                     'url' => '#',
