@@ -137,6 +137,13 @@ h1 { font-size: 3em; }
   }
 }
 
+.auth-clients {
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
 .events-list,
 .next-events {
   h2 {
