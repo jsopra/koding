@@ -35,9 +35,9 @@ use yii\web\IdentityInterface;
  * Relations:
  * @property Country|null $country User's country
  * @property City|null $city User's city
- * @property Social $twitter Twitter Profile
- * @property Social $facebook Facebook Profile
- * @property SharedEvent[] $sharedEvents
+ * @property Social $twitter
+ * @property Social $facebook
+ * @property SharedEvent[] $sharedEvents Events Shared by this user
  *
  * Magic Properties:
  */
