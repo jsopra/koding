@@ -38,7 +38,6 @@
     "require": {
         "php": ">=5.5.0",
         "ext-curl": "*",
-        "ext-geoip" : "*",
         "ext-gd": "*",
         "ext-intl": "*",
         "ext-mbstring": "*",
@@ -55,6 +54,9 @@
         "yiisoft/yii2-debug": "*",
         "yiisoft/yii2-gii": "*",
         "yiisoft/yii2-coding-standards": "dev-master"
+    },
+    "suggest": {
+        "ext-geoip" : "required for getting user country and city on registration"
     },
     "config": {
         "process-timeout": 1800,
