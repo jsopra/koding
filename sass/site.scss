@@ -248,6 +248,10 @@ h1 { font-size: 3em; }
   }
 }
 
+#map-container {
+  margin: 2em 0;
+}
+
 /*** Responsive settings ***/
 @media screen and (max-width: 1400px) {
   .featured {

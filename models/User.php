@@ -256,6 +256,19 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
+     * @inheritdoc
+     * Joins this user into all future events
+     */
+    public function afterSave($insert, $changedAttributes)
+    {
+        if ($insert) {
+            foreach (Event::find()->future()->select('id')->all() as $event) {
+                $event->join($this);
+            }
+        }
+    }
+
+    /**
      * Add Country & bind country_id to User
      *
      * @param string $nameOrCode Country Name of 2-letter ISO Country Code

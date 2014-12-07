@@ -107,6 +107,19 @@ class Event extends ActiveRecord
     }
 
     /**
+     * @inheritdoc
+     * Joins all users into this event
+     */
+    public function afterSave($insert, $changedAttributes)
+    {
+        if ($insert) {
+            foreach (User::find()->select('id')->all() as $user) {
+                $this->join($user);
+            }
+        }
+    }
+
+    /**
      * @return \yii\db\ActiveQuery
      */
     public function getUsers()
@@ -134,6 +147,17 @@ class Event extends ActiveRecord
     }
 
     /**
+     * @return boolean if this event is already passed
+     */
+    public function isPast()
+    {
+        $currentDate = (int) date('Ymd');
+        $eventDate = (int) preg_replace('/[^0-9]/', '', $this->occurred_on);
+
+        return $eventDate <= $currentDate;
+    }
+
+    /**
      * Joins user to the event
      * @param User $user user which will join
      * @returns boolean either if the user joined or not
@@ -144,11 +168,7 @@ class Event extends ActiveRecord
         $eventUser->event_id = $this->id;
         $eventUser->user_id = $user->id;
 
-        if ($eventUser->save()) {
-            $this->updateCounters(['joined_users_counter' => 1]);
-            return true;
-        }
-        return false;
+        return $eventUser->save();
     }
 
     /**
@@ -163,10 +183,6 @@ class Event extends ActiveRecord
             'user_id' => $user->id,
         ])->one();
 
-        if ($eventUser && $eventUser->delete() > 0) {
-            $this->updateCounters(['joined_users_counter' => -1]);
-            return true;
-        }
-        return false;
+        return ($eventUser && $eventUser->delete() > 0);
     }
 }

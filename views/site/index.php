@@ -1,11 +1,28 @@
 <?php
 use yii\helpers\Html;
 use yii\helpers\Inflector;
+use yii\helpers\Json;
 use yii\helpers\StringHelper;
 use yii\helpers\Url;
+use yii\web\View;
+use miloschuman\highcharts\HighchartsAsset;
 
 /* @var $this yii\web\View */
 $this->title = 'Social Warming - Create mass awareness for social causes on the day of the event';
+
+HighchartsAsset::register($this)->withScripts([
+    'highcharts',
+    'highcharts-more',
+    'modules/map',
+    'modules/data',
+    'modules/exporting',
+]);
+
+$this->registerJs("renderMap();", View::POS_READY);
+$this->registerJsFile(
+    Url::base() . '/js/highcharts-mapdata-custom-world.js',
+    ['position' => View::POS_END, 'depends' => HighchartsAsset::className()]
+);
 ?>
 <?php if ($featuredEvent) : ?>
 <div class="wrap featured" style="background-image: url('<?= Yii::$app->resourceManager->getUrl($featuredEvent->image_name) ?>')">
@@ -87,6 +104,57 @@ $this->title = 'Social Warming - Create mass awareness for social causes on the 
     <?php endif; ?>
 
     <hr>
+</div>
+
+<div class="container">
+    <h2 class="text-center">People accross the world who joined Social Warming</h2>
+    <div id="map-container">Loading map...</div>
+    <script>
+    function renderMap()
+    {
+        var mapData = Highcharts.geojson(Highcharts.maps["custom/world"]);
+        var chartData = <?= Json::encode($userChart->getJoinedUsersByCountry()) ?>;
+
+        // Correct UK to GB in data
+        $.each(chartData, function () {
+            if (this.country === 'UK') {
+                this.country = 'GB';
+            }
+        });
+
+        $('#map-container').highcharts('Map', {
+            chart : { borderWidth : 0 },
+            legend: { enabled: false },
+            title: { text: '' },
+            mapNavigation: {
+                enabled: true,
+                buttonOptions: {
+                    verticalAlign: 'bottom'
+                }
+            },
+            series : [{
+                name: 'Countries',
+                mapData: mapData,
+                color: '#FF0000',
+                enableMouseTracking: false
+            }, {
+                type: 'mapbubble',
+                mapData: mapData,
+                name: 'People',
+                joinBy: ['iso-a2', 'country'],
+                data: chartData,
+                minSize: 4,
+                maxSize: '12%',
+                pointArrayMap: ['value'],
+                tooltip: {
+                    pointFormat: '{point.country}: {point.value} people'
+                }
+            }]
+        });
+    }
+    </script>
+
+    <hr>
 
     <br><br><br>
-</div>
+</section>

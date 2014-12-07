@@ -6,7 +6,7 @@ use Yii;
 use app\filters\UnpersistedHttpAuth;
 use app\models\Event;
 use app\models\EventSearch;
-use app\models\chart\EventMap;
+use app\models\chart\EventChart;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\helpers\Inflector;
@@ -76,8 +76,8 @@ class EventController extends Controller
 
         return $this->render('view', [
             'model' => $model,
-            'eventMap' => new EventMap(['event' => $model]),
             'recentJoinings' => $joinings->with('user')->orderBy('id DESC')->limit(5)->all(),
+            'eventChart' => new EventChart(['event' => $model]),
         ]);
     }
 
@@ -198,9 +198,11 @@ class EventController extends Controller
     public function actionJoin($id)
     {
         $model = $this->findModel($id);
-        $model->join(Yii::$app->user->identity);
 
-        Yii::$app->session->setFlash('success', 'Thank you for joining this event!');
+        if (!$model->isPast()) {
+            $model->join(Yii::$app->user->identity);
+            Yii::$app->session->setFlash('success', 'Thank you for joining this event!');
+        }
 
         return $this->redirectToView($model);
     }
@@ -213,9 +215,11 @@ class EventController extends Controller
     public function actionUnjoin($id)
     {
         $model = $this->findModel($id);
-        $model->unjoin(Yii::$app->user->identity);
 
-        Yii::$app->session->setFlash('success', 'You have successfully unjoined this event.');
+        if (!$model->isPast()) {
+            $model->unjoin(Yii::$app->user->identity);
+            Yii::$app->session->setFlash('success', 'You have successfully unjoined this event.');
+        }
 
         return $this->redirectToView($model);
     }

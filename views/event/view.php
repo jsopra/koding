@@ -3,11 +3,7 @@
 use yii\authclient\widgets\AuthChoice;
 use yii\helpers\Html;
 use yii\helpers\Inflector;
-use yii\helpers\Json;
-use yii\helpers\Url;
-use yii\web\View;
-use yii\widgets\DetailView;
-use miloschuman\highcharts\HighchartsAsset;
+use miloschuman\highcharts\Highcharts;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Event */
@@ -15,17 +11,6 @@ use miloschuman\highcharts\HighchartsAsset;
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Events', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-
-HighchartsAsset::register($this)->withScripts([
-    'highcharts',
-    'highcharts-more',
-    'modules/map',
-    'modules/data',
-    'modules/exporting',
-]);
-
-$this->registerJs("renderMap();", View::POS_READY);
-$this->registerJsFile(Url::base() . 'js/highcharts-mapdata-custom-world.js');
 ?>
 <div class="event-view">
 
@@ -50,6 +35,7 @@ $this->registerJsFile(Url::base() . 'js/highcharts-mapdata-custom-world.js');
         </p>
     </footer>
 
+    <?php if (false == $model->isPast()) : ?>
     <div>
     <?php if (Yii::$app->user->isGuest) : ?>
         <?= AuthChoice::widget([
@@ -69,6 +55,7 @@ $this->registerJsFile(Url::base() . 'js/highcharts-mapdata-custom-world.js');
         ) ?>
     <?php endif; ?>
     </div>
+    <?php endif; ?>
 
     <?php if ($recentJoinings) : ?>
     <section>
@@ -76,7 +63,7 @@ $this->registerJsFile(Url::base() . 'js/highcharts-mapdata-custom-world.js');
         <ul>
             <?php foreach ($recentJoinings as $recentJoin) : ?>
             <li>
-                <?= $recentJoin->user->username ?>
+                <?= $recentJoin->user->first_name ?>
                 <time datetime="<?= $recentJoin->joined_at ?>">
                     <?= Yii::$app->formatter->asRelativeTime($recentJoin->joined_at) ?>
                 </time>
@@ -84,63 +71,105 @@ $this->registerJsFile(Url::base() . 'js/highcharts-mapdata-custom-world.js');
             <?php endforeach; ?>
         </ul>
     </section>
+    <?php endif; ?>
 
-    <section>
-        <div id="map-container">Loading map...</div>
-        <script>
-        function renderMap()
-        {
-            var mapData = Highcharts.geojson(Highcharts.maps["custom/world"]);
-            var chartData = <?= Json::encode($eventMap->getJoinedUsersByCountry()) ?>;
-
-            // Correct UK to GB in data
-            $.each(chartData, function () {
-                if (this.country === 'UK') {
-                    this.country = 'GB';
-                }
-            });
-
-            $('#map-container').highcharts('Map', {
-                chart : {
-                    borderWidth : 1
-                },
-
-                title: {
-                    text: 'People who joined this event'
-                },
-
-                legend: {
-                    enabled: false
-                },
-
-                mapNavigation: {
-                    enabled: true,
-                    buttonOptions: {
-                        verticalAlign: 'bottom'
-                    }
-                },
-
-                series : [{
-                    name: 'Countries',
-                    mapData: mapData,
-                    color: '#FF0000',
-                    enableMouseTracking: false
-                }, {
-                    type: 'mapbubble',
-                    mapData: mapData,
-                    name: 'People',
-                    joinBy: ['iso-a2', 'country'],
-                    data: chartData,
-                    minSize: 4,
-                    maxSize: '12%',
-                    pointArrayMap: ['value'],
-                    tooltip: {
-                        pointFormat: '{point.country}: {point.value} people'
-                    }
-                }]
-            });
-        }
-        </script>
-    </section>
+    <?php if ($eventChart->hasTopCountriesData() || $eventChart->hasSocialNetworksData()) : ?>
+    <div class="row">
+        <?php if ($eventChart->hasTopCountriesData()): ?>
+        <div class="col-sm-6">
+            <h3>Top Countries</h3>
+            <?= Highcharts::widget([
+                'options' => [
+                    'chart' => [
+                        'type' => 'column',
+                        'borderColor' => '#EEEEEE',
+                        'borderWidth' => 1,
+                    ],
+                    'title' => ['text' => ''],
+                    'xAxis' => [
+                        'categories' => $eventChart->getXAxisBySocialNetworkAndCountry(),
+                    ],
+                    'yAxis' => [
+                        'min' => 0,
+                        'title' => ['text' => 'Sharings'],
+                        'stackLabels' => [
+                            'enabled' => true,
+                            'color' => 'gray',
+                        ],
+                    ],
+                    'legend' => [
+                        'align' => 'right',
+                        'x' => -70,
+                        'verticalAlign' => 'top',
+                        'y' => 20,
+                        'floating' => true,
+                        'borderColor' => '#CCC',
+                        'borderWidth' => 1,
+                        'shadow' => false,
+                        'backgroundColor' => '#FFF',
+                    ],
+                    'tooltip' => ['format' => '{point.x}'],
+                    'plotOptions' => [
+                        'column' => [
+                            'stacking' => 'normal',
+                            'dataLabels' => [
+                                'enabled' => true,
+                                'style' => [
+                                    'textShadow' => '0 0 3px black, 0 0 3px black',
+                                    'color' => '#FFF',
+                                ],
+                            ],
+                        ],
+                    ],
+                    'series' => $eventChart->getSeriesBySocialNetworkAndCountry(),
+                ]
+            ]) ?>
+        </div>
+        <?php endif; ?>
+        
+        <?php if ($eventChart->hasSocialNetworksData()) : ?>
+        <div class="col-sm-6">
+            <h3>Social Networks</h3>
+            <?= Highcharts::widget([
+                'options' => [
+                    'chart' => [
+                        'borderColor' => '#EEEEEE',
+                        'borderWidth' => 1,
+                        'plotBackgroundColor' => null,
+                        'plotBorderWidth' => 0,
+                        'plotShadow' => false,
+                        'margin' => 0,
+                    ],
+                    'title' => [ 'text' => ''],
+                    'plotOptions' => [
+                        'pie' => [
+                            'dataLabels' => [
+                                'enabled' => true,
+                                'style' => [
+                                    'fontWeight' => 'bold',
+                                    'fontSize' => '16px',
+                                    'color' => '#333333',
+                                    'textAlign' => 'center',
+                                ],
+                                'format' => '{point.name}<br />{point.y:,.0f}',
+                            ],
+                            'startAngle' => -90,
+                            'endAngle' => 90,
+                            'center' => ['50%', '75%'],
+                        ],
+                    ],
+                    'series' => [
+                        [
+                            'type' => 'pie',
+                            'name' => 'Sharings',
+                            'innerSize' => '50%',
+                            'data' => $eventChart->getSharingsBySocialNetwork(),
+                        ]
+                    ],
+                ]
+            ]) ?>
+        </div>
+        <?php endif; ?>
+    </div>
     <?php endif; ?>
 </div>

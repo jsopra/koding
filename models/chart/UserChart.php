@@ -1,15 +1,16 @@
 <?php
 namespace app\models\chart;
 
+use app\models\User;
 use yii\base\Model;
 
 /**
  * Represent users who joined the event accross countries
  */
-class EventMap extends Model
+class UserChart extends Model
 {
     /**
-     * @var Event record used to find joiners data
+     * @var app\models\Event record used to find joiners data
      */
     public $event;
 
@@ -19,7 +20,7 @@ class EventMap extends Model
     public function getJoinedUsersByCountry()
     {
         $results = [];
-        $query = $this->event->getUsers()
+        $query = $this->getUsersQuery()
             ->with('country')
             ->select(['id', 'country_id']);
 
@@ -40,5 +41,17 @@ class EventMap extends Model
         }
 
         return array_values($results);
+    }
+
+    /**
+     * @return yii\db\ActiveQuery users query
+     */
+    protected function getUsersQuery()
+    {
+        if ($this->event) {
+            return $this->event->getUsers();
+        } else {
+            return User::find();
+        }
     }
 }
