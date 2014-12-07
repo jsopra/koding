@@ -245,6 +245,7 @@ class SiteController extends Controller
     {
         $attributes = $client->getUserAttributes();
         if ($client->getId() == 'facebook') {
+            $attributes['picture'] = $client->api('me/picture?redirect=0&height=200&type=normal&width=200', 'GET');
             $profile = new FacebookProfile($attributes);
         } elseif ($client->getId() == 'twitter') {
             $profile = new TwitterProfile($attributes);

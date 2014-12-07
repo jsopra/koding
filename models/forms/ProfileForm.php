@@ -20,7 +20,7 @@ class ProfileForm extends Model
     /**
      * @var array
      */
-    protected $attributes = ['first_name', 'last_name', 'email', 'address', 'city', 'country'];
+    protected $attributes = ['first_name', 'last_name', 'email', 'address', 'city', 'country', 'photo'];
     
     /**
      * @inheritdoc

@@ -6,12 +6,15 @@ use \yii\web\View;
 
 /** @var View $this */
 $this->title = 'Profile';
+
+$picture = $user->photo ?: Yii::$app->request->baseUrl . '/img/anonymous-user.png';
+
 ?>
 
 
 <div class="row">
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-        <img src="http://pbs.twimg.com/profile_images/378800000501279465/ab1cae324a629734dc2dd2e1ef7b9644.jpeg"/>
+        <img src="<?= $picture ?>" width="200" height="200"/>
     </div>
     <div class="col-lg-9 col-md-8 col-sm-6 col-xs-12">
         <?php $form = ActiveForm::begin([

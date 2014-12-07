@@ -50,12 +50,14 @@ class FacebookProfile extends Profile
      */
     public static function createUser(Profile $profile)
     {
+        $picture = $profile->getRawAttribute('picture');
         $user = new User([
             'username' => $profile->email,
             'email' => $profile->email,
             'registered_via' => $profile->social,
             'first_name' => $profile->getRawAttribute('first_name'),
             'last_name' => $profile->getRawAttribute('last_name'),
+            'photo' => $picture ? $picture['data']['url'] : null,
         ]);
         if (!$user->save(false)) {
             return null;
