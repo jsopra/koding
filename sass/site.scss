@@ -113,6 +113,16 @@ h1 { font-size: 3em; }
   }
 }
 
+.media-with-title {
+  img {
+    @include border-radius;
+  }
+  h6 {
+    font-size: 1.2em;
+    color: gray;
+  }
+}
+
 .homepage {
   .navbar {
     @include opacity(0.5);

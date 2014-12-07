@@ -7,6 +7,10 @@ $default-text-shadow-color: rgba(#000, 0.6);
 $default-text-shadow-blur: 3px;
 $default-text-shadow-v-offset: 1px;
 
+.primary-color { color: $primary-color; }
+.align-center { text-align: center; }
+.gray { color: gray }
+
 @mixin align-center($margin-x: 0, $margin-y: auto) {
   margin:$margin-x $margin-y;
   text-align: center;
