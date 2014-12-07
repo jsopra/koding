@@ -528,6 +528,11 @@ th {
   top: 0.8em;
   left: 0.5em;
 }
+/* line 62, ../../sass/components/_social.scss */
+.social-wrap .disabled {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5;
+}
 
 /* line 1, ../../sass/components/_callouts.scss */
 .bs-callout {
@@ -840,6 +845,13 @@ h1 {
 }
 
 /* line 206, ../../sass/site.scss */
+.user-profile .photo {
+  -moz-border-radius: 10em;
+  -webkit-border-radius: 10em;
+  border-radius: 10em;
+}
+
+/* line 212, ../../sass/site.scss */
 .navbar .social-wrap .button {
   font-size: 1em;
   color: #fff;
@@ -850,7 +862,7 @@ h1 {
   -webkit-border-radius: 2px;
   border-radius: 2px;
 }
-/* line 214, ../../sass/site.scss */
+/* line 220, ../../sass/site.scss */
 .navbar .social-wrap .button:after {
   width: 16px;
   height: 16px;
@@ -859,28 +871,28 @@ h1 {
 
 /*** Responsive settings ***/
 @media screen and (max-width: 1400px) {
-  /* line 223, ../../sass/site.scss */
+  /* line 229, ../../sass/site.scss */
   .featured {
     font-size: 0.8em;
     height: 550px;
   }
 }
 @media screen and (max-width: 1100px) {
-  /* line 229, ../../sass/site.scss */
+  /* line 235, ../../sass/site.scss */
   .featured {
     font-size: 0.7em;
     height: 400px;
   }
 }
 @media screen and (max-width: 750px) {
-  /* line 235, ../../sass/site.scss */
+  /* line 241, ../../sass/site.scss */
   .featured {
     font-size: 0.5em;
     height: 300px;
   }
 }
 @media screen and (max-width: 500px) {
-  /* line 241, ../../sass/site.scss */
+  /* line 247, ../../sass/site.scss */
   .featured {
     height: 200px;
   }

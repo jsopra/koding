@@ -58,4 +58,8 @@
     top: 0.8em;
     left: 0.5em;
   }
+
+  .disabled {
+    @include opacity(0.5);
+  }
 }

@@ -109,10 +109,13 @@ AppAsset::register($this);
                     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
                 ]) ?>
                 <?= Alert::widget() ?>
-            <?= $content ?>
+
+                <?= $content ?>
             </div>
         <?php endif; ?>
+        <hr>
     </div>
+
 
     <footer class="footer">
         <div class="container">

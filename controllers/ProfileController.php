@@ -25,12 +25,12 @@ class ProfileController extends Controller
         return [
             'connect' => [
                 'class' => AuthAction::className(),
-                'successUrl' => Url::to(['/profile/sample-connect']),
+                'successUrl' => Url::to(['/profile']),
                 'successCallback' => [new SocialLoginHandler(), 'connectHandler'],
             ]
         ];
     }
-    
+
     /**
      * @inheritdoc
      */
@@ -48,14 +48,14 @@ class ProfileController extends Controller
             ]
         ];
     }
-    
+
     /**
      * Profile Page
      */
     public function actionIndex()
     {
         $user = new ProfileForm(['user' => Yii::$app->user->identity]);
-        
+
         if (Yii::$app->request->isPost) {
             $user->load(Yii::$app->request->post());
             if ($user->save()) {
@@ -64,15 +64,7 @@ class ProfileController extends Controller
                 Yii::$app->session->setFlash('error', 'Unable to update profile.');
             }
         }
-        
-        return $this->render('index', compact('user'));
-    }
 
-    /**
-     * Sample connect page
-     */
-    public function actionSampleConnect()
-    {
-        return $this->render('sample-connect');
+        return $this->render('index', compact('user'));
     }
 }
