@@ -25,6 +25,7 @@ use yii\web\IdentityInterface;
  * @property string $first_name
  * @property string $last_name
  * @property string $photo
+ * @property string $address Full address (just for display)
  * @property integer $country_id Relation with `country`
  * @property integer $city_id Relation with `city`
  * @property integer $created_at
@@ -46,6 +47,7 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_ACTIVE = 10;
     const ROLE_USER = 10;
     
+    const SCENARIO_UPDATE = 'update';
     const SCENARIO_SIGNUP_COMPLETION = 'signup_completion';
     
     /**
@@ -74,7 +76,6 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
-
             ['role', 'default', 'value' => self::ROLE_USER],
             ['role', 'in', 'range' => [self::ROLE_USER]],
 
@@ -94,10 +95,11 @@ class User extends ActiveRecord implements IdentityInterface
     public function scenarios()
     {
         return ArrayHelper::merge(parent::scenarios(), [
-            static::SCENARIO_SIGNUP_COMPLETION => ['email', 'first_name', 'last_name']
+            static::SCENARIO_SIGNUP_COMPLETION => ['email', 'username', 'first_name', 'last_name'],
+            static::SCENARIO_UPDATE => ['email', 'username', 'first_name', 'last_name', 'address', 'city', 'country'],
         ]);
     }
-
+    
     /**
      * @inheritdoc
      *
@@ -105,10 +107,14 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function beforeSave($insert)
     {
+        if ($this->email) {
+            $this->username = $this->email;
+        }
         if (parent::beforeSave($insert)) {
             if ($insert && !Yii::$app->request->isConsoleRequest && Yii::$app->request->userIP && ($location = @geoip_record_by_name(Yii::$app->request->userIP))) {
                 $this->setCountry($location['country_code']);
                 $this->setCity($location['city']);
+                $this->address = $location['city'] . ', ' . $location['country_code'];
             }
             return true;
         }

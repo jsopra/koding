@@ -274,7 +274,6 @@ class SiteController extends Controller
         
         if (Yii::$app->request->isPost) {
             $user->load(Yii::$app->request->post());
-            $user->username = $user->email;
             if ($user->save()) {
                 Yii::$app->session->setFlash('success', Yii::t('app', 'Profile updated'));
                 $this->redirect(['/profile']);
