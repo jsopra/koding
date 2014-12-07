@@ -10,6 +10,7 @@ use app\models\User;
 use Yii;
 use app\models\Event;
 use app\models\LoginForm;
+use app\models\chart\UserChart;
 use app\models\social\LoginForm as SocialLoginForm;
 use app\models\PasswordResetRequestForm;
 use app\models\ResetPasswordForm;
@@ -98,6 +99,7 @@ class SiteController extends Controller
             [
                 'featuredEvent' => $featuredEvent,
                 'pastEvents' => $pastEvents,
+                'userChart' => new UserChart,
             ]
         );
     }

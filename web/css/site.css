@@ -904,30 +904,31 @@ h1 {
   top: 0.5em;
 }
 
+/* line 221, ../../sass/site.scss */
+#map-container {
+  margin: 2em 0;
+}
+
 /*** Responsive settings ***/
 @media screen and (max-width: 1400px) {
-  /* line 253, ../../sass/site.scss */
   .featured {
     font-size: 0.8em;
     height: 550px;
   }
 }
 @media screen and (max-width: 1100px) {
-  /* line 259, ../../sass/site.scss */
   .featured {
     font-size: 0.7em;
     height: 400px;
   }
 }
 @media screen and (max-width: 750px) {
-  /* line 265, ../../sass/site.scss */
   .featured {
     font-size: 0.5em;
     height: 300px;
   }
 }
 @media screen and (max-width: 500px) {
-  /* line 271, ../../sass/site.scss */
   .featured {
     height: 200px;
   }

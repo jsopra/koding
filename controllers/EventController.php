@@ -6,7 +6,7 @@ use Yii;
 use app\filters\UnpersistedHttpAuth;
 use app\models\Event;
 use app\models\EventSearch;
-use app\models\chart\EventMap;
+use app\models\chart\EventChart;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\helpers\Inflector;
@@ -76,8 +76,8 @@ class EventController extends Controller
 
         return $this->render('view', [
             'model' => $model,
-            'eventMap' => new EventMap(['event' => $model]),
             'recentJoinings' => $joinings->with('user')->orderBy('id DESC')->limit(5)->all(),
+            'eventChart' => new EventChart(['event' => $model]),
         ]);
     }
 
