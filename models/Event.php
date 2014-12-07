@@ -96,6 +96,15 @@ class Event extends ActiveRecord
     }
 
     /**
+     * @inheritdoc
+     * @return EventQuery scopes object
+     */
+    public static function find()
+    {
+        return Yii::createObject(EventQuery::className(), [get_called_class()]);
+    }
+
+    /**
      * @return \yii\db\ActiveQuery
      */
     public function getUsers()

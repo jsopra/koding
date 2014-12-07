@@ -4,6 +4,7 @@ use yii\authclient\widgets\AuthChoice;
 use yii\helpers\Html;
 use yii\helpers\Inflector;
 use yii\helpers\Json;
+use yii\helpers\Url;
 use yii\web\View;
 use yii\widgets\DetailView;
 use miloschuman\highcharts\HighchartsAsset;
@@ -24,6 +25,7 @@ HighchartsAsset::register($this)->withScripts([
 ]);
 
 $this->registerJs("renderMap();", View::POS_READY);
+$this->registerJsFile(Url::base() . 'js/highcharts-mapdata-custom-world.js');
 ?>
 <div class="event-view">
 
