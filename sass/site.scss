@@ -30,7 +30,7 @@ h1 { font-size: 3em; }
   background-position: bottom;
   background-repeat: none;
   height: 700px;
-  margin-top: -20px;
+  margin-top: -80px;
   margin-bottom: 2em;
   padding-top: 20px;
   color: #fff;
@@ -110,6 +110,18 @@ h1 { font-size: 3em; }
     a:hover {
       color: $primary-color-hover
     }
+  }
+}
+
+.homepage {
+  .navbar {
+    @include opacity(0.3);
+  }
+  .navbar:hover {
+    @include opacity(0.8);
+  }
+  .navbar-inverse {
+    background-color: #000;
   }
 }
 

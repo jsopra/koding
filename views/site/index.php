@@ -66,52 +66,51 @@ $this->title = 'Social Warming - Create mass awareness for social causes on the 
         <div class="col-md-4">
             <header>
                 <h2>
-                    <span class="tag">#EventHashTag</span>
-                    <span class="date"><i class="glyphicon glyphicon-calendar"></i> December 21, 2014</span>
+                    <span class="tag">#ChildrensDay</span>
+                    <span class="date"><i class="glyphicon glyphicon-calendar"></i> November 20, 2014</span>
                 </h2>
-                <h3><a href="#">Event name</a></h3>
+                <h3><a href="#">Universal Children's Day</a></h3>
 
                 <a href="#" class="thumbnail">
-                    <img data-src src="holder.js/100%x100" alt="{Event name}">
+                    <img data-src src="img/world-childrens-day.jpg" alt="World Children's Day">
                 </a>
             </header>
             <p>
-                Lorem ipsum dolor sit amet, vocent convenire id cum, pro id eros tempor. Esse nonumes pri te, cum ubique gubergren ut
-                <strong>#EventHashTag</strong>
+                There is much to celebrate as we mark the 25th anniversary of the Convention, from declining infant mortality to rising school enrolment, but this historic milestone must also serve as an urgent reminder that much remains to be done. Too many children still do not enjoy their full rights on par with their peers.
             </p>
         </div>
         <div class="col-md-4">
             <header>
                 <h2>
-                    <span class="tag">#EventHashTag</span>
-                    <span class="date"><i class="glyphicon glyphicon-calendar"></i> December 21, 2014</span>
+                    <span class="tag">#WorldDiabetesDay</span>
+                    <span class="date"><i class="glyphicon glyphicon-calendar"></i> November 14, 2014</span>
                 </h2>
-                <h3><a href="#">Event name</a></h3>
+                <h3><a href="#">World Diabetes Day</a></h3>
 
                 <a href="#" class="thumbnail">
-                    <img data-src src="holder.js/100%x100" alt="{Event name}">
+                    <img data-src src="/img/world-diabetes-day.png" alt="World Diabetes Day">
                 </a>
             </header>
             <p>
-                Lorem ipsum dolor sit amet, vocent convenire id cum, pro id eros tempor. Esse nonumes pri te, cum ubique gubergren ut
-                <strong>#EventHashTag</strong>
+                World Diabetes Day unites the global diabetes community to produce a powerful voice for diabetes awareness and advocacy, engaging individuals and communities to bring the diabetes epidemic into de public spotlight.
+
+                Led by the International Diabetes Federation, the day unites the global diabetes community to produce a powerful voice for diabetes awareness and advocacy.
             </p>
         </div>
         <div class="col-md-4">
             <header>
                 <h2>
-                    <span class="tag">#EventHashTag</span>
-                    <span class="date"><i class="glyphicon glyphicon-calendar"></i> December 21, 2014</span>
+                    <span class="tag">#WorldAnimalDay</span>
+                    <span class="date"><i class="glyphicon glyphicon-calendar"></i> October 4, 2014</span>
                 </h2>
-                <h3><a href="#">Event name</a></h3>
+                <h3><a href="#">World Animal Day</a></h3>
 
                 <a href="#" class="thumbnail">
-                    <img data-src src="holder.js/100%x100" alt="{Event name}">
+                    <img data-src src="/img/world-animal-day-large.jpg" alt="World Animal Day">
                 </a>
             </header>
             <p>
-                Lorem ipsum dolor sit amet, vocent convenire id cum, pro id eros tempor. Esse nonumes pri te, cum ubique gubergren ut
-                <strong>#EventHashTag</strong>
+                World Animal Day has become a day for remembering and paying tribute to all animals and the people who love and respect them. It's celebrated in different ways in every country, with no regard to nationality, religion, faith or political ideology.
             </p>
         </div>
     </div>

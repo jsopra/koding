@@ -30,7 +30,7 @@ AppAsset::register($this);
 
     <?php $this->head() ?>
 </head>
-<body>
+<body class="<?= preg_replace('/[^\da-z]/i', '', Yii::$app->request->url) ?: 'homepage' ?>">
     <?php $this->beginBody() ?>
     <div class="wrap">
         <?php
