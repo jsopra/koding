@@ -76,9 +76,11 @@ $this->registerJsFile(
         <h4>What happens if you join?</h4>
         <p>On the day of the event we will update your Twitter or Facebook status to raise awareness about the current event.</p>
 
-        <hr>
+        <div class="align-center">
+            <button class="btn btn-default status-preview-button">Preview status messages</button>
+        </div>
 
-        <div class="row previews">
+        <div class="row previews hide status-preview-holder">
             <div class="col-md-6">
                 <h5>Twitter status preview</h5>
                 <div class="thumbnail">
@@ -157,4 +159,6 @@ $this->registerJsFile(
     <hr>
 
     <br><br><br>
-</section>
+</div>
+
+<?php $this->registerJsFile('/js/homepage.js', ['depends' => ['yii\web\JqueryAsset']]); ?>

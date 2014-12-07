@@ -130,7 +130,6 @@ AppAsset::register($this);
 
 
     <?php
-        $this->registerJsFile('/js/holder.js', ['depends' => ['yii\web\JqueryAsset']]);
         $this->registerJsFile('/js/social-login.js', ['depends' => ['yii\web\JqueryAsset']]);
     ?>
     <?php $this->endBody() ?>
