@@ -73,7 +73,9 @@ $this->params['breadcrumbs'][] = $this->title;
     </section>
     <?php endif; ?>
 
+    <?php if ($eventChart->hasTopCountriesData() || $eventChart->hasSocialNetworksData()) : ?>
     <div class="row">
+        <?php if ($eventChart->hasTopCountriesData()): ?>
         <div class="col-sm-6">
             <h3>Top Countries</h3>
             <?= Highcharts::widget([
@@ -123,6 +125,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]
             ]) ?>
         </div>
+        <?php endif; ?>
+        
+        <?php if ($eventChart->hasSocialNetworksData()) : ?>
         <div class="col-sm-6">
             <h3>Social Networks</h3>
             <?= Highcharts::widget([
@@ -140,7 +145,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         'pie' => [
                             'dataLabels' => [
                                 'enabled' => true,
-                                //'distance' => -20,
                                 'style' => [
                                     'fontWeight' => 'bold',
                                     'fontSize' => '16px',
@@ -165,5 +169,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]
             ]) ?>
         </div>
+        <?php endif; ?>
     </div>
+    <?php endif; ?>
 </div>

@@ -147,7 +147,7 @@ class Event extends ActiveRecord
     }
 
     /**
-     * @return 
+     * @return boolean if this event is already passed
      */
     public function isPast()
     {
