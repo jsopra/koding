@@ -167,22 +167,23 @@ h1 { font-size: 3em; }
       a { color: #fff }
       a:hover {}
     }
+  }
 
+  h3 {
+    margin-top: 0.5em;
+    a {
+      color: #444;
+    }
+    a:hover { color: $secondary-color; }
+    .date { font-size: 0.7em }
+  }
+
+  h2, h3 {
     .date {
       color: gray;
       float: right;
       padding: 0.5em 0;
     }
-  }
-
-  h3 {
-    margin-top: 0.5em;
-
-    a {
-      color: #444;
-    }
-    a:hover { color: $secondary-color; }
-
   }
 
   footer {

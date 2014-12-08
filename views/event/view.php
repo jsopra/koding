@@ -12,29 +12,54 @@ $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Events', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="event-view">
 
-    <header>
-        <h1><?= Html::encode($this->title) ?></h1>
-        <h2><?= Html::encode($model->hashtag) ?></h2>
-        <p>
-            <time datetime="<?= $model->occurred_on ?>">
-                <?= Yii::$app->formatter->asDate($model->occurred_on) ?>
-            </time>
-        </p>
-    </header>
-    <p><?= nl2br(Html::encode($model->description)) ?></p>
-    <footer>
-        <p>
-            <span><?= Yii::$app->formatter->asInteger($model->joined_users_counter) ?></span>
-            People joined this event
-        </p>
-        <p>
-            <span><?= Yii::$app->formatter->asInteger($model->awareness_created_counter) ?></span>
-            Awareness created
-        </p>
-    </footer>
+<div class="row">
+    <div class="col-md-8 event-view next-events">
+        <header>
+            <h2>
+                <span class="tag"><?= Html::encode($model->hashtag) ?></span>
+            </h2>
+            <h3>
+                <?= Html::encode($model->name) ?>
+                <span class="date">
+                <i class="glyphicon glyphicon-calendar"></i>
+                    <?= Yii::$app->formatter->asDate($model->occurred_on) ?>
+            </span>
+            </h3>
+            <?=
+            Html::img(
+                Yii::$app->resourceManager->getUrl($model->image_name),
+                ['alt' => Html::encode($model->name)]
+            )
+            ?>
+        </header>
 
+        <p><?= nl2br(Html::encode($model->description)) ?></p>
+
+        <footer>
+            <div class="text-muted">
+                <div class="row">
+                    <div class="col-md-6">
+                        <i class="glyphicon glyphicon-fire icon-shared"></i>
+                        <?= Yii::$app->formatter->asInteger($model->joined_users_counter) ?> people shared
+                    </div>
+                    <div class="col-md-6">
+                        <div class="pull-right">
+                            <i class="glyphicon glyphicon-eye-close icon-awareness"></i>
+                            <?= Yii::$app->formatter->asInteger($model->awareness_created_counter) ?> direct awareness
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <div class="col-md-4">
+
+    </div>
+</div>
+
+
+<div class="event-view next-events">
     <?php if (false == $model->isPast()) : ?>
     <div>
     <?php if (Yii::$app->user->isGuest) : ?>
@@ -126,7 +151,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ]) ?>
         </div>
         <?php endif; ?>
-        
+
         <?php if ($eventChart->hasSocialNetworksData()) : ?>
         <div class="col-sm-6">
             <h3>Social Networks</h3>
