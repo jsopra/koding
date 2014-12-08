@@ -60,7 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <ul>
                     <?php foreach ($recentJoinings as $recentJoin) : ?>
                         <li>
-                            <?= $recentJoin->user->first_name ?>
+                            <?= Html::encode($recentJoin->user->first_name) ?>
                             <time datetime="<?= $recentJoin->joined_at ?>">
                                 <?= Yii::$app->formatter->asRelativeTime($recentJoin->joined_at) ?>
                             </time>

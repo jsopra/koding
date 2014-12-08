@@ -42,7 +42,7 @@ $picture = $user->photo ?: Yii::$app->request->baseUrl . '/img/anonymous-user.pn
 
 <div class="row">
     <div class="col-md-11 col-md-offset-1">
-        <h2>Hey <?= ucwords($user->first_name) ?>, check if this data is correct</h2>
+        <h2>Hey <?= ucwords(Html::encode($user->first_name)) ?>, check if this data is correct</h2>
     </div>
 </div>
 

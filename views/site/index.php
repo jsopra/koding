@@ -2,7 +2,6 @@
 use yii\helpers\Html;
 use yii\helpers\Inflector;
 use yii\helpers\Json;
-use yii\helpers\StringHelper;
 use yii\helpers\Url;
 use yii\web\View;
 use miloschuman\highcharts\HighchartsAsset;
@@ -28,7 +27,7 @@ $this->registerJsFile(
     <div class="container">
         <header>
             <h1><span>Next event</span> <?= Html::encode($featuredEvent->name) ?></h1><br>
-            <h2><?= $featuredEvent->hashtag ?></h2>
+            <h2><?= Html::encode($featuredEvent->hashtag) ?></h2>
             <h3>
                 Ignite the social fire on
                 <span><?= Yii::$app->formatter->asDate($featuredEvent->occurred_on) ?></span>
