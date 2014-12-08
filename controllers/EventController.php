@@ -76,7 +76,7 @@ class EventController extends Controller
 
         return $this->render('view', [
             'model' => $model,
-            'recentJoinings' => $joinings->with('user')->orderBy('id DESC')->limit(5)->all(),
+            'recentJoinings' => $joinings->with('user')->orderBy('joined_at DESC')->limit(5)->all(),
             'eventChart' => new EventChart(['event' => $model]),
         ]);
     }
