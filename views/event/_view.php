@@ -41,5 +41,10 @@ use yii\helpers\StringHelper;
             <i class="glyphicon glyphicon-eye-close icon-awareness"></i>
             <?= Yii::$app->formatter->asInteger($model->awareness_created_counter) ?> direct awareness
         </div>
+        <div class="text-muted">
+            <i class="glyphicon glyphicon-heart icon-sentiment" title="Sentiment"></i>
+            <?= Yii::$app->formatter->asPercent($model->sentiment_confidence) ?>
+            <?= Html::encode($model->sentiment) ?>
+        </div>
     </footer>
 </div>
