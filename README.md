@@ -19,11 +19,12 @@ Visit http://monitorbacklinks.koding.io/site/about
 
 ## APIs Used
 
-* Twritter API - 
-* Facebook API - 
+* Twritter API - Login/Registration and post Event message on user's behalf
+* Facebook API - Login/Registration and post Event message on user's behalf
 * [Google Maps API](https://developers.google.com/maps/) - For Country/City autocompletion
 * [Highcharts](http://www.highcharts.com/) - For showing interactive geo maps
 * [MaxMind GeoIP](https://www.maxmind.com/en/geoip-demo) - For getting User Location based on IP
+* [Bit.ly](http://dev.bitly.com/) - For URL shortening when posting statuses into Twitter
 
 ## Software
 
