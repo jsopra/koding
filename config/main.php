@@ -39,6 +39,7 @@ $config = [
             'showScriptName' => false,
             'enablePrettyUrl' => true,
             'rules' => [
+                '/' => 'site/index',
                 'privacy-policy' => 'site/privacy-policy',
                 'event/<id:\d+>-<url>/<action:update|delete|join|unjoin>' => 'event/<action>',
                 'event/<id:\d+>/<action:update|delete|join|unjoin>' => 'event/<action>',

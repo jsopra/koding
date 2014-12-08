@@ -54,7 +54,7 @@ AppAsset::register($this);
                 ],
             ]);
             $menuItems = [
-                ['label' => 'Home', 'url' => ['/'], 'options' => ['class' => 'home-link']],
+                ['label' => 'Home', 'url' => ['/site/index'], 'options' => ['class' => 'home-link']],
                 ['label' => 'Events', 'url' => ['/event/index']],
                 ['label' => 'About', 'url' => ['/site/about']],
             ];
@@ -94,7 +94,7 @@ AppAsset::register($this);
                 ];
                 $menuItems[] = [
                     'label' => 'Account',
-                    'url' => ['/profile']
+                    'url' => ['/profile/index']
                 ];
                 $menuItems[] = [
                     'label' => 'Logout',
