@@ -847,41 +847,46 @@ h1 {
 .next-events footer .icon-awareness {
   color: dodgerblue;
 }
+/* line 196, ../../sass/site.scss */
+.events-list footer .icon-sentiment,
+.next-events footer .icon-sentiment {
+  color: #d32c85;
+}
 
-/* line 199, ../../sass/site.scss */
+/* line 202, ../../sass/site.scss */
 .joined-holder {
   margin-top: 1em;
 }
 
-/* line 203, ../../sass/site.scss */
+/* line 206, ../../sass/site.scss */
 .events-list {
   margin-bottom: 2em;
 }
 
-/* line 207, ../../sass/site.scss */
+/* line 210, ../../sass/site.scss */
 .previews {
   text-align: center;
 }
-/* line 210, ../../sass/site.scss */
+/* line 213, ../../sass/site.scss */
 .previews h5 {
   color: gray;
 }
 
-/* line 215, ../../sass/site.scss */
+/* line 218, ../../sass/site.scss */
 .btn-danger {
   background-color: #d32c85;
 }
 
-/* line 220, ../../sass/site.scss */
+/* line 223, ../../sass/site.scss */
 .social-wrap .button {
   display: inline-block;
   font-size: 1.5em;
 }
-/* line 225, ../../sass/site.scss */
+/* line 228, ../../sass/site.scss */
 .social-wrap .button.small {
   font-size: 1em;
 }
-/* line 229, ../../sass/site.scss */
+/* line 232, ../../sass/site.scss */
 .social-wrap .button.primary-color {
   background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2QzMmM4NSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmMTQ5MyIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #d32c85), color-stop(100%, #ff1493));
@@ -890,19 +895,19 @@ h1 {
   background: linear-gradient(to bottom, #d32c85, #ff1493);
 }
 
-/* line 235, ../../sass/site.scss */
+/* line 238, ../../sass/site.scss */
 .user-profile .photo {
   -moz-border-radius: 10em;
   -webkit-border-radius: 10em;
   border-radius: 10em;
 }
 
-/* line 240, ../../sass/site.scss */
+/* line 243, ../../sass/site.scss */
 .navbar .social-wrap {
   overflow: hidden;
   max-height: 50px;
 }
-/* line 245, ../../sass/site.scss */
+/* line 248, ../../sass/site.scss */
 .navbar .social-wrap .button {
   font-size: 1em;
   color: #fff;
@@ -913,70 +918,70 @@ h1 {
   -webkit-border-radius: 2px;
   border-radius: 2px;
 }
-/* line 253, ../../sass/site.scss */
+/* line 256, ../../sass/site.scss */
 .navbar .social-wrap .button:after {
   width: 16px;
   height: 16px;
   top: 0.5em;
 }
 
-/* line 260, ../../sass/site.scss */
+/* line 263, ../../sass/site.scss */
 #map-container {
   margin: 2em 0;
 }
 
-/* line 265, ../../sass/site.scss */
+/* line 268, ../../sass/site.scss */
 .event-view header {
   margin-bottom: 1em;
 }
 
 /** Responsive menu fix **/
 @media screen and (min-width: 992px) and (max-width: 1200px) {
-  /* line 272, ../../sass/site.scss */
+  /* line 275, ../../sass/site.scss */
   .navbar .home-link {
     display: none;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 991px) {
-  /* line 277, ../../sass/site.scss */
+  /* line 280, ../../sass/site.scss */
   .navbar .logo-label {
     display: none;
   }
 
-  /* line 280, ../../sass/site.scss */
+  /* line 283, ../../sass/site.scss */
   .navbar .home-link {
     display: none;
   }
 
-  /* line 283, ../../sass/site.scss */
+  /* line 286, ../../sass/site.scss */
   .navbar-inverse .navbar-brand {
     padding: 10px;
   }
 }
 /*** Responsive settings ***/
 @media screen and (max-width: 1400px) {
-  /* line 290, ../../sass/site.scss */
+  /* line 293, ../../sass/site.scss */
   .featured {
     font-size: 0.8em;
     height: 550px;
   }
 }
 @media screen and (max-width: 1100px) {
-  /* line 296, ../../sass/site.scss */
+  /* line 299, ../../sass/site.scss */
   .featured {
     font-size: 0.7em;
     height: 400px;
   }
 }
 @media screen and (max-width: 750px) {
-  /* line 302, ../../sass/site.scss */
+  /* line 305, ../../sass/site.scss */
   .featured {
     font-size: 0.5em;
     height: 300px;
   }
 }
 @media screen and (max-width: 500px) {
-  /* line 308, ../../sass/site.scss */
+  /* line 311, ../../sass/site.scss */
   .featured {
     height: 200px;
   }
