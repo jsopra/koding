@@ -25,6 +25,7 @@ Visit http://monitorbacklinks.koding.io/site/about
 * [Highcharts](http://www.highcharts.com/) - For showing interactive geo maps
 * [MaxMind GeoIP](https://www.maxmind.com/en/geoip-demo) - For getting User Location based on IP
 * [Bit.ly](http://dev.bitly.com/) - For URL shortening when posting statuses into Twitter
+* [Mashape Sentiment API](https://www.mashape.com/vivekn/sentiment-3) - Analyze an event mood
 
 ## Software
 
