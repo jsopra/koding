@@ -4,6 +4,8 @@ namespace app\console;
 
 use app\models\Event;
 use app\models\EventUser;
+use app\models\SharedEvent;
+use app\models\Social;
 use app\models\User;
 use yii\console\Controller;
 use Faker\Factory as Faker;
@@ -57,6 +59,8 @@ class PopulateController extends Controller
     {
         $this->actionUsers();
         $this->actionFollowers();
+        $this->actionSocials();
+        $this->actionShareEvents();
     }
 
     /**
@@ -66,6 +70,7 @@ class PopulateController extends Controller
      */
     public function actionUsers($number = 10)
     {
+        $this->count = 0;
         $this->call($number, function() {
             $user = new User([
                 'username' => $this->faker->userName,
@@ -102,6 +107,7 @@ class PopulateController extends Controller
      */
     public function actionFollowers($number = 50)
     {
+        $this->count = 0;
         $this->call($number, function() {
             $user = self::getRandomUser();
             $event = self::getRandomEvent();
@@ -115,13 +121,73 @@ class PopulateController extends Controller
             )->getTimestamp();
 
             if ($eventUser->save()) {
-                $event->updateCounters(['joined_users_counter' => 1]);
                 $this->count++;
             }
         });
 
         $this->stdout($this->count, Console::FG_GREEN);
         $this->stdout(" followers added");
+        $this->stdout("\n");
+    }
+
+    /**
+     * Creates random social network associations with users.
+     */
+    public function actionSocials()
+    {
+        $this->count = 0;
+        foreach (User::find()->all() as $user) {
+            // If there is no social profile associated
+            if (Social::find()->where(['user_id' => $user->id])->count() == 0) {
+                $profilesToBeGenerated = rand(1, 2);
+                for ($i = 1; $i <= $profilesToBeGenerated; $i++) {
+                    $social = new Social;
+                    $social->user_id = $user->id;
+                    $social->social = $i;
+                    $social->followers = rand(1, 500);
+                    $social->social_id = ($user->id * -1);
+                    $social->meta = '{}';
+                    $social->token = uniqid();
+                    if ($social->save()) {
+                        $this->count++;
+                    }
+                }
+            }
+        }
+
+        $this->stdout($this->count, Console::FG_GREEN);
+        $this->stdout(" users connected to social networks");
+        $this->stdout("\n");
+    }
+
+    /**
+     * Randomly share events
+     */
+    public function actionShareEvents($number = 50)
+    {
+        $this->count = 0;
+        $this->call($number, function() {
+            $user = $this->getRandomUser();
+            $event = $this->getRandomEvent();
+
+            // If there is no social profile associated
+            $socials = Social::find()->where(['user_id' => $user->id])->all();
+            if ($socials) {
+                foreach ($socials as $social) {
+                    // Maybe the combination already exists and it won't save
+                    $share = new SharedEvent;
+                    $share->event_id = $event->id;
+                    $share->user_id = $user->id;
+                    $share->social = $social->social;
+                    if ($share->save()) {
+                        $this->count++;
+                    }
+                }
+            }
+        });
+
+        $this->stdout($this->count, Console::FG_GREEN);
+        $this->stdout(" event sharings were made");
         $this->stdout("\n");
     }
 
