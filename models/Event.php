@@ -133,7 +133,7 @@ class Event extends ActiveRecord
     {
         $url = 'https://community-sentiment.p.mashape.com/text/';
         $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
             'X-Mashape-Authorization: ' . getenv('SW_MASHAPE_KEY')
         ]);
@@ -187,7 +187,7 @@ class Event extends ActiveRecord
 
     /**
      * Joins user to the event
-     * @param User|\yii\web\IdentityInterface $user user which will join
+     * @param User|\yii\web\IdentityInterface|\yii\db\ActiveRecord $user user which will join
      * @returns boolean either if the user joined or not
      */
     public function join(User $user)
@@ -220,7 +220,6 @@ class Event extends ActiveRecord
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
-
             if (!Yii::$app->request->isConsoleRequest && !$this->short_url) {
                 $url = Url::to(['event/view', 'id' => $this->id], true);
                 $this->short_url = Yii::$app->urlShortener->shorten($url);
