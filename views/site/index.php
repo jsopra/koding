@@ -26,7 +26,7 @@ $this->registerJsFile(
 <div class="wrap featured" style="background-image: url('<?= Yii::$app->resourceManager->getUrl($featuredEvent->image_name) ?>')">
     <div class="container">
         <header>
-            <h1><span>Next event</span> <?php Html::encode($featuredEvent->name) ?></h1><br>
+            <h1><span>Next event</span> <?= Html::encode($featuredEvent->name) ?></h1><br>
             <h2><?= Html::encode($featuredEvent->hashtag) ?></h2>
             <h3>
                 Ignite the social fire on
