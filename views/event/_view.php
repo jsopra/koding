@@ -35,7 +35,7 @@ use yii\helpers\StringHelper;
         ) ?>
         <div class="text-muted">
             <i class="glyphicon glyphicon-fire icon-shared"></i>
-            <?= Yii::$app->formatter->asInteger($model->joined_users_counter) ?> people shared
+            <?= Yii::$app->formatter->asInteger($model->sharing_counter) ?> people shared
         </div>
         <div class="text-muted">
             <i class="glyphicon glyphicon-eye-close icon-awareness"></i>
