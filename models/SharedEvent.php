@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "shared_event".
@@ -53,6 +54,49 @@ class SharedEvent extends ActiveRecord
             'social' => 'Social',
             'sent_at' => 'Sent At',
         ];
+    }
+
+    /**
+     * @inheritdoc Increase event awareness counter
+     */
+    public function afterSave($insert, $changedAttributes)
+    {
+        if ($insert) {
+            $social = $this->getUserSocial();
+
+            $this->db->createCommand()->update(
+                'event',
+                ['awareness_created_counter' => new Expression('awareness_created_counter + ' . $social->followers)],
+                'id = :event',
+                [':event' => $this->event_id]
+            )->execute();
+        }
+    }
+
+    /**
+     * @inheritdoc Decrease event awareness counter
+     */
+    public function afterDelete()
+    {
+        $social = $this->getUserSocial();
+
+        $this->db->createCommand()->update(
+            'event',
+            ['awareness_created_counter' => new Expression('awareness_created_counter - ' . $social->followers)],
+            'id = :event',
+            [':event' => $this->event_id]
+        )->execute();
+    }
+
+    /**
+     * @return Social social profile related to the current user and social network
+     */
+    public function getUserSocial()
+    {
+        return Social::find()->where([
+            'social' => $this->social,
+            'user_id' => $this->user_id,
+        ])->one();
     }
 
     /**

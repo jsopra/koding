@@ -81,6 +81,7 @@ class SocialLoginHandler extends Object
     protected function facebook($client)
     {
         $attributes = $client->getUserAttributes();
+        $attributes['friends'] = $client->api('me/friends?redirect=0&height=200&type=normal&width=200', 'GET');
         $attributes['picture'] = $client->api('me/picture?redirect=0&height=200&type=normal&width=200', 'GET');
         $params = [
             'client_id' => $client->clientId,

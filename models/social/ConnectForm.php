@@ -60,6 +60,7 @@ class ConnectForm extends Model
         $social->social = $this->profile->social;
         $social->social_id = $this->profile->id;
         $social->token = $this->profile->token;
+        $social->followers = $this->profile->followers;
         
         if (!$social->save()) {
             $this->addError('profile', Yii::t('app', 'Something went wrong while creating social profile.'));

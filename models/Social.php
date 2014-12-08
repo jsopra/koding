@@ -18,6 +18,7 @@ use yii\helpers\Json;
  * @property string $meta
  * @property User $user
  * @property string $token
+ * @property integer $followers
  *
  * Magic:
  * @property SharerInterface $sharer
@@ -26,7 +27,6 @@ use yii\helpers\Json;
  */
 class Social extends ActiveRecord
 {
-    
     const TWITTER = 1;
     const FACEBOOK = 2;
 

@@ -64,6 +64,14 @@ class TwitterProfile extends Profile
     {
         return Json::encode($this->accessToken);
     }
+    
+    /**
+     * @inheritdoc
+     */
+    public function getFollowers()
+    {
+        return $this->getRawAttribute('followers_count');
+    }
 
     /**
      * No Expiration
