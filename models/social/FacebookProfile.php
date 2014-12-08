@@ -64,6 +64,19 @@ class FacebookProfile extends Profile
     /**
      * @inheritdoc
      */
+    public function getFollowers()
+    {
+        $friends = $this->getRawAttribute('friends');
+        if ($friends) {
+            return $friends['summary']['total_count'];
+        } else {
+            return null;
+        }
+    }
+    
+    /**
+     * @inheritdoc
+     */
     public static function createUser(Profile $profile)
     {
         $picture = $profile->getRawAttribute('picture');

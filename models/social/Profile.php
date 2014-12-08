@@ -86,6 +86,11 @@ abstract class Profile extends Model
      * @return mixed
      */
     abstract public function getToken();
+
+    /**
+     * @return mixed
+     */
+    abstract public function getFollowers();
     
     /**
      * Let social profile handle creating the user.

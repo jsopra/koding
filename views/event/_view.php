@@ -29,7 +29,13 @@ use yii\helpers\StringHelper;
     </header>
     <p><?= nl2br(StringHelper::truncateWords(Html::encode($model->description), 54)) ?></p>
     <footer>
-        <div class="text-muted"><i class="glyphicon glyphicon-fire icon-shared"></i> 2,388 people shared</div>
-        <div class="text-muted"><i class="glyphicon glyphicon-eye-close icon-awareness"></i> 94,233 direct awareness</div>
+        <div class="text-muted">
+            <i class="glyphicon glyphicon-fire icon-shared"></i>
+            <?= Yii::$app->formatter->asInteger($model->joined_users_counter) ?> people shared
+        </div>
+        <div class="text-muted">
+            <i class="glyphicon glyphicon-eye-close icon-awareness"></i>
+            <?= Yii::$app->formatter->asInteger($model->awareness_created_counter) ?> direct awareness
+        </div>
     </footer>
 </div>
