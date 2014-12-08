@@ -31,7 +31,7 @@ use yii\helpers\StringHelper;
     <footer>
         <?= Html::a('View stats',
             ['event/view', 'id' => $model->id, 'url' => Inflector::slug($model->name)],
-            ['class' => 'btn btn-default pull-right']
+            ['class' => 'btn btn-info pull-right']
         ) ?>
         <div class="text-muted">
             <i class="glyphicon glyphicon-fire icon-shared"></i>
