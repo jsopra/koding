@@ -11,26 +11,12 @@ use yii\helpers\Json;
  */
 class Twitter extends Object implements SharerInterface
 {
-
+    use SharerTrait;
+    
     /**
      * @var \TwitterOAuth
      */
     protected $api;
-
-    /**
-     * @var array
-     */
-    protected $response;
-
-    /**
-     * @var string
-     */
-    private $_errorCode;
-
-    /**
-     * @var string
-     */
-    private $_errorMessage;
     
     /**
      * @param array $credentials Twitter Credentials
@@ -57,22 +43,13 @@ class Twitter extends Object implements SharerInterface
             'status' => $details['message'],
         ]);
         
-        if (isset($this->response['code'])) {
-            if ($this->response['code'] == 200) {
-                return true;
-            } else {
-                $this->_errorMessage = Json::encode($this->response['errors']);
-                $this->_errorCode = $this->response['code'];
-            }
+        if (isset($this->response['id_str'])) {
+            \Yii::info('Share via Twitter: ' . $details['message']);
+            return true;
+        } else {
+            $this->_errorMessage = Json::encode($this->response['errors']);
+            $this->_errorCode = $this->response['code'];
         }
         return false;
-    }
-
-    /**
-     * @return array response
-     */
-    public function getResponse()
-    {
-        return $this->response;
     }
 }

@@ -16,6 +16,10 @@ $config = [
      * APPLICATION COMPONENTS
      */
     'components' => [
+        'urlShortener' => [
+            'class' => 'app\components\UrlShortener',
+            'token' => getenv('SW_BITLY_TOKEN'),
+        ],
         /**
          * Database connection
          */

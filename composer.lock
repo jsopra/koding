@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "151d2d972e1c65e9d976f09c710fdc6f",
+    "hash": "10bee4ee939e1e9a92e685b052940d43",
     "packages": [
         {
             "name": "2amigos/yii2-resource-manager-component",
@@ -645,6 +645,57 @@
             "time": "2014-01-28 22:29:15"
         },
         {
+            "name": "hpatoio/bitly-api",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hpatoio/bitly-api.git",
+                "reference": "13873b6862a1b8267f52e740e0728c590a90d3b4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hpatoio/bitly-api/zipball/13873b6862a1b8267f52e740e0728c590a90d3b4",
+                "reference": "13873b6862a1b8267f52e740e0728c590a90d3b4",
+                "shasum": ""
+            },
+            "require": {
+                "guzzle/guzzle": "~3.0"
+            },
+            "require-dev": {
+                "behat/behat": "~2.0",
+                "behat/mink": "~1.5",
+                "phpunit/phpunit": "~3.7"
+            },
+            "suggest": {
+                "hpatoio/bitly-bundle": "for integration with Symfony2 web framework"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Hpatoio\\Bitly\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "CC-BY-SA-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Simone Fumagalli",
+                    "email": "simone@iliveinperego.com"
+                }
+            ],
+            "description": "PHP Library based on Guzzle to consume Bit.ly API",
+            "homepage": "http://www.iliveinperego.com/",
+            "keywords": [
+                "Behat",
+                "Guzzle",
+                "api",
+                "bitly"
+            ],
+            "time": "2014-09-06 10:56:59"
+        },
+        {
             "name": "kertz/twitteroauth",
             "version": "dev-master",
             "source": {
@@ -1103,16 +1154,16 @@
         },
         {
             "name": "yiisoft/yii2-swiftmailer",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-swiftmailer.git",
-                "reference": "40fc07ab41e553c8ffaf0847f10ddc68cb553cf8"
+                "reference": "662f9a7daa2eba8c7a21ae2580425d82e0eb60c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-swiftmailer/zipball/40fc07ab41e553c8ffaf0847f10ddc68cb553cf8",
-                "reference": "40fc07ab41e553c8ffaf0847f10ddc68cb553cf8",
+                "url": "https://api.github.com/repos/yiisoft/yii2-swiftmailer/zipball/662f9a7daa2eba8c7a21ae2580425d82e0eb60c8",
+                "reference": "662f9a7daa2eba8c7a21ae2580425d82e0eb60c8",
                 "shasum": ""
             },
             "require": {
@@ -1149,7 +1200,7 @@
                 "swiftmailer",
                 "yii2"
             ],
-            "time": "2014-10-12 17:09:06"
+            "time": "2014-12-07 16:42:41"
         }
     ],
     "packages-dev": [

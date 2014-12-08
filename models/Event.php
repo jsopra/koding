@@ -6,6 +6,7 @@ use Yii;
 use app\validators\HashtagValidator;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "event".
@@ -15,6 +16,7 @@ use yii\db\ActiveRecord;
  * @property string $hashtag
  * @property string $description
  * @property string $occurred_on
+ * @property string $short_url
  * @property integer $created_at
  * @property integer $updated_at
  * @property integer $awareness_created_counter
@@ -184,5 +186,20 @@ class Event extends ActiveRecord
         ])->one();
 
         return ($eventUser && $eventUser->delete() > 0);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            if (!Yii::$app->request->isConsoleRequest && !$this->short_url) {
+                $url = Url::to(['event/view', 'id' => $this->id], true);
+                $this->short_url = Yii::$app->urlShortener->shorten($url);
+            }
+            return true;
+        }
+        return false;
     }
 }

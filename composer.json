@@ -52,7 +52,8 @@
         "miloschuman/yii2-highcharts-widget": "dev-master",
         "kertz/twitteroauth": "dev-master",
         "facebook/php-sdk-v4": "4.0.12",
-        "fzaninotto/faker": "1.5.*@dev"
+        "fzaninotto/faker": "1.5.*@dev",
+        "hpatoio/bitly-api": "~2.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "*",

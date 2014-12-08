@@ -13,7 +13,8 @@ use yii\base\Object;
  */
 class Facebook extends Object implements SharerInterface
 {
-
+    use SharerTrait;
+    
     /**
      * @var FacebookSession
      */
@@ -23,21 +24,6 @@ class Facebook extends Object implements SharerInterface
      * @var string
      */
     protected $id;
-
-    /**
-     * @var string
-     */
-    private $_errorCode;
-
-    /**
-     * @var string
-     */
-    private $_errorMessage;
-
-    /**
-     * @var string
-     */
-    protected $response;
     
     /**
      * @param string $accessToken App access token
@@ -67,29 +53,5 @@ class Facebook extends Object implements SharerInterface
             $this->_errorMessage = $e->getMessage();
         }
         return false;
-    }
-
-    /**
-     * @return string
-     */
-    public function getResponse()
-    {
-        return $this->response;
-    }
-    
-    /**
-     * @return string
-     */
-    public function getErrorCode()
-    {
-        return $this->_errorCode;
-    }
-
-    /**
-     * @return string
-     */
-    public function getErrorMessage()
-    {
-        return $this->_errorMessage;
     }
 }
