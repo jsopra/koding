@@ -17,6 +17,7 @@ fastcgi_param SW_TWITTER_CONSUMER_KEY "abcdefghijkl";
 fastcgi_param SW_TWITTER_CONSUMER_SECRET "abcdefghijkl";
 fastcgi_param SW_ADMIN_HTTP_USERNAME "koding";
 fastcgi_param SW_ADMIN_HTTP_PASSWORD "";
+fastcgi_param SW_BITLY_TOKEN "";
 ```
 
 Finally, restart the server: `sudo service nginx restart`.
