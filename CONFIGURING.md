@@ -17,7 +17,8 @@ fastcgi_param SW_TWITTER_CONSUMER_KEY "abcdefghijkl";
 fastcgi_param SW_TWITTER_CONSUMER_SECRET "abcdefghijkl";
 fastcgi_param SW_ADMIN_HTTP_USERNAME "koding";
 fastcgi_param SW_ADMIN_HTTP_PASSWORD "";
-fastcgi_param SW_BITLY_TOKEN "";
+fastcgi_param SW_BITLY_TOKEN "abcdefghijkl";
+fastcgi_param SW_MASHAPE_KEY "abcdefghijkl";
 ```
 
 Finally, restart the server: `sudo service nginx restart`.
@@ -31,6 +32,7 @@ export SW_ENVIRONMENT="development"
 export SW_DB_DSN='mysql:host=localhost;dbname=koding'
 export SW_DB_USERNAME='koding'
 export SW_DB_PASSWORD=''
+export SW_MASHAPE_KEY="abcdefghijkl"
 
 ```
 

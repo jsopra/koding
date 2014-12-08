@@ -36,20 +36,23 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <p><?= nl2br(Html::encode($model->description)) ?></p>
 
-        <footer>
-            <div class="text-muted">
-                <div class="row">
-                    <div class="col-md-6">
-                        <i class="glyphicon glyphicon-fire icon-shared"></i>
-                        <?= Yii::$app->formatter->asInteger($model->sharing_counter) ?> people shared
-                    </div>
-                    <div class="col-md-6">
-                        <div class="pull-right">
-                            <i class="glyphicon glyphicon-eye-close icon-awareness"></i>
-                            <?= Yii::$app->formatter->asInteger($model->awareness_created_counter) ?> direct awareness
-                        </div>
-                    </div>
+        <footer class="text-muted">
+            <div class="row">
+                <div class="col-md-4">
+                    <i class="glyphicon glyphicon-fire icon-shared"></i>
+                    <?= Yii::$app->formatter->asInteger($model->sharing_counter) ?> people shared
                 </div>
+                <div class="col-md-4 text-center">
+                    <i class="glyphicon glyphicon-eye-close icon-awareness"></i>
+                    <?= Yii::$app->formatter->asInteger($model->awareness_created_counter) ?> direct awareness
+                </div>
+                <?php if ($model->sentiment) : ?>
+                <div class="col-md-4 text-right">
+                    Sentiment
+                    <?= Yii::$app->formatter->asPercent($model->sentiment_confidence) ?>
+                    <?= Html::encode($model->sentiment) ?>
+                </div>
+                <?php endif; ?>
             </div>
         </footer>
     </div>

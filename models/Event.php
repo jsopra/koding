@@ -6,6 +6,7 @@ use Yii;
 use app\validators\HashtagValidator;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\helpers\Json;
 use yii\helpers\Url;
 
 /**
@@ -24,6 +25,8 @@ use yii\helpers\Url;
  * @property integer $sharing_counter
  * @property string $image_name
  * @property string $thumbnail_name
+ * @property string $sentiment
+ * @property float $sentiment_confidence
  *
  * Relations:
  * @property User[] $users Users following this event
@@ -124,6 +127,27 @@ class Event extends ActiveRecord
     }
 
     /**
+     * @return array sentiment data for the event description
+     */
+    protected function getSentimentData()
+    {
+        $url = 'https://community-sentiment.p.mashape.com/text/';
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'X-Mashape-Authorization: ' . getenv('SW_MASHAPE_KEY')
+        ]);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, 'txt=' . urlencode($this->description));
+        
+        $response = curl_exec($ch);
+
+        curl_close($ch);
+
+        return $response ? Json::decode($response) : [];
+    }
+
+    /**
      * @return \yii\db\ActiveQuery
      */
     public function getUsers()
@@ -196,10 +220,20 @@ class Event extends ActiveRecord
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
+
             if (!Yii::$app->request->isConsoleRequest && !$this->short_url) {
                 $url = Url::to(['event/view', 'id' => $this->id], true);
                 $this->short_url = Yii::$app->urlShortener->shorten($url);
             }
+
+            // Get the sentiment
+            $sentimentData = $this->getSentimentData();
+
+            if ($sentimentData) {
+                $this->sentiment = $sentimentData['result']['sentiment'];
+                $this->sentiment_confidence = ($sentimentData['result']['confidence'] / 100);
+            }
+
             return true;
         }
         return false;
