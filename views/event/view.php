@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?=
             Html::img(
                 Yii::$app->resourceManager->getUrl($model->image_name),
-                ['alt' => Html::encode($model->name)]
+                ['alt' => Html::encode($model->name), 'width' => '100%']
             )
             ?>
         </header>
@@ -53,51 +53,56 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </footer>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 joined-holder">
+        <?php if ($recentJoinings) : ?>
+            <section>
+                <h3>People who joined</h3>
+                <ul>
+                    <?php foreach ($recentJoinings as $recentJoin) : ?>
+                        <li>
+                            <?= $recentJoin->user->first_name ?>
+                            <time datetime="<?= $recentJoin->joined_at ?>">
+                                <?= Yii::$app->formatter->asRelativeTime($recentJoin->joined_at) ?>
+                            </time>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </section>
+        <?php endif; ?>
 
+        <div>
+            <?php if (false == $model->isPast()) : ?>
+                <hr>
+                <div>
+                    <?php if (Yii::$app->user->isGuest) : ?>
+                        <?= AuthChoice::widget([
+                                'baseAuthUrl' => ['site/auth', 'event_id' => $model->id]
+                            ]) ?>
+                    <?php elseif (Yii::$app->user->identity->hasJoinedEvent($model)) : ?>
+                        <?= Html::a(
+                            'Joined',
+                            ['event/unjoin', 'id' => $model->id, 'url' => Inflector::slug($model->name)],
+                            ['class' => 'btn btn-default']
+                        ) ?>
+                    <?php else : ?>
+                        <?= Html::a(
+                            'Join event',
+                            ['event/join', 'id' => $model->id, 'url' => Inflector::slug($model->name)],
+                            ['class' => 'btn btn-danger btn-lg']
+                        ) ?>
+                    <?php endif; ?>
+                    <br><br>
+                    <p class="text-muted">
+                        <em>We will post on the day of the event a status update about this event.</em>
+                    </p>
+                </div>
+            <?php endif; ?>
+        </div>
     </div>
 </div>
 
-
+<hr>
 <div class="event-view next-events">
-    <?php if (false == $model->isPast()) : ?>
-    <div>
-    <?php if (Yii::$app->user->isGuest) : ?>
-        <?= AuthChoice::widget([
-            'baseAuthUrl' => ['site/auth', 'event_id' => $model->id]
-        ]) ?>
-    <?php elseif (Yii::$app->user->identity->hasJoinedEvent($model)) : ?>
-        <?= Html::a(
-            'Joined',
-            ['event/unjoin', 'id' => $model->id, 'url' => Inflector::slug($model->name)],
-            ['class' => 'btn btn-default']
-        ) ?>
-    <?php else : ?>
-        <?= Html::a(
-            'Join',
-            ['event/join', 'id' => $model->id, 'url' => Inflector::slug($model->name)],
-            ['class' => 'btn btn-primary']
-        ) ?>
-    <?php endif; ?>
-    </div>
-    <?php endif; ?>
-
-    <?php if ($recentJoinings) : ?>
-    <section>
-        <h2>People who joined</h2>
-        <ul>
-            <?php foreach ($recentJoinings as $recentJoin) : ?>
-            <li>
-                <?= $recentJoin->user->first_name ?>
-                <time datetime="<?= $recentJoin->joined_at ?>">
-                    <?= Yii::$app->formatter->asRelativeTime($recentJoin->joined_at) ?>
-                </time>
-            </li>
-            <?php endforeach; ?>
-        </ul>
-    </section>
-    <?php endif; ?>
-
     <?php if ($eventChart->hasTopCountriesData() || $eventChart->hasSocialNetworksData()) : ?>
     <div class="row">
         <?php if ($eventChart->hasTopCountriesData()): ?>
