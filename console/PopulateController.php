@@ -8,7 +8,6 @@ use app\models\User;
 use yii\console\Controller;
 use Faker\Factory as Faker;
 use yii\helpers\Console;
-use yii\i18n\Formatter;
 
 /**
  * This command populates the database with random data
@@ -71,7 +70,13 @@ class PopulateController extends Controller
             $user = new User([
                 'username' => $this->faker->userName,
                 'email' => $this->faker->email,
-                'country' => $this->faker->countryCode,
+                'country' => $this->faker->randomElement([
+                    'US',
+                    $this->faker->countryCode,
+                    $this->faker->countryCode,
+                    $this->faker->countryCode,
+                    $this->faker->countryCode
+                ]),
                 'city' => $this->faker->city,
                 'created_at' => $this->faker->dateTimeBetween('-90days')->getTimestamp(),
                 'first_name' => $this->faker->firstName,
