@@ -2,6 +2,10 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/monitorbacklinks/koding/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/monitorbacklinks/koding/?branch=master)
 [![Deployment status from dploy.io](https://mbk.dploy.io/badge/66802253898048/15454.png)](http://dploy.io)
 
+## About Social Warming
+Visit http://monitorbacklinks.koding.io/site/about
+
+![Monitor Backlinks Team and Technologies used during hackatron](http://s.monitorbacklinks.com/i/mb-team.jpg)
 
 ## Collaboration & Services
 
