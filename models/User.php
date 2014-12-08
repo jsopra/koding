@@ -66,7 +66,10 @@ class User extends ActiveRecord implements IdentityInterface
     public function behaviors()
     {
         return [
-            TimestampBehavior::className(),
+            [
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => false,
+            ],
         ];
     }
 
@@ -105,18 +108,23 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @inheritdoc
      *
-     * 1. On user signup guess Country and City by IP
+     * 1. On user signup set `created_at` timestamp only if empty
+     * 2. On user signup guess Country and City by IP
      */
     public function beforeSave($insert)
     {
-        if ($this->email) {
-            $this->username = $this->email;
-        }
         if (parent::beforeSave($insert)) {
-            if ($insert && !Yii::$app->request->isConsoleRequest && Yii::$app->request->userIP && ($location = @geoip_record_by_name(Yii::$app->request->userIP))) {
-                $this->setCountry($location['country_code']);
-                $this->setCity($location['city']);
-                $this->address = $location['city'] . ', ' . $location['country_code'];
+            if ($insert) {
+                // fill timestamp
+                if (empty($this->created_at)) {
+                    $this->created_at = time();
+                }
+                // fill location
+                if (!Yii::$app->request->isConsoleRequest && Yii::$app->request->userIP && ($location = @geoip_record_by_name(Yii::$app->request->userIP))) {
+                    $this->setCountry($location['country_code']);
+                    $this->setCity($location['city']);
+                    $this->address = $location['city'] . ', ' . $location['country_code'];
+                }
             }
             return true;
         }

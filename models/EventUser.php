@@ -31,16 +31,21 @@ class EventUser extends ActiveRecord
 
     /**
      * @inheritdoc
+     *
+     * Set `joined_at` timestamp on record creation only if it's empty
      */
-    public function behaviors()
+    public function beforeSave($insert)
     {
-        return [
-            [
-                'class' => TimestampBehavior::className(),
-                'createdAtAttribute' => 'joined_at',
-                'updatedAtAttribute' => false,
-            ]
-        ];
+        if (parent::beforeSave($insert)) {
+            if ($insert) {
+                if (empty($this->joined_at)) {
+                    $this->joined_at = time();
+                }
+            }
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
