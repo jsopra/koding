@@ -62,7 +62,6 @@ class SharedEvent extends ActiveRecord
     public function afterSave($insert, $changedAttributes)
     {
         if ($insert) {
-
             $social = $this->getUserSocial();
 
             $this->db->createCommand()->update(
