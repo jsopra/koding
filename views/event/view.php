@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
                 <?php if ($model->sentiment) : ?>
                 <div class="col-md-4 text-right">
-                    <i class="glyphicon glyphicon-hearth icon-sentiment" title="Sentiment"></i>
+                    <i class="glyphicon glyphicon-heart icon-sentiment" title="Sentiment"></i>
                     <?= Yii::$app->formatter->asPercent($model->sentiment_confidence) ?>
                     <?= Html::encode($model->sentiment) ?>
                 </div>
