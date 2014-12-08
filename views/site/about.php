@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <strong><del>Global</del> <span class="primary-color">Social</span> Warming</strong> is all about raising awareness and creating massive buzz on a specific day of global events.</p>
             </div>
 
-            <p>We add global events that have impact on society all around the world. On the day of the event, we post post on the user's social account info on that event.</p>
+            <p>We add global events that have impact on society all around the world. On the day of the event, we post on the user's social account info on that event.</p>
         </div>
         <div class="col-md-4 align-center media-with-title">
             <img src="/img/earth-map.jpg" alt="Earth Map" width="90%">
@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <h3>How?</h3>
-    <p>Users join Social Warming platform with a click of a button using their social accounts and <strong>allowing us to post on their behalf (tweet or facebook status update).</strong>.</p>
+    <p>Users join Social Warming platform with a click of a button using their social accounts and <strong>allowing us to post on their behalf (tweet or facebook status update)</strong>.</p>
 
     <div class="row">
         <div class="col-md-6">
@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
-    <h2>Technologies and Code Quality</h2>
+    <h2>Technologies, Workflow, APIs</h2>
     <div class="bs-callout bs-callout-danger">
         Advance technical knowledge is required to read bellow. <strong>Hi judge! <img src="/img/smile.png" alt="Smile"></strong>
     </div>
