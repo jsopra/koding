@@ -54,17 +54,17 @@ class ProfileController extends Controller
      */
     public function actionIndex()
     {
-        $user = new ProfileForm(['user' => Yii::$app->user->identity]);
+        $model = new ProfileForm(['user' => Yii::$app->user->identity]);
 
         if (Yii::$app->request->isPost) {
-            $user->load(Yii::$app->request->post());
-            if ($user->save()) {
+            $model->load(Yii::$app->request->post());
+            if ($model->save()) {
                 Yii::$app->session->setFlash('success', 'Profile updated.');
             } else {
                 Yii::$app->session->setFlash('error', 'Unable to update profile.');
             }
         }
 
-        return $this->render('index', compact('user'));
+        return $this->render('index', ['model' => $model]);
     }
 }

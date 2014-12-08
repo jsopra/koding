@@ -6,22 +6,20 @@ use \yii\web\View;
 
 /**
  * @var View $this
- * @var \app\models\forms\ProfileForm $user
+ * @var \app\models\forms\ProfileForm $model
  * @var \yii\authclient\Collection $collection
  */
 
-$collection = Yii::$app->authClientCollection;
+$this->title = 'Profile';
 
+$collection = Yii::$app->authClientCollection;
 $facebook = $collection->getClient('facebook');
 $twitter = $collection->getClient('twitter');
-
-$user = Yii::$app->user->identity;
 
 $authChoice = new \yii\authclient\widgets\AuthChoice();
 $authChoice->setBaseAuthUrl(['profile/connect']);
 
-$this->title = 'Profile';
-$picture = $user->photo ?: Yii::$app->request->baseUrl . '/img/anonymous-user.png';
+$picture = $model->user->photo ?: Yii::$app->request->baseUrl . '/img/anonymous-user.png';
 ?>
 
 <div class="bs-callout bs-callout-info">
@@ -30,7 +28,7 @@ $picture = $user->photo ?: Yii::$app->request->baseUrl . '/img/anonymous-user.pn
 
 <div class="social-wrap align-center">
     <?php foreach (['twitter', 'facebook'] as $social) : ?>
-        <?php if ($user->$social) : ?>
+        <?php if ($model->user->$social) : ?>
             <a class="button <?= $social ?> disabled" href="javascript:;">Connected</a>
         <?php else : ?>
             <?php $authChoice->clientLink($$social, 'Connect ' . ucfirst($social), ['class' => 'button ' . $social]) ?>
@@ -42,7 +40,7 @@ $picture = $user->photo ?: Yii::$app->request->baseUrl . '/img/anonymous-user.pn
 
 <div class="row">
     <div class="col-md-11 col-md-offset-1">
-        <h2>Hey <?= ucwords(Html::encode($user->first_name)) ?>, check if this data is correct</h2>
+        <h2>Hey <?= ucwords(Html::encode($model->user->first_name)) ?>, check if this data is correct</h2>
     </div>
 </div>
 
@@ -58,12 +56,12 @@ $picture = $user->photo ?: Yii::$app->request->baseUrl . '/img/anonymous-user.pn
                 ]
             ]) ?>
 
-        <?= $form->field($user, 'email')->input('email') ?>
-        <?= $form->field($user, 'first_name') ?>
-        <?= $form->field($user, 'last_name') ?>
-        <?= $form->field($user, 'address') ?>
-        <?= $form->field($user, 'country', ['enableLabel' => false])->hiddenInput() ?>
-        <?= $form->field($user, 'city', ['enableLabel' => false])->hiddenInput() ?>
+        <?= $form->field($model, 'email')->input('email') ?>
+        <?= $form->field($model, 'first_name') ?>
+        <?= $form->field($model, 'last_name') ?>
+        <?= $form->field($model, 'address') ?>
+        <?= $form->field($model, 'country', ['enableLabel' => false])->hiddenInput() ?>
+        <?= $form->field($model, 'city', ['enableLabel' => false])->hiddenInput() ?>
 
         <?= Html::submitButton('Update', ['class' => 'btn btn-primary']) ?>
 

@@ -67,7 +67,7 @@ class ProfileForm extends Model
     public function save()
     {
         $user = $this->user;
-        
+
         $user->scenario = User::SCENARIO_UPDATE;
         if (!$user->save()) {
             $this->copyErrors();
