@@ -47,7 +47,6 @@ AppAsset::register($this);
                 ['label' => 'Home', 'url' => ['/'], 'options' => ['class' => 'home-link']],
                 ['label' => 'Events', 'url' => ['/event/index']],
                 ['label' => 'About', 'url' => ['/site/about']],
-                ['label' => 'Contact', 'url' => ['/site/contact']],
             ];
             if (Yii::$app->user->isGuest) {
                 $menuItems[] = [
