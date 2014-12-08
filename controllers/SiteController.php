@@ -100,6 +100,7 @@ class SiteController extends Controller
                 'featuredEvent' => $featuredEvent,
                 'pastEvents' => $pastEvents,
                 'userChart' => new UserChart,
+                'totalPeople' => User::find()->count(),
             ]
         );
     }

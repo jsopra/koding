@@ -15,7 +15,6 @@ HighchartsAsset::register($this)->withScripts([
     'highcharts-more',
     'modules/map',
     'modules/data',
-    'modules/exporting',
 ]);
 
 $this->registerJs("renderMap();", View::POS_READY);
@@ -109,7 +108,10 @@ $this->registerJsFile(
 </div>
 
 <div class="container">
-    <h2 class="text-center">People accross the world who joined Social Warming</h2>
+    <h2 class="text-center">
+        <?= Yii::$app->formatter->asInteger($totalPeople) ?>
+        people accross the world joined Social Warming
+    </h2>
     <div id="map-container">Loading map...</div>
     <script>
     function renderMap()
@@ -125,33 +127,32 @@ $this->registerJsFile(
         });
 
         $('#map-container').highcharts('Map', {
-            chart : { borderWidth : 0 },
-            legend: { enabled: false },
-            title: { text: '' },
-            mapNavigation: {
-                enabled: true,
-                buttonOptions: {
-                    verticalAlign: 'bottom'
-                }
+            chart : { 
+                borderWidth : 1,
+                borderColor: '#EEE'
             },
-            series : [{
-                name: 'Countries',
-                mapData: mapData,
-                color: '#FF0000',
-                enableMouseTracking: false
-            }, {
-                type: 'mapbubble',
-                mapData: mapData,
-                name: 'People',
-                joinBy: ['iso-a2', 'country'],
-                data: chartData,
-                minSize: 4,
-                maxSize: '12%',
-                pointArrayMap: ['value'],
-                tooltip: {
-                    pointFormat: '{point.country}: {point.value} people'
+            title: { text: '' },
+            colorAxis: {
+                min: 0,
+                stops: [
+                    [0, '#009900'],
+                    [0.5, '#FFFF66'],
+                    [1, '#B00000']
+                ]
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'bottom'
+            },
+            series : [
+                {
+                    mapData: mapData,
+                    name: 'People',
+                    joinBy: ['iso-a2', 'country'],
+                    data: chartData
                 }
-            }]
+            ]
         });
     }
     </script>
