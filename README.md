@@ -2,7 +2,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/monitorbacklinks/koding/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/monitorbacklinks/koding/?branch=master)
 [![Deployment status from dploy.io](https://mbk.dploy.io/badge/66802253898048/15454.png)](http://dploy.io)
 
-## About Social Warming
+# About Social Warming
 Visit http://monitorbacklinks.koding.io/site/about
 
 ![Monitor Backlinks Team and Technologies used during hackatron](http://s.monitorbacklinks.com/i/mb-team.jpg)
@@ -19,8 +19,8 @@ Visit http://monitorbacklinks.koding.io/site/about
 
 ## APIs Used
 
-* Twritter API - Login/Registration and post Event message on user's behalf
-* Facebook API - Login/Registration and post Event message on user's behalf
+* [Twritter API](https://dev.twitter.com/) - Login/Registration and post Event message on user's behalf
+* [Facebook API](https://developers.facebook.com/) - Login/Registration and post Event message on user's behalf
 * [Google Maps API](https://developers.google.com/maps/) - For Country/City autocompletion
 * [Highcharts](http://www.highcharts.com/) - For showing interactive geo maps
 * [MaxMind GeoIP](https://www.maxmind.com/en/geoip-demo) - For getting User Location based on IP
