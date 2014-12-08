@@ -118,6 +118,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     'title' => ['text' => ''],
                     'xAxis' => [
                         'categories' => $eventChart->getXAxisBySocialNetworkAndCountry(),
+                        'minorGridLineWidth' => 0,
+                        'minorTickLength' => 0,
+                        'tickLength' => 0,
+                        'lineWidth' => 0,
+                        'gridLineWidth' => 0,
                     ],
                     'yAxis' => [
                         'min' => 0,
@@ -126,6 +131,13 @@ $this->params['breadcrumbs'][] = $this->title;
                             'enabled' => true,
                             'color' => 'gray',
                         ],
+                        'minorGridLineWidth' => 0,
+                        'minorTickLength' => 0,
+                        'tickLength' => 0,
+                        'lineColor' => 'transparent',
+                        'lineWidth' => 0,
+                        'gridLineWidth' => 0,
+                        'labels' => ['enabled' => false],
                     ],
                     'legend' => [
                         'align' => 'right',
