@@ -1,11 +1,17 @@
 <?php
+
 use yii\helpers\Html;
 use yii\helpers\Inflector;
 use yii\helpers\StringHelper;
-?><div class="col-sm-4 event-widget">
+
+/**
+ * @var $model \app\models\Event
+ */
+?>
+<div class="col-sm-4 event-widget">
     <header>
         <h2>
-            <span class="tag"><?= $model->hashtag ?></span>
+            <span class="tag"><?= Html::encode($model->hashtag) ?></span>
             <span class="date">
                 <i class="glyphicon glyphicon-calendar"></i>
                 <?= Yii::$app->formatter->asDate($model->occurred_on) ?>
@@ -29,10 +35,18 @@ use yii\helpers\StringHelper;
     </header>
     <p><?= nl2br(StringHelper::truncateWords(Html::encode($model->description), 54)) ?></p>
     <footer>
-        <?= Html::a('View stats',
-            ['event/view', 'id' => $model->id, 'url' => Inflector::slug($model->name)],
-            ['class' => 'btn btn-info pull-right']
-        ) ?>
+        <?php if ($model->isPast()) : ?>
+            <?= Html::a('View stats',
+                ['event/view', 'id' => $model->id, 'url' => Inflector::slug($model->name)],
+                ['class' => 'btn btn-info pull-right']
+            ) ?>
+        <?php else : ?>
+            <?= Html::a('Upcoming',
+                ['event/view', 'id' => $model->id, 'url' => Inflector::slug($model->name)],
+                ['class' => 'btn btn-success pull-right']
+            ) ?>
+        <?php endif; ?>
+
         <div class="text-muted">
             <i class="glyphicon glyphicon-fire icon-shared"></i>
             <?= Yii::$app->formatter->asInteger($model->sharing_counter) ?> people shared
