@@ -36,6 +36,7 @@ Visit http://monitorbacklinks.koding.io/site/about
 * [PHP Code Sniffer](https://github.com/squizlabs/PHP_CodeSniffer) - for keeping the same coding standards [PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)
 * [Compass CSS Framework](http://compass-style.org) & [Sass](http://sass-lang.com/) for CSS
 * [Twitter Bootstrap](http://getbootstrap.com/) - OpenSource HTML5 & CSS framework for main frontend development
+* [Bitly API](http://dev.bitly.com/) - Short URL service to share events and have stats
 
 ## Conventions
 
