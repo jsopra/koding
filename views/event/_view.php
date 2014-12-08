@@ -29,6 +29,10 @@ use yii\helpers\StringHelper;
     </header>
     <p><?= nl2br(StringHelper::truncateWords(Html::encode($model->description), 54)) ?></p>
     <footer>
+        <?= Html::a('View stats',
+            ['event/view', 'id' => $model->id, 'url' => Inflector::slug($model->name)],
+            ['class' => 'btn btn-default pull-right']
+        ) ?>
         <div class="text-muted">
             <i class="glyphicon glyphicon-fire icon-shared"></i>
             <?= Yii::$app->formatter->asInteger($model->joined_users_counter) ?> people shared
