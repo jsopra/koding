@@ -21,6 +21,7 @@ use yii\helpers\Url;
  * @property integer $updated_at
  * @property integer $awareness_created_counter
  * @property integer $joined_users_counter
+ * @property integer $sharing_counter
  * @property string $image_name
  * @property string $thumbnail_name
  *
@@ -74,7 +75,7 @@ class Event extends ActiveRecord
             ['hashtag', HashtagValidator::className()],
             ['image_file', 'image', /*'maxWidth' => 630, 'minWidth' => 630, 'maxHeight' => 354, 'minHeight' => 354,*/ 'skipOnEmpty' => true],
             ['thumbnail_file', 'image', /*'maxWidth' => 630, 'minWidth' => 630, 'maxHeight' => 354, 'minHeight' => 354,*/ 'skipOnEmpty' => true],
-            [['joined_users_counter', 'awareness_created_counter'], 'integer'],
+            [['joined_users_counter', 'awareness_created_counter', 'sharing_counter'], 'integer'],
             [['name', 'hashtag'], 'string', 'max' => 255]
         ];
     }
@@ -96,6 +97,7 @@ class Event extends ActiveRecord
             'joined_users_counter' => 'Joined Users Counter',
             'image_name' => 'Image',
             'thumbnail_name' => 'Thumbnail',
+            'sharing_counter' => 'Sharing Counter',
         ];
     }
 

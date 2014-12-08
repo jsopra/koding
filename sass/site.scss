@@ -238,6 +238,10 @@ h1 { font-size: 3em; }
 }
 
 .navbar .social-wrap {
+
+  overflow: hidden;
+  max-height: 50px;
+
   .button {
     font-size: 1em;
     color: #fff;
@@ -255,6 +259,30 @@ h1 { font-size: 3em; }
 
 #map-container {
   margin: 2em 0;
+}
+
+.event-view {
+  header {
+    margin-bottom: 1em;
+  }
+}
+
+/** Responsive menu fix **/
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .navbar .home-link {
+    display: none;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 991px) {
+  .navbar .logo-label {
+    display: none;
+  }
+  .navbar .home-link {
+    display: none;
+  }
+  .navbar-inverse .navbar-brand {
+    padding: 10px;
+  }
 }
 
 /*** Responsive settings ***/

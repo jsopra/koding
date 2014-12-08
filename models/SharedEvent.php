@@ -66,7 +66,10 @@ class SharedEvent extends ActiveRecord
 
             $this->db->createCommand()->update(
                 'event',
-                ['awareness_created_counter' => new Expression('awareness_created_counter + ' . $social->followers)],
+                [
+                    'awareness_created_counter' => new Expression('awareness_created_counter + ' . $social->followers),
+                    'sharing_counter' => new Expression('sharing_counter + 1'),
+                ],
                 'id = :event',
                 [':event' => $this->event_id]
             )->execute();
@@ -82,7 +85,10 @@ class SharedEvent extends ActiveRecord
 
         $this->db->createCommand()->update(
             'event',
-            ['awareness_created_counter' => new Expression('awareness_created_counter - ' . $social->followers)],
+            [
+                'awareness_created_counter' => new Expression('awareness_created_counter - ' . $social->followers),
+                'sharing_counter' => new Expression('sharing_counter - 1'),
+            ],
             'id = :event',
             [':event' => $this->event_id]
         )->execute();

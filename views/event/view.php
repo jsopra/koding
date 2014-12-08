@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="row">
                     <div class="col-md-6">
                         <i class="glyphicon glyphicon-fire icon-shared"></i>
-                        <?= Yii::$app->formatter->asInteger($model->joined_users_counter) ?> people shared
+                        <?= Yii::$app->formatter->asInteger($model->sharing_counter) ?> people shared
                     </div>
                     <div class="col-md-6">
                         <div class="pull-right">
