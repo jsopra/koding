@@ -27,11 +27,11 @@ $this->registerJsFile(
     <div class="container">
         <header>
             <h1>
-                <span>Next event</span> 
+                <span>Next event</span>
                 <?= Html::a(
                     Html::encode($featuredEvent->name),
                     ['event/view', 'id' => $featuredEvent->id, 'url' => Inflector::slug($featuredEvent->name)]
-                ) ?>?>
+                ) ?>
             </h1><br>
             <h2><?= Html::encode($featuredEvent->hashtag) ?></h2>
             <h3>
