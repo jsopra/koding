@@ -50,4 +50,3 @@ Things that make our work Faster and code well organized, Cleaner, Secure and Ma
 * [Yii2 view coding style](https://github.com/yiisoft/yii2/blob/master/docs/internals/view-code-style.md)
 * [PHPDoc](http://www.phpdoc.org/) - writing full Documentation for Classes, Methods, Properties, type hinting for better IDE support & autocompletion
 * Not storing passwords in Git - application gets credentials from server Environment variables. See [CONFIGURING.md](https://github.com/monitorbacklinks/koding/blob/master/CONFIGURING.md)
- 
