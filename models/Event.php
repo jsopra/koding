@@ -163,7 +163,7 @@ class Event extends ActiveRecord
 
     /**
      * Joins user to the event
-     * @param User $user user which will join
+     * @param User|\yii\web\IdentityInterface $user user which will join
      * @returns boolean either if the user joined or not
      */
     public function join(User $user)
@@ -177,7 +177,7 @@ class Event extends ActiveRecord
 
     /**
      * Unjoins user from the event
-     * @param User $user user which will unjoin
+     * @param User|\yii\web\IdentityInterface $user user which will unjoin
      * @returns boolean either if the user unjoined or not
      */
     public function unjoin(User $user)
