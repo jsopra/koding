@@ -56,7 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-md-4 joined-holder">
         <?php if ($recentJoinings) : ?>
             <section>
-                <h3>People who joined</h3>
+                <h3>People who joined (<?= Yii::$app->formatter->asInteger($model->joined_users_counter) ?>)</h3>
                 <ul>
                     <?php foreach ($recentJoinings as $recentJoin) : ?>
                         <li>
